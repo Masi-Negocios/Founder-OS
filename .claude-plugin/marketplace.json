@@ -1,0 +1,14 @@
+{
+  "name": "founders-os",
+  "description": "Founders OS: skills da Masi Negócios para o empresário usar no Claude",
+  "owner": {
+    "name": "Masi Negócios"
+  },
+  "plugins": [
+    {
+      "name": "founders-os",
+      "source": "./plugins/founders-os",
+      "description": "Skills da Masi Negócios para o empresário usar no Claude"
+    }
+  ]
+}
