@@ -1,0 +1,137 @@
+# Configuração da camada de agentes do Founders OS.
+# Caminhos relativos partem desta pasta (agentes/). Textos aceitam ${VAR} e ${VAR:-padrão}.
+
+[skills]
+# As Skills do plugin continuam sendo a fonte única: os agentes leem a pasta do repositório.
+# A raiz do repositório tem o marketplace (.claude-plugin/marketplace.json) e o catalogo.json.
+fontes = [
+  { caminho = "${FOUNDERS_AGENTES_RAIZ_SKILLS:-..}", catalogo = "${FOUNDERS_AGENTES_CATALOGO:-../catalogo.json}", rotulo = "founders-os" },
+]
+excluir = ["boas-vindas"]
+# Cada skill vira um agente. Skills que exigem o Claude Code (ex.: motion-video) ficam
+# indisponíveis, porque precisam de terminal, Node e FFmpeg na máquina do usuário.
+agentes_automaticos = true
+permitir_so_claude_code = false
+
+[modelos]
+# Formato: provedor:modelo. Provedores prontos: anthropic, openai, openrouter, gemini, groq,
+# deepseek, mistral, xai, together, ollama e demo (responde sem IA, para testar).
+padrao = "anthropic:claude-opus-5-5"
+# Tentados em ordem quando o modelo do agente falha (sem chave, fora do ar, limite de uso).
+reserva = []
+# Esforço de raciocínio (low, medium, high, xhigh, max). Vazio: o padrão de cada modelo.
+esforco = ""
+
+[modelos.apelidos]
+claude = "anthropic:claude-opus-5-5"
+claude-sonnet = "anthropic:claude-sonnet-5-5"
+claude-haiku = "anthropic:claude-haiku-5-5"
+demo = "demo:eco"
+# Exemplos (troque pelo modelo que você usa em cada provedor):
+# gpt = "openai:<modelo>"
+# gemini = "gemini:<modelo>"
+# local = "ollama:<modelo>"
+
+# Provedor extra: qualquer API no formato Chat Completions da OpenAI.
+# [provedores.minha-api]
+# tipo = "openai_compat"
+# base_url = "https://minha-api.exemplo.com/v1"
+# chave_env = "MINHA_API_KEY"
+# enviar_esforco = false   # true se o modelo aceitar reasoning_effort
+# max_mensagens = 0        # corta o histórico nos modelos com contexto curto
+
+[runtime]
+max_turnos = 12
+max_passagens = 3
+# Deixa os agentes rodarem os scripts Python das skills (ex.: planilha do Plano de Receita).
+# Ligue só em ambiente isolado (container), com FOUNDERS_AGENTES_SCRIPTS=1 ou aqui.
+permitir_scripts = false
+timeout_script = 120
+banco = "dados/agentes.db"
+pasta_arquivos = "dados/arquivos"
+
+[servidor]
+host = "127.0.0.1"
+porta = 8787
+# Chaves de API em FOUNDERS_AGENTES_CHAVES="chave1:empresa-a,chave2:empresa-b".
+# Cada chave é um dono: sessões e perfil do negócio ficam separados por dono.
+chaves_api_env = "FOUNDERS_AGENTES_CHAVES"
+cors = ""
+# No endpoint compatível com a OpenAI, mostra no texto quando outro agente assume.
+eventos_no_openai = true
+
+# ---------------------------------------------------------------------------
+# Agentes compostos: uma skill principal + skills de apoio que o agente carrega
+# quando o tema aparece. Um id igual ao de uma skill sobrescreve aquele agente
+# (por exemplo, para mudar o modelo dele).
+# ---------------------------------------------------------------------------
+
+[[agentes]]
+id = "cfo"
+nome = "CFO de Bolso"
+area = "Finanças"
+icone = "landmark"
+skill_principal = "diretor-financeiro-masinegocios"
+skills_apoio = ["guia-dre-e-caixa", "guia-cac-ltv-payback", "guia-indicadores-da-semana", "gerador-plano-receita"]
+esforco = "high"
+para_que = "O Diretor Financeiro com os guias de DRE e caixa, CAC/LTV, indicadores e o Plano de Receita à mão."
+exemplo = "Vendo bem e não sobra dinheiro. Me ajuda a entender por quê."
+
+[[agentes]]
+id = "head-de-crescimento"
+nome = "Head de Crescimento"
+area = "Vendas e marketing"
+icone = "trending-up"
+skill_principal = "diretor-comercial-masinegocios"
+skills_apoio = [
+  "guia-funil-por-etapa",
+  "mecanismos-de-aquisicao-founders",
+  "guia-o-cliente-que-voce-ja-tem",
+  "guia-posicionamento-em-uma-frase",
+  "radar-de-concorrentes-founders",
+]
+para_que = "Diretor Comercial com funil, canais de aquisição, base de clientes, posicionamento e concorrência."
+exemplo = "Quero dobrar as vendas em 6 meses sem dobrar o time."
+
+[[agentes]]
+id = "estrategista"
+nome = "Estrategista"
+area = "Estratégia"
+icone = "compass"
+skill_principal = "guia-planejamento-estrategico"
+skills_apoio = [
+  "guia-swot-que-vira-decisao",
+  "guia-okrs-na-pratica",
+  "guia-horizontes-de-crescimento",
+  "guia-visao-core-proposito",
+  "expert-modelo-negocio-masi-negocios",
+]
+para_que = "Planejamento estratégico do início ao fim: SWOT, OKRs, horizontes de crescimento, visão e modelo de negócio."
+exemplo = "Me ajuda a montar o planejamento do ano que vem."
+
+# ---------------------------------------------------------------------------
+# Times: grupos para o Conselho (vários agentes respondem e um moderador junta).
+# ---------------------------------------------------------------------------
+
+[[times]]
+id = "conselho-do-founder"
+nome = "Conselho do Founder"
+descricao = "Finanças, vendas, pessoas e modelo de negócio olhando a mesma decisão."
+agentes = [
+  "diretor-financeiro-masinegocios",
+  "diretor-comercial-masinegocios",
+  "diretora-de-gente-masinegocios",
+  "expert-modelo-negocio-masi-negocios",
+]
+
+[[times]]
+id = "ia-no-negocio"
+nome = "IA no Negócio"
+descricao = "Onde a IA rende mais, como deixar a operação eficiente e como cobrar por resultado."
+agentes = ["head-de-ia-de-founders", "negocio-eficiente-ia-masi", "expert-servicos-ia-masinegocios"]
+
+[[times]]
+id = "marca-e-mercado"
+nome = "Marca e Mercado"
+descricao = "Posicionamento, concorrência e crescimento de marca."
+agentes = ["guia-posicionamento-em-uma-frase", "radar-de-concorrentes-founders", "guia-como-as-marcas-crescem", "raio-x-do-site-founders"]
