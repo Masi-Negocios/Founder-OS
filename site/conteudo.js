@@ -31,7 +31,7 @@ export const PASSOS = [
     id: "execucao",
     titulo: "Ligue a execução de código",
     tempo: "30 s",
-    intro: "As skills precisam desta opção ligada para funcionar.",
+    intro: "Ative esta opção para as skills que geram planilhas, documentos ou outros arquivos.",
     acoes: [
       { texto: (m) => `No Claude, abra **${m.configuracoes}**.` },
       { texto: (m) => `Entre em **${m.capacidades}**.` },
@@ -104,3 +104,56 @@ export const PROBLEMAS = [
       `A aba de código (onde aparece “Este computador”) é outro lugar e não atualiza sozinha. Para o dia a dia, instale pelo ${m.personalizacao} › ${m.plugins} do chat.`,
   },
 ];
+
+const pluginCodex = "founders-os@founders-os";
+const exemploCodex = "$founders-os:boas-vindas";
+const docDeepSeek = "https://api-docs.deepseek.com/quick_start/agent_integrations/opencode/";
+const guiaProjeto = `https://github.com/${MARKETPLACE}#instalar-skills-e-agentes-em-um-projeto`;
+
+export const TRILHAS = {
+  codex: {
+    nome: "Codex",
+    requisito: "Abra o terminal com o Codex CLI instalado. O marketplace disponibiliza o catálogo completo.",
+    passos: [
+      { id: "codex-catalogo", titulo: "Adicione o marketplace", tempo: "Terminal",
+        acoes: [{ texto: "Execute o comando para registrar o repositório da Masi.",
+          copiar: `codex plugin marketplace add ${MARKETPLACE}` }] },
+      { id: "codex-instalar", titulo: "Instale o plugin", tempo: "Terminal",
+        acoes: [{ texto: "Instale o Founders OS pelo nome do catálogo.", copiar: `codex plugin add ${pluginCodex}` }] },
+      { id: "codex-testar", titulo: "Teste no Codex", tempo: "No chat",
+        acoes: [{ texto: "Abra uma conversa no Codex e peça o catálogo.", copiar: exemploCodex },
+          { texto: "Escolha uma skill da sua área e experimente com uma pergunta do negócio." }] },
+    ],
+    problemas: [
+      { sintoma: "Quero instalar uma única skill ou usar um subagente",
+        solucao: "A opção --skill aceita o ID da skill e instala o perfil de agente correspondente, quando disponível.",
+        link: guiaProjeto, rotulo: "Instalar por projeto" },
+      { sintoma: "O comando plugin não aparece no meu Codex",
+        solucao: "A instalação por projeto copia as skills para a pasta .agents/skills. Abra o projeto no Codex e peça uma skill pelo nome.",
+        link: guiaProjeto, rotulo: "Ver comandos" },
+    ],
+  },
+  opencode: {
+    nome: "DeepSeek com OpenCode",
+    requisito: "Use um projeto local com Git, Python 3.8 ou superior e OpenCode conectado ao DeepSeek.",
+    passos: [
+      { id: "opencode-baixar", titulo: "Baixe o Founders OS", tempo: "Terminal",
+        acoes: [{ texto: "No terminal, entre na pasta do seu projeto e baixe o repositório.",
+          copiar: `git clone https://github.com/${MARKETPLACE}.git` }] },
+      { id: "opencode-instalar", titulo: "Instale no projeto", tempo: "Terminal",
+        acoes: [{ texto: "Na mesma pasta, instale as skills e os perfis de agente.",
+          copiar: "python3 Founder-OS/scripts/instalar.py --ambiente opencode" }] },
+      { id: "opencode-testar", titulo: "Chame o primeiro especialista", tempo: "No chat",
+        acoes: [{ texto: "Abra o OpenCode nessa pasta, selecione seu modelo DeepSeek e peça o diagnóstico.",
+          copiar: "Use o subagente masi-financeiro para me ajudar a montar a DRE do meu negócio." }] },
+    ],
+    problemas: [
+      { sintoma: "Como conecto o DeepSeek ao OpenCode?", solucao: "Siga a configuração de provedor no guia do DeepSeek.",
+        link: docDeepSeek, rotulo: "Configurar o provedor DeepSeek" },
+      { sintoma: "Estou usando o chat do DeepSeek sem OpenCode",
+        solucao: "Cole o conteúdo de SKILL.md como instrução e forneça as referências necessárias à tarefa. Nesse modo a leitura de arquivos é manual." },
+    ],
+  },
+  claude: { nome: "Claude", requisito: "No app do Claude, use uma conta com acesso a plugins.",
+    passos: PASSOS, problemas: PROBLEMAS },
+};

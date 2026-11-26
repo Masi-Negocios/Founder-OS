@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Founders OS: instale no seu Claude</title>
-  <meta name="description" content="Guia passo a passo para instalar o Founders OS, as skills da Masi Negócios, no seu Claude.">
+  <title>Founders OS | Skills e agentes da Masi Negócios</title>
+  <meta name="description" content="Instale as skills da Masi Negócios no Codex, no Claude ou no OpenCode com DeepSeek.">
   <meta name="theme-color" content="#222222">
   <link rel="icon" type="image/svg+xml" href="img/founder-symbol-brand.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,8 +37,8 @@
   <section class="hero" id="topo">
     <div class="hero-texto">
       <p class="hero-produto">Founders OS</p>
-      <h1>O método <em>Masi</em><br>no seu Claude.</h1>
-      <p class="hero-apoio">As skills da Masi Negócios dentro do Claude. Quatro passos, uns três minutos e nada para instalar no computador.</p>
+      <h1>O método <em>Masi</em><br>no seu negócio.</h1>
+      <p class="hero-apoio">Leve as skills de estratégia, vendas, operações, pessoas e finanças para o Codex, o Claude ou o OpenCode com DeepSeek.</p>
       <div class="hero-acoes">
         <a class="botao botao-lima" href="#jornada">Começar a instalação</a>
         <a class="elo" href="#skills">Ver as <span data-total-skills></span> skills<span class="elo-seta" aria-hidden="true">›</span></a>
@@ -158,7 +158,7 @@
 
   <section class="vitrine" id="skills" aria-labelledby="skills-titulo">
     <header class="secao-topo" data-revela>
-      <h2 id="skills-titulo">As skills que entram<br>no seu Claude.</h2>
+      <h2 id="skills-titulo">Escolha uma skill<br>para o seu negócio.</h2>
       <p class="secao-apoio">Depois de instalar, é só conversar. Toque numa skill para ver o que mandar no chat.</p>
     </header>
     <div class="areas" role="tablist" aria-label="Áreas do negócio" id="areas"></div>
@@ -166,8 +166,8 @@
       <div class="skills-painel" id="skills-painel" role="tabpanel"></div>
       <aside class="chamada" id="chamada" data-revela>
         <div>
-          <h3>Uns três minutos e está no seu Claude.</h3>
-          <p>O guia abaixo leva você pela mão, um passo de cada vez.</p>
+          <h3>Onde você quer usar as skills?</h3>
+          <p>Escolha seu ambiente no guia de instalação.</p>
         </div>
         <a class="botao botao-lima" href="#jornada">Começar a instalação</a>
       </aside>
@@ -178,8 +178,10 @@
   <section class="instalacao" id="jornada" aria-labelledby="jornada-titulo">
     <header class="secao-topo" data-revela>
       <p class="sobretitulo">Instalação guiada</p>
-      <h2 id="jornada-titulo">Um passo de cada vez.</h2>
-      <p class="secao-apoio">Não funciona no plano Free do Claude. Precisa de Pro, Max, Team ou Enterprise.</p>
+      <h2 id="jornada-titulo">Instale no seu ambiente.</h2>
+      <label class="escolha-ambiente">Ambiente <select id="ambiente"></select></label>
+      <p class="secao-apoio" id="requisito" aria-live="polite"></p>
+      <p><a href="https://github.com/Masi-Negocios/Founder-OS#instalar-skills-e-agentes-em-um-projeto">Instalação por projeto e seleção de skills</a></p>
     </header>
     <div class="instalacao-corpo">
       <aside class="painel" aria-label="Seu progresso">
@@ -195,7 +197,7 @@
   <footer class="rodape">
     <div class="rodape-dentro">
       <img src="/founders-os/img/masi-dark.svg" alt="Masi Negócios" width="1831" height="164" loading="lazy">
-      <p>Tudo o que o Sistema faz está em texto aberto no <a href="https://github.com/Masi-Negocios/Founder-OS" target="_blank" rel="noopener">repositório público</a>. Para remover, basta desativar o Founders OS nos plugins do seu Claude.</p>
+      <p>Consulte as instruções, a licença e as opções para remover o Founders OS no <a href="https://github.com/Masi-Negocios/Founder-OS" target="_blank" rel="noopener">repositório da Masi Negócios</a>.</p>
       <p>Este guia não coleta dados: o seu progresso fica salvo apenas no seu navegador.</p>
     </div>
   </footer>

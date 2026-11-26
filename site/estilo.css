@@ -201,6 +201,8 @@ h2 { font-size: clamp(2.1rem, 4.6vw, 3.5rem); line-height: 1.07; }
 /* --- instalação ------------------------------------------------------------ */
 .instalacao { padding: clamp(5rem, 11vw, 9rem) var(--margem) clamp(4rem, 8vw, 6rem); background: var(--fundo); }
 .segmentado .aba { min-height: 34px; padding: 0.3rem 0.95rem; font-size: 0.875rem; }
+.escolha-ambiente { display: inline-flex; align-items: center; gap: 0.6rem; margin-top: 1.25rem; }
+.escolha-ambiente select { font: inherit; color: var(--tinta); background: var(--branco); border: 1px solid var(--linha); border-radius: var(--raio-p); padding: 0.5rem; }
 .instalacao-corpo { max-width: var(--largura); margin: 0 auto; display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
 .painel { position: sticky; top: calc(var(--nav) + 2rem); }
 
