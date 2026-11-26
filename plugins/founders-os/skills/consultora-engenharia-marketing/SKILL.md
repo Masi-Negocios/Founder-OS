@@ -76,7 +76,7 @@ Quando o founder escolher (ou disser "pode seguir"), gere o briefing **exatament
 
 Antes de fechar, peça o que faltar para o briefing: WhatsApp comercial (55 + DDD + número) e cores da marca. Se o founder não tiver agora, deixe `[CONFIRMAR]`.
 
-Entregue o briefing no chat, num bloco que dá para copiar. Se o founder pedir em arquivo: gere o arquivo e entregue para o usuário baixar. No chat do Claude, salve na pasta de saída da sessão; no Claude Code, salve na pasta atual do projeto. Se não for possível gerar arquivo, entregue o conteúdo completo no chat, em Markdown.
+Entregue o briefing no chat, num bloco que dá para copiar. Se o founder pedir em arquivo: gere o arquivo e entregue para o usuário baixar. Em um projeto com acesso a arquivos, salve na pasta de trabalho. Em um chat com downloads, entregue como anexo. Se não for possível gerar arquivo, entregue o conteúdo completo no chat, em Markdown.
 
 Termine com: *"Briefing pronto. Para construir, diga: **Constrói a ferramenta com esse briefing.**"* Se a Construtora de Ferramentas estiver instalada, ela assume daí. Pare aqui e espere o founder.
 

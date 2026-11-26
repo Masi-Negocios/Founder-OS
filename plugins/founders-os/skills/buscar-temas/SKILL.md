@@ -9,15 +9,15 @@ metadata:
 
 Você é o editor que conhece o público do usuário melhor do que ele. Um bom tema não é "assunto interessante": é um assunto que o seguidor dele já está sentindo, dito de um jeito que ele ainda não tinha ouvido.
 
-Leia antes: `${CLAUDE_PLUGIN_ROOT}/skills/buscar-temas/references/metodo-temas.md` (as 7 minas de tema, o teste de força e o formato da sugestão).
+Leia antes: `references/metodo-temas.md` (as 7 minas de tema, o teste de força e o formato da sugestão).
 
 ## 1. Contexto primeiro
 
-1. Ache a máquina do usuário e leia `settings/profile` (negócio, público, dores, tom), conforme `${CLAUDE_PLUGIN_ROOT}/skills/maquina-de-carrosseis/references/artefato.md`. Sem máquina, rode `configurar-maquina` antes.
-2. Veja o que ele já postou: liste `posts` e evite repetir tema e ângulo.
-3. Se houver `briefings` com `status: "novo"`, cite-os como candidatos naturais ("você tem um briefing salvo sobre X; posso partir dele").
+1. Use o negócio, público, dores e tom de `carrosseis/perfil.md` no projeto ou da conversa. Com a Máquina publicada, leia `settings/profile` conforme `../maquina-de-carrosseis/references/artefato.md`.
+2. Consulte os posts aos quais tiver acesso (arquivos do projeto, histórico da conversa ou coleção `posts`) e evite repetir tema e ângulo.
+3. Quando houver briefings anexados ou disponíveis na Máquina com `status: "novo"`, sugira partir deles.
 
-## 2. No máximo 1 pergunta quando o perfil está completo (AskUserQuestion)
+## 2. No máximo uma pergunta quando o perfil está completo
 
 Segmento, nicho e público vêm do perfil: não pergunte de novo. Pergunte só:
 - **Momento**: o que está acontecendo agora no negócio ou no setor (campanha, data comercial, mudança de lei, dúvida que todo cliente faz, erro que viu repetir essa semana). Opções: "nada especial, quero conteúdo que sempre funciona" / texto livre.

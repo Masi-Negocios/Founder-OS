@@ -1,5 +1,5 @@
 {
-  "_leia": "Fonte única das skills do Founders OS. Depois de editar, rode: python3 scripts/gerar.py (gera a skill boas-vindas e o site/catalogo.js).",
+  "_leia": "Fonte das skills e dos perfis de agente. Rode python3 scripts/gerar.py depois de editar. Skills do mesmo grupo são instaladas juntas.",
   "areas": [
     "Estratégia",
     "Vendas e marketing",
@@ -10,6 +10,7 @@
   "skills": [
     {
       "id": "head-de-ia-de-founders",
+      "agente": "masi-head-ia",
       "nome": "Head de IA",
       "area": "Operações e entrega",
       "icone": "brain-circuit",
@@ -56,6 +57,7 @@
     },
     {
       "id": "expert-modelo-negocio-masi-negocios",
+      "agente": "masi-estrategia",
       "nome": "Modelo de Negócios",
       "area": "Estratégia",
       "icone": "layout-grid",
@@ -139,7 +141,7 @@
       "nome": "Vídeos Virais",
       "area": "Vendas e marketing",
       "icone": "flame",
-      "paraQue": "Cria um vídeo curto para as redes, do roteiro à produção. Precisa do Higgsfield conectado ao Claude.",
+      "paraQue": "Escreve a fala e o roteiro de um vídeo curto. Com o conector Higgsfield, também produz o vídeo.",
       "exemplo": "Cria um vídeo curto para o Instagram do meu negócio."
     },
     {
@@ -149,7 +151,7 @@
       "icone": "clapperboard",
       "paraQue": "Cria vídeos de motion design em código, com som, prontos para o seu editor.",
       "exemplo": "Cria um vídeo em motion para anunciar o meu produto.",
-      "onde": "Claude Code"
+      "onde": "Requer terminal, Node.js, FFmpeg e Python"
     },
     {
       "id": "consultora-experiencia-masinegocios",
@@ -169,6 +171,7 @@
     },
     {
       "id": "agente-qualidade-masinegocios",
+      "agente": "masi-qualidade",
       "nome": "Agente de Qualidade",
       "area": "Operações e entrega",
       "icone": "badge-check",
@@ -185,6 +188,7 @@
     },
     {
       "id": "diretor-financeiro-masinegocios",
+      "agente": "masi-financeiro",
       "nome": "Diretor Financeiro",
       "area": "Finanças",
       "icone": "wallet",
@@ -196,6 +200,7 @@
     },
     {
       "id": "criador-agente-vendas-masinegocios",
+      "agente": "masi-agente-vendas",
       "nome": "Criador de Agentes de Vendas",
       "area": "Vendas e marketing",
       "icone": "bot",
@@ -204,6 +209,7 @@
     },
     {
       "id": "diretor-comercial-masinegocios",
+      "agente": "masi-comercial",
       "nome": "Diretor Comercial",
       "area": "Vendas e marketing",
       "icone": "target",
@@ -215,6 +221,7 @@
     },
     {
       "id": "diretora-de-gente-masinegocios",
+      "agente": "masi-pessoas",
       "nome": "Diretora de Pessoas",
       "area": "Pessoas e gestão",
       "icone": "users",
@@ -237,22 +244,25 @@
     },
     {
       "id": "maquina-de-carrosseis",
+      "grupo": "carrosseis",
       "nome": "Máquina de Carrosséis",
       "area": "Vendas e marketing",
       "icone": "gallery-horizontal-end",
-      "paraQue": "Do pedido ao post pronto: tema, gancho, carrossel de 10 a 14 slides no formato tweet e legenda, numa página sua para revisar, pôr imagem e baixar em ZIP.",
+      "paraQue": "Prepara tema, gancho, 10 a 14 slides e legenda. Com Artifacts e armazenamento, também oferece uma página de revisão e download.",
       "exemplo": "Quero fazer um carrossel sobre o erro de preço que mais vejo no meu setor."
     },
     {
       "id": "configurar-maquina",
+      "grupo": "carrosseis",
       "nome": "Máquina de Carrosséis: configurar",
       "area": "Vendas e marketing",
       "icone": "sliders-horizontal",
-      "paraQue": "Setup de uma vez: seu nome, @, foto e público, e publica a sua página da Máquina.",
+      "paraQue": "Reúne seu nome, @, público e tom para os próximos posts. Publica a página da Máquina onde há suporte a Artifacts.",
       "exemplo": "Configurar a máquina de carrosséis."
     },
     {
       "id": "buscar-temas",
+      "grupo": "carrosseis",
       "nome": "Máquina de Carrosséis: temas",
       "area": "Vendas e marketing",
       "icone": "lightbulb",
@@ -261,6 +271,7 @@
     },
     {
       "id": "criar-hooks",
+      "grupo": "carrosseis",
       "nome": "Máquina de Carrosséis: ganchos",
       "area": "Vendas e marketing",
       "icone": "anchor",
@@ -269,10 +280,11 @@
     },
     {
       "id": "storyteller-carrossel",
+      "grupo": "carrosseis",
       "nome": "Máquina de Carrosséis: escrever",
       "area": "Vendas e marketing",
       "icone": "pen-line",
-      "paraQue": "Escreve o carrossel completo e a legenda e grava na sua Máquina.",
+      "paraQue": "Escreve o carrossel e a legenda para revisar na Máquina, em arquivo ou na conversa.",
       "exemplo": "Transforma esse artigo num carrossel."
     },
     {

@@ -118,7 +118,7 @@ A planilha sai com 9 abas:
 
 A planilha sai cheia de fórmulas, e elas são calculadas quando o founder abre o arquivo no Excel, no Google Planilhas ou no LibreOffice (o arquivo já vai marcado para recalcular ao abrir). **Não precisa de script de recálculo de outra skill.** O próprio gerador imprime no final o resumo calculado do plano (mesmas fórmulas da aba 1): confira se os números que você escreveu no chat batem com ele. Para calcular sem gerar a planilha, rode `python3 scripts/calcular_plano.py dados.json` (só precisa de Python, sem openpyxl).
 
-Gere o arquivo e entregue para o usuário baixar. No chat do Claude, salve na pasta de saída da sessão; no Claude Code, salve na pasta atual do projeto. Ao entregar, escreva **uma frase** dizendo o que fazer primeiro na planilha — não repita o conteúdo dela.
+Gere o arquivo e entregue para o usuário baixar. Em um projeto com acesso a arquivos, salve na pasta de trabalho. Em um chat com downloads, entregue como anexo. Ao entregar, escreva **uma frase** dizendo o que fazer primeiro na planilha — não repita o conteúdo dela.
 
 **Plano B, conforme o que o ambiente tiver:**
 

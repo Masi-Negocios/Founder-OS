@@ -107,7 +107,7 @@ Formato da entrega no chat, nesta ordem:
 2. **O prompt completo em um bloco de código**, pronto para copiar e colar. Nada de comentário dentro do bloco.
 3. **Suposições que fiz** — até 3 linhas, só as que mudam o resultado. O founder corrige se quiser.
 4. **Como testar** — 3 a 5 linhas: rode com 2 ou 3 casos reais (um fácil, um difícil, um fora do padrão); o que olhar no resultado; e o ajuste mais provável ("se vier formal demais, troque o tom no bloco 10 para 'próximo, como conversa de balcão'").
-5. **Arquivo .md salvo** com o nome `prompt-[tema-curto].md`, contendo: título, uma linha de quando usar, o prompt completo, e a nota de teste. Gere o arquivo e entregue para o usuário baixar. No chat do Claude, salve na pasta de saída da sessão; no Claude Code, salve na pasta atual do projeto. Se não for possível gerar arquivo, entregue o conteúdo completo no chat, em Markdown (o bloco do item 2 já serve), e avise em uma linha.
+5. **Arquivo .md salvo** com o nome `prompt-[tema-curto].md`, contendo: título, uma linha de quando usar, o prompt completo, e a nota de teste. Gere o arquivo e entregue para o usuário baixar. Em um projeto com acesso a arquivos, salve na pasta de trabalho. Em um chat com downloads, entregue como anexo. Se não for possível gerar arquivo, entregue o conteúdo completo no chat, em Markdown (o bloco do item 2 já serve), e avise em uma linha.
 
 No Modo D (melhorar prompt existente), acrescente antes do prompt um **diagnóstico curto** por camada: o que estava faltando ou atrapalhando em cada uma (duas linhas por camada, só as que tinham problema), e depois do prompt uma lista de "o que mudou e por quê" com no máximo 5 itens.
 

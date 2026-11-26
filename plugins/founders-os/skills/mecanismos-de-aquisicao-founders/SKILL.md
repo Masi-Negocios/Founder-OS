@@ -85,7 +85,7 @@ No chat, entregue sempre o índice e as 3 apostas. Depois, pergunte se o founder
 
 Se houver uma skill de Word/Excel disponível, use-a. Se não, gere o arquivo com Python (python-docx / openpyxl) se houver execução de código. Se não houver, entregue no chat em Markdown, com o índice e as apostas em tabela.
 
-Gere o arquivo e entregue para o usuário baixar. No chat do Claude, salve na pasta de saída da sessão; no Claude Code, salve na pasta atual do projeto. Se não for possível gerar arquivo, entregue o conteúdo completo no chat, em Markdown.
+Gere o arquivo e entregue para o usuário baixar. Em um projeto com acesso a arquivos, salve na pasta de trabalho. Em um chat com downloads, entregue como anexo. Se não for possível gerar arquivo, entregue o conteúdo completo no chat, em Markdown.
 
 Entregou o índice, as apostas e os arquivos pedidos: pare e pergunte qual aposta ele quer detalhar.
 

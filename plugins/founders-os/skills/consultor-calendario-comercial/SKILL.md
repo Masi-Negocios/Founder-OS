@@ -109,7 +109,7 @@ Leia o topo de `scripts/gerar_calendario_xlsx.py` (formato do JSON) antes de mon
 python3 scripts/gerar_calendario_xlsx.py dados.json "Calendario_Comercial_<Negocio>.xlsx"
 ```
 
-Gere o arquivo e entregue para o usuário baixar. No chat do Claude, salve na pasta de saída da sessão; no Claude Code, salve na pasta atual do projeto.
+Gere o arquivo e entregue para o usuário baixar. Em um projeto com acesso a arquivos, salve na pasta de trabalho. Em um chat com downloads, entregue como anexo.
 
 **Se não houver execução de código** (ou o openpyxl não estiver disponível): diga isso ao usuário em uma linha e entregue, no chat, as 4 abas como 4 tabelas em Markdown, com os mesmos títulos e colunas. Ofereça também a aba Calendário em CSV (texto separado por ponto e vírgula, uma linha por ativação) para ele colar no Excel ou no Google Planilhas.
 

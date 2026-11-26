@@ -31,7 +31,7 @@ Tudo que você faz abaixo serve a essas três coisas.
 
 ## Antes de começar
 
-**Higgsfield conectado.** A produção só acontece se o conector Higgsfield estiver conectado nesta sessão (procure as ferramentas dele na lista de ferramentas disponíveis). Se não estiver, diga ao founder que precisa conectar o Higgsfield nos conectores do Claude para sair vídeo. Enquanto isso, faça as Etapas 1 e 2 e entregue o brief e as 5 falas com direção: o founder grava com o celular ou volta depois com o conector ligado. Não tente gerar o vídeo em outro lugar.
+**Higgsfield conectado.** A produção só acontece se o conector Higgsfield estiver conectado nesta sessão (procure as ferramentas dele na lista de ferramentas disponíveis). Se não estiver, diga ao founder que precisa conectar o Higgsfield ao ambiente em uso para produzir o vídeo. Enquanto isso, faça as Etapas 1 e 2 e entregue o brief e as 5 falas com direção: o founder grava com o celular ou volta depois com o conector ligado. Não tente gerar o vídeo em outro lugar.
 
 **Sobre os nomes das ferramentas.** Os nomes citados nesta skill (`balance`, `media_upload_widget`, `generate_image_batch`, `jobs_wait`, `sandbox_exec` etc.) e os nomes de modelo (GPT Image 2.5, Seed Audio, Seedance 2.5) são os que o conector tinha quando o pipeline foi validado. Se na sua sessão os nomes forem outros, use a ferramenta equivalente que o conector oferece e avise o founder se um modelo mudou. Se não houver equivalente, diga que não há; não invente ferramenta.
 
@@ -178,7 +178,7 @@ Mostre o vídeo com `job_display`.
 
 ## Etapa 4 — Entrega
 
-A entrega vai no chat, com o link do vídeo gerado pelo conector. Se o founder pedir o brief, as falas e as legendas em arquivo, gere o arquivo e entregue para ele baixar. No chat do Claude, salve na pasta de saída da sessão; no Claude Code, salve na pasta atual do projeto. Se não for possível gerar arquivo, entregue o conteúdo completo no chat, em Markdown.
+A entrega vai no chat, com o link do vídeo gerado pelo conector. Se o founder pedir o brief, as falas e as legendas em arquivo, gere o arquivo e entregue para ele baixar. Em um projeto com acesso a arquivos, salve na pasta de trabalho. Em um chat com downloads, entregue como anexo. Se não for possível gerar arquivo, entregue o conteúdo completo no chat, em Markdown.
 
 Sem o conector Higgsfield, entregue o Brief do vídeo, a fala escolhida com a direção por frase e as legendas, e diga ao founder como gravar no celular seguindo a direção (selfie andando pelo lugar, primeira palavra já sendo dita, sem logo nos 3 primeiros segundos).
 

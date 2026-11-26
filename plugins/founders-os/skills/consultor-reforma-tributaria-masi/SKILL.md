@@ -121,7 +121,7 @@ Informações que faltaram, hipóteses usadas e temas que dependem de regulament
 ### Fundamentação
 Principais normas e fontes usadas, com a data da consulta (ou a data de referência do arquivo de cronograma, se não houve pesquisa na web).
 
-Se o founder pedir o diagnóstico em arquivo: gere o arquivo e entregue para ele baixar. No chat do Claude, salve na pasta de saída da sessão; no Claude Code, salve na pasta atual do projeto. Se houver uma skill de Word disponível, use-a; se não, gere com Python (python-docx) se houver execução de código. Se não for possível gerar arquivo, entregue o conteúdo completo no chat, em Markdown.
+Se o founder pedir o diagnóstico em arquivo: gere o arquivo e entregue para ele baixar. Em um projeto com acesso a arquivos, salve na pasta de trabalho. Em um chat com downloads, entregue como anexo. Se houver uma skill de Word disponível, use-a; se não, gere com Python (python-docx) se houver execução de código. Se não for possível gerar arquivo, entregue o conteúdo completo no chat, em Markdown.
 
 ## 9. Estilo
 

@@ -110,7 +110,7 @@ Estruture o plano assim:
 **Em seguida, gere o relatório .docx.** Para isso:
 1. Se houver uma skill de Word disponível, use-a para a mecânica do arquivo. Se não, gere com Python (python-docx) se houver execução de código. Se não houver, entregue o relatório no chat, em Markdown, com a mesma estrutura.
 2. Use a estrutura de relatório descrita em `references/metodo-e-voz.md` (seção "Template do relatório .docx").
-3. Gere o arquivo `Diagnostico-Modelo-de-Negocios-<Empresa>.docx` e entregue para o usuário baixar. No chat do Claude, salve na pasta de saída da sessão; no Claude Code, salve na pasta atual do projeto. Se não for possível gerar arquivo, entregue o conteúdo completo no chat, em Markdown.
+3. Gere o arquivo `Diagnostico-Modelo-de-Negocios-<Empresa>.docx` e entregue para o usuário baixar. Em um projeto com acesso a arquivos, salve na pasta de trabalho. Em um chat com downloads, entregue como anexo. Se não for possível gerar arquivo, entregue o conteúdo completo no chat, em Markdown.
 4. Apresente o arquivo com um resumo de 2-3 linhas — sem repetir o documento inteiro.
 
 Feche sempre com **a Tarefa da Semana**: uma única ação concreta que o founder executa em 40 minutos ou menos (no espírito "uma ação que já vale a semana") e **a pergunta que fica** — uma provocação que mantém o founder pensando no modelo.

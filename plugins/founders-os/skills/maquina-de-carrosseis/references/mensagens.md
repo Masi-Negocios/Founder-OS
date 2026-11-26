@@ -41,7 +41,7 @@ Confere e clica em **Aprovar texto**."
 
 ## Quando não dá para publicar a página (sem a ferramenta de artefatos)
 
-"Aqui nesta conversa eu não consigo montar a sua página com prévia e download, só o texto. Vou te entregar o carrossel completo aqui, slide a slide, e a legenda. Para ter a Máquina (prévia, imagem e ZIP), abre o Claude no computador e repete o pedido."
+Entregue os slides e a legenda no chat ou indique o arquivo salvo em `carrosseis/` no projeto. Diga como pedir a revisão de um slide específico.
 
 ## Quando algo falha ao gravar
 

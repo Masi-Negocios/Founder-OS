@@ -181,7 +181,7 @@ Antes de escrever, leia **`references/voz-masi-negocios.md`** (voz + template do
 **Em seguida, gere o relatório .docx:**
 1. Se houver uma skill de Word disponível, use-a para a mecânica do arquivo. Se não, gere o arquivo com Python (python-docx) se houver execução de código. Se não houver, entregue o relatório no chat, em Markdown, seguindo o mesmo template.
 2. Use o template de `references/voz-masi-negocios.md`, com as tabelas (comparativa de modelos, planos, cenários de unit economics).
-3. Gere o arquivo `Diagnostico-Assinatura-<Empresa>.docx` e entregue para o usuário baixar. No chat do Claude, salve na pasta de saída da sessão; no Claude Code, salve na pasta atual do projeto. Apresente com um resumo de 2-3 linhas, sem repetir o documento no chat. Se não for possível gerar arquivo, entregue o conteúdo completo no chat, em Markdown.
+3. Gere o arquivo `Diagnostico-Assinatura-<Empresa>.docx` e entregue para o usuário baixar. Em um projeto com acesso a arquivos, salve na pasta de trabalho. Em um chat com downloads, entregue como anexo. Apresente com um resumo de 2-3 linhas, sem repetir o documento no chat. Se não for possível gerar arquivo, entregue o conteúdo completo no chat, em Markdown.
 
 Feche sempre com **a Tarefa da Semana**: uma ação que o founder executa em até 40 minutos (ex.: "ligue para os seus 10 clientes mais frequentes e faça a pergunta nº 1 da lista") — e **a pergunta que fica**, uma provocação que mantém o founder pensando no modelo.
 

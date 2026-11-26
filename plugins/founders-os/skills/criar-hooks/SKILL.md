@@ -9,12 +9,12 @@ metadata:
 
 No formato tweet, o slide 1 é um tweet: até 8 linhas de texto em 3 blocos, com duas imagens embaixo. Ele tem um trabalho só: fazer a pessoa parar o dedo e passar para o slide 2. Tudo o que não faz isso sai.
 
-Leia antes: `${CLAUDE_PLUGIN_ROOT}/skills/criar-hooks/references/metodologias-hooks.md` (os 8 tipos de hook, a anatomia do slide 1, os testes e exemplos reais).
+Leia antes: `references/metodologias-hooks.md` (os 8 tipos de hook, a anatomia do slide 1, os testes e exemplos reais).
 
 ## 1. Insumos
 
 - **Tema e ângulo** (do usuário ou de `buscar-temas`). Se vier só um assunto solto, pergunte em uma linha qual é a tese (o que o post afirma) antes de criar.
-- **Perfil** da máquina (`settings/profile`: público, dores, tom), conforme `${CLAUDE_PLUGIN_ROOT}/skills/maquina-de-carrosseis/references/artefato.md`. Sem máquina, use o que estiver na conversa e siga; não trave o usuário por isso.
+- **Perfil** com público, dores e tom. Use `carrosseis/perfil.md` do projeto ou a conversa. Na Máquina publicada, leia `settings/profile` conforme `../maquina-de-carrosseis/references/artefato.md`.
 - **Fatos disponíveis**: números, nomes, datas da referência. Hook não inventa número: se não houver, use cena ou contraste, nunca um dado fabricado.
 
 ## 2. Gere 5 hooks, cada um de um tipo diferente
