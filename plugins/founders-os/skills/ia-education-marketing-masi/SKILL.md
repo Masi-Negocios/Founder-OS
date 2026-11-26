@@ -84,7 +84,7 @@ Se houver uma skill de Excel disponível, use-a. Se não, gere o arquivo com Pyt
 
 Formatação (openpyxl): cabeçalho com fundo preto e texto branco em negrito; nome de cada loop destacado em laranja (#FF4F00); larguras de coluna confortáveis (Ação e Primeiro passo largas, com quebra de linha); congelar a linha de cabeçalho; filtro automático na Aba 2. Simples e legível vale mais que enfeitado.
 
-**Onde salvar:** gere o arquivo e entregue para o usuário baixar. No chat do Claude, salve na pasta de saída da sessão; no Claude Code, salve na pasta atual do projeto.
+**Onde salvar:** gere o arquivo e entregue para o usuário baixar. Em um projeto com acesso a arquivos, salve na pasta de trabalho. Em um chat com downloads, entregue como anexo.
 
 **Plano B:** se não houver skill de Excel nem execução de código, ou não for possível gerar arquivo, entregue as duas abas como tabelas em Markdown no próprio chat e siga o jogo — o plano importa mais que o formato.
 

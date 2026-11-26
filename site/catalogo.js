@@ -2,6 +2,7 @@
 export const AREAS = ["Estratégia", "Vendas e marketing", "Operações e entrega", "Pessoas e gestão", "Finanças"];
 export const SKILLS = [
   {
+    "id": "head-de-ia-de-founders",
     "nome": "Head de IA",
     "area": "Operações e entrega",
     "icone": "brain-circuit",
@@ -9,6 +10,7 @@ export const SKILLS = [
     "exemplo": "Onde a IA ajuda mais no meu negócio? Me monta um plano."
   },
   {
+    "id": "expert-servicos-ia-masinegocios",
     "nome": "Serviços com IA",
     "area": "Operações e entrega",
     "icone": "handshake",
@@ -16,6 +18,7 @@ export const SKILLS = [
     "exemplo": "Quero aplicar a tese “serviços são o novo software” no meu negócio."
   },
   {
+    "id": "engenheiro-prompt-masinegocios",
     "nome": "Engenheiro de Prompt",
     "area": "Operações e entrega",
     "icone": "terminal",
@@ -23,6 +26,7 @@ export const SKILLS = [
     "exemplo": "Me ajuda a fazer um prompt para resumir minhas reuniões."
   },
   {
+    "id": "negocio-eficiente-ia-masi",
     "nome": "Negócio Eficiente com IA",
     "area": "Operações e entrega",
     "icone": "gauge",
@@ -30,6 +34,7 @@ export const SKILLS = [
     "exemplo": "Onde implementar IA para deixar minha operação mais eficiente sem contratar?"
   },
   {
+    "id": "construtor-ia-masi",
     "nome": "Construtor de IA",
     "area": "Operações e entrega",
     "icone": "blocks",
@@ -37,6 +42,7 @@ export const SKILLS = [
     "exemplo": "Constrói a iniciativa #1 do meu mapa de eficiência."
   },
   {
+    "id": "expert-modelo-negocio-masi-negocios",
     "nome": "Modelo de Negócios",
     "area": "Estratégia",
     "icone": "layout-grid",
@@ -44,6 +50,7 @@ export const SKILLS = [
     "exemplo": "Analisa o modelo de negócios da minha empresa."
   },
   {
+    "id": "consultor-assinatura-masinegocios",
     "nome": "Modelo de Assinatura",
     "area": "Estratégia",
     "icone": "repeat",
@@ -51,6 +58,7 @@ export const SKILLS = [
     "exemplo": "Meu negócio pode virar assinatura?"
   },
   {
+    "id": "radar-de-concorrentes-founders",
     "nome": "Radar de Concorrentes",
     "area": "Estratégia",
     "icone": "radar",
@@ -58,6 +66,7 @@ export const SKILLS = [
     "exemplo": "Quem são meus concorrentes e como eu me diferencio?"
   },
   {
+    "id": "raio-x-do-site-founders",
     "nome": "Raio-X do Site",
     "area": "Estratégia",
     "icone": "scan-search",
@@ -65,6 +74,7 @@ export const SKILLS = [
     "exemplo": "Analisa meu site, ele não converte."
   },
   {
+    "id": "gerador-plano-receita",
     "nome": "Plano de Receita",
     "area": "Vendas e marketing",
     "icone": "trending-up",
@@ -72,6 +82,7 @@ export const SKILLS = [
     "exemplo": "Monta o plano de receita do meu negócio."
   },
   {
+    "id": "consultor-calendario-comercial",
     "nome": "Calendário Comercial",
     "area": "Vendas e marketing",
     "icone": "calendar-days",
@@ -79,6 +90,7 @@ export const SKILLS = [
     "exemplo": "Monta o calendário comercial do meu negócio para o ano."
   },
   {
+    "id": "mecanismos-de-aquisicao-founders",
     "nome": "Mecanismos de Aquisição",
     "area": "Vendas e marketing",
     "icone": "magnet",
@@ -86,6 +98,7 @@ export const SKILLS = [
     "exemplo": "Estou sem ideia de como vender mais. Que canais novos posso testar?"
   },
   {
+    "id": "consultora-engenharia-marketing",
     "nome": "Engenharia de Marketing",
     "area": "Vendas e marketing",
     "icone": "megaphone",
@@ -93,6 +106,7 @@ export const SKILLS = [
     "exemplo": "Quero uma ferramenta gratuita para atrair clientes."
   },
   {
+    "id": "construtora-ferramenta-marketing",
     "nome": "Construtora de Ferramentas",
     "area": "Vendas e marketing",
     "icone": "wrench",
@@ -100,6 +114,7 @@ export const SKILLS = [
     "exemplo": "Constrói a calculadora do meu briefing de ferramenta."
   },
   {
+    "id": "ia-education-marketing-masi",
     "nome": "Education Marketing",
     "area": "Vendas e marketing",
     "icone": "graduation-cap",
@@ -107,21 +122,24 @@ export const SKILLS = [
     "exemplo": "Como eu uso educação para atrair clientes?"
   },
   {
+    "id": "videos-virais-masinegocios",
     "nome": "Vídeos Virais",
     "area": "Vendas e marketing",
     "icone": "flame",
-    "paraQue": "Cria um vídeo curto para as redes, do roteiro à produção. Precisa do Higgsfield conectado ao Claude.",
+    "paraQue": "Escreve a fala e o roteiro de um vídeo curto. Com o conector Higgsfield, também produz o vídeo.",
     "exemplo": "Cria um vídeo curto para o Instagram do meu negócio."
   },
   {
+    "id": "motion-video",
     "nome": "Motion Vídeo",
     "area": "Vendas e marketing",
     "icone": "clapperboard",
     "paraQue": "Cria vídeos de motion design em código, com som, prontos para o seu editor.",
     "exemplo": "Cria um vídeo em motion para anunciar o meu produto.",
-    "onde": "Claude Code"
+    "onde": "Requer terminal, Node.js, FFmpeg e Python"
   },
   {
+    "id": "consultora-experiencia-masinegocios",
     "nome": "Experiência do Cliente",
     "area": "Operações e entrega",
     "icone": "heart-handshake",
@@ -129,6 +147,7 @@ export const SKILLS = [
     "exemplo": "Analisa a experiência do cliente no meu negócio e me ajuda a vender de novo para quem já comprou."
   },
   {
+    "id": "consultor-processos-chave",
     "nome": "Processos-Chave",
     "area": "Operações e entrega",
     "icone": "workflow",
@@ -136,6 +155,7 @@ export const SKILLS = [
     "exemplo": "Mapeia os processos-chave do meu negócio."
   },
   {
+    "id": "agente-qualidade-masinegocios",
     "nome": "Agente de Qualidade",
     "area": "Operações e entrega",
     "icone": "badge-check",
@@ -143,6 +163,7 @@ export const SKILLS = [
     "exemplo": "Quero criar um agente que revise minhas propostas comerciais antes de mandar pro cliente."
   },
   {
+    "id": "consultor-reforma-tributaria-masi",
     "nome": "Reforma Tributária",
     "area": "Finanças",
     "icone": "landmark",
@@ -150,6 +171,7 @@ export const SKILLS = [
     "exemplo": "Como a reforma tributária afeta o meu negócio?"
   },
   {
+    "id": "diretor-financeiro-masinegocios",
     "nome": "Diretor Financeiro",
     "area": "Finanças",
     "icone": "wallet",
@@ -157,6 +179,7 @@ export const SKILLS = [
     "exemplo": "Me ajuda a montar a DRE do meu negócio."
   },
   {
+    "id": "criador-agente-vendas-masinegocios",
     "nome": "Criador de Agentes de Vendas",
     "area": "Vendas e marketing",
     "icone": "bot",
@@ -164,6 +187,7 @@ export const SKILLS = [
     "exemplo": "Cria um agente de vendas para o WhatsApp da minha clínica: www.minhaclinica.com.br"
   },
   {
+    "id": "diretor-comercial-masinegocios",
     "nome": "Diretor Comercial",
     "area": "Vendas e marketing",
     "icone": "target",
@@ -171,6 +195,7 @@ export const SKILLS = [
     "exemplo": "Meu funil de vendas está travado. Por onde eu começo?"
   },
   {
+    "id": "diretora-de-gente-masinegocios",
     "nome": "Diretora de Pessoas",
     "area": "Pessoas e gestão",
     "icone": "users",
@@ -178,6 +203,7 @@ export const SKILLS = [
     "exemplo": "Preciso contratar meu primeiro gerente. Como eu faço?"
   },
   {
+    "id": "consultor-modelo-de-gestao-masinegocios",
     "nome": "Modelo de Gestão",
     "area": "Pessoas e gestão",
     "icone": "network",
@@ -185,20 +211,23 @@ export const SKILLS = [
     "exemplo": "Como eu monto o modelo de gestão da minha empresa?"
   },
   {
+    "id": "maquina-de-carrosseis",
     "nome": "Máquina de Carrosséis",
     "area": "Vendas e marketing",
     "icone": "gallery-horizontal-end",
-    "paraQue": "Do pedido ao post pronto: tema, gancho, carrossel de 10 a 14 slides no formato tweet e legenda, numa página sua para revisar, pôr imagem e baixar em ZIP.",
+    "paraQue": "Prepara tema, gancho, 10 a 14 slides e legenda. Com Artifacts e armazenamento, também oferece uma página de revisão e download.",
     "exemplo": "Quero fazer um carrossel sobre o erro de preço que mais vejo no meu setor."
   },
   {
+    "id": "configurar-maquina",
     "nome": "Máquina de Carrosséis: configurar",
     "area": "Vendas e marketing",
     "icone": "sliders-horizontal",
-    "paraQue": "Setup de uma vez: seu nome, @, foto e público, e publica a sua página da Máquina.",
+    "paraQue": "Reúne seu nome, @, público e tom para os próximos posts. Publica a página da Máquina onde há suporte a Artifacts.",
     "exemplo": "Configurar a máquina de carrosséis."
   },
   {
+    "id": "buscar-temas",
     "nome": "Máquina de Carrosséis: temas",
     "area": "Vendas e marketing",
     "icone": "lightbulb",
@@ -206,6 +235,7 @@ export const SKILLS = [
     "exemplo": "Me sugere temas para postar essa semana."
   },
   {
+    "id": "criar-hooks",
     "nome": "Máquina de Carrosséis: ganchos",
     "area": "Vendas e marketing",
     "icone": "anchor",
@@ -213,13 +243,15 @@ export const SKILLS = [
     "exemplo": "Cria opções de gancho para esse post."
   },
   {
+    "id": "storyteller-carrossel",
     "nome": "Máquina de Carrosséis: escrever",
     "area": "Vendas e marketing",
     "icone": "pen-line",
-    "paraQue": "Escreve o carrossel completo e a legenda e grava na sua Máquina.",
+    "paraQue": "Escreve o carrossel e a legenda para revisar na Máquina, em arquivo ou na conversa.",
     "exemplo": "Transforma esse artigo num carrossel."
   },
   {
+    "id": "guia-planejamento-estrategico",
     "nome": "Planejamento em 5 Passos",
     "area": "Estratégia",
     "icone": "map",
@@ -227,6 +259,7 @@ export const SKILLS = [
     "exemplo": "Quero fazer o planejamento estratégico da minha empresa."
   },
   {
+    "id": "guia-visao-core-proposito",
     "nome": "Visão, Core e Propósito",
     "area": "Estratégia",
     "icone": "compass",
@@ -234,6 +267,7 @@ export const SKILLS = [
     "exemplo": "Me ajuda a escrever a visão e o propósito da minha empresa."
   },
   {
+    "id": "guia-horizontes-de-crescimento",
     "nome": "3 Horizontes de Crescimento",
     "area": "Estratégia",
     "icone": "layers",
@@ -241,6 +275,7 @@ export const SKILLS = [
     "exemplo": "Quero abrir uma frente nova sem largar o negócio que paga as contas."
   },
   {
+    "id": "guia-swot-que-vira-decisao",
     "nome": "SWOT que Vira Decisão",
     "area": "Estratégia",
     "icone": "grid-2x2",
@@ -248,6 +283,7 @@ export const SKILLS = [
     "exemplo": "Faz uma SWOT da minha empresa que termine em decisão."
   },
   {
+    "id": "guia-okrs-na-pratica",
     "nome": "OKRs na Prática",
     "area": "Pessoas e gestão",
     "icone": "crosshair",
@@ -255,6 +291,7 @@ export const SKILLS = [
     "exemplo": "Me ajuda a escrever os OKRs do próximo trimestre."
   },
   {
+    "id": "guia-5w2h-gestao-a-vista",
     "nome": "5W2H e Gestão à Vista",
     "area": "Pessoas e gestão",
     "icone": "clipboard-list",
@@ -262,6 +299,7 @@ export const SKILLS = [
     "exemplo": "Tenho um plano e ninguém sabe quem faz o quê. Monta o 5W2H comigo."
   },
   {
+    "id": "guia-ritos-de-gestao",
     "nome": "Ritos de Gestão",
     "area": "Pessoas e gestão",
     "icone": "calendar-clock",
@@ -269,6 +307,7 @@ export const SKILLS = [
     "exemplo": "Passo a semana em reunião. Me ajuda a montar os ritos da empresa."
   },
   {
+    "id": "guia-indicadores-da-semana",
     "nome": "Indicadores da Semana",
     "area": "Pessoas e gestão",
     "icone": "activity",
@@ -276,6 +315,7 @@ export const SKILLS = [
     "exemplo": "Monta comigo o painel de indicadores da semana."
   },
   {
+    "id": "guia-organograma",
     "nome": "Organograma que Cresce",
     "area": "Pessoas e gestão",
     "icone": "git-fork",
@@ -283,6 +323,7 @@ export const SKILLS = [
     "exemplo": "Desenha comigo o organograma da empresa hoje e com o dobro do tamanho."
   },
   {
+    "id": "guia-contratar-por-criterio",
     "nome": "Contratar por Critério",
     "area": "Pessoas e gestão",
     "icone": "user-check",
@@ -290,6 +331,7 @@ export const SKILLS = [
     "exemplo": "Vou abrir uma vaga de gerente comercial. Monta o processo comigo."
   },
   {
+    "id": "guia-cultura-que-o-time-repete",
     "nome": "Cultura que o Time Repete",
     "area": "Pessoas e gestão",
     "icone": "heart-pulse",
@@ -297,6 +339,7 @@ export const SKILLS = [
     "exemplo": "Quero escrever os valores da empresa como comportamento."
   },
   {
+    "id": "guia-sair-da-operacao",
     "nome": "Sair da Operação",
     "area": "Pessoas e gestão",
     "icone": "door-open",
@@ -304,6 +347,7 @@ export const SKILLS = [
     "exemplo": "A empresa para quando eu viajo. Me ajuda a delegar."
   },
   {
+    "id": "guia-funil-por-etapa",
     "nome": "Funil por Etapa",
     "area": "Vendas e marketing",
     "icone": "filter",
@@ -311,6 +355,7 @@ export const SKILLS = [
     "exemplo": "Invisto em marketing e não sei quanto custa uma venda. Monta meu funil."
   },
   {
+    "id": "guia-guerra-de-preco",
     "nome": "Sair da Guerra de Preço",
     "area": "Vendas e marketing",
     "icone": "swords",
@@ -318,6 +363,7 @@ export const SKILLS = [
     "exemplo": "Vendo mais todo ano e a margem só cai. Como saio da guerra de preço?"
   },
   {
+    "id": "guia-dre-e-caixa",
     "nome": "DRE e Caixa de 13 Semanas",
     "area": "Finanças",
     "icone": "banknote",
@@ -325,6 +371,7 @@ export const SKILLS = [
     "exemplo": "A empresa dá lucro e o dinheiro some. Monta minha DRE e meu caixa."
   },
   {
+    "id": "guia-cac-ltv-payback",
     "nome": "CAC, LTV e Payback",
     "area": "Finanças",
     "icone": "calculator",
@@ -332,6 +379,7 @@ export const SKILLS = [
     "exemplo": "Quero investir mais em aquisição. O caixa aguenta? Calcula meu CAC e LTV."
   },
   {
+    "id": "guia-captar-ou-vender",
     "nome": "Pronta para Captar ou Vender",
     "area": "Finanças",
     "icone": "briefcase",
@@ -339,6 +387,7 @@ export const SKILLS = [
     "exemplo": "Recebi uma sondagem de compra. Minha empresa está pronta?"
   },
   {
+    "id": "guia-processo-que-da-liberdade",
     "nome": "Processo que Dá Liberdade",
     "area": "Operações e entrega",
     "icone": "route",
@@ -346,6 +395,7 @@ export const SKILLS = [
     "exemplo": "Meu time refaz o mesmo trabalho toda semana. Me ajuda a escrever esse processo."
   },
   {
+    "id": "guia-socios-sem-briga",
     "nome": "Sócios sem Briga",
     "area": "Pessoas e gestão",
     "icone": "scale",
@@ -353,6 +403,7 @@ export const SKILLS = [
     "exemplo": "Tenho sócio e nunca combinamos o que acontece se um quiser sair."
   },
   {
+    "id": "guia-empresa-de-familia",
     "nome": "Empresa de Família",
     "area": "Estratégia",
     "icone": "users-round",
@@ -360,6 +411,7 @@ export const SKILLS = [
     "exemplo": "Trabalho na empresa do meu pai e a sucessão nunca foi conversada."
   },
   {
+    "id": "guia-ia-sem-distracao",
     "nome": "IA sem Distração",
     "area": "Operações e entrega",
     "icone": "focus",
@@ -367,6 +419,7 @@ export const SKILLS = [
     "exemplo": "O time usa IA para tudo e não sei o que melhorou. Me ajuda a avaliar."
   },
   {
+    "id": "guia-o-cliente-que-voce-ja-tem",
     "nome": "O Cliente que Você Já Tem",
     "area": "Vendas e marketing",
     "icone": "user-round-check",
@@ -374,6 +427,7 @@ export const SKILLS = [
     "exemplo": "Vendo bem, mas recomeço do zero todo mês. Como faço o cliente voltar?"
   },
   {
+    "id": "guia-produto-so-existe-na-rua",
     "nome": "Produto na Rua",
     "area": "Estratégia",
     "icone": "rocket",
@@ -381,6 +435,7 @@ export const SKILLS = [
     "exemplo": "Tenho uma ideia de produto parada há meses. Me ajuda a pôr na rua."
   },
   {
+    "id": "guia-posicionamento-em-uma-frase",
     "nome": "Posicionamento em uma Frase",
     "area": "Vendas e marketing",
     "icone": "quote",
@@ -388,6 +443,7 @@ export const SKILLS = [
     "exemplo": "Ouço “está caro” toda semana. Me ajuda a escrever meu posicionamento."
   },
   {
+    "id": "guia-como-as-marcas-crescem",
     "nome": "Como as Marcas Crescem",
     "area": "Vendas e marketing",
     "icone": "sprout",

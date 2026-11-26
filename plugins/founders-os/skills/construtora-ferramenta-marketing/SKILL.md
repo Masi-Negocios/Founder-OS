@@ -32,7 +32,7 @@ Checklist de construção:
 
 ## 3. Entregar
 
-1. Salve como um único arquivo `.html` com nome curto do negócio e da ferramenta (ex.: `calculadora-racao-petshop-bairro.html`). Gere o arquivo e entregue para o usuário baixar. No chat do Claude, salve na pasta de saída da sessão; no Claude Code, salve na pasta atual do projeto. Se não for possível gerar arquivo, entregue o código completo num único bloco, com a instrução: "copie tudo, cole num arquivo de texto e salve com o nome `ferramenta.html`".
+1. Salve como um único arquivo `.html` com nome curto do negócio e da ferramenta (ex.: `calculadora-racao-petshop-bairro.html`). Gere o arquivo e entregue para o usuário baixar. Em um projeto com acesso a arquivos, salve na pasta de trabalho. Em um chat com downloads, entregue como anexo. Se não for possível gerar arquivo, entregue o código completo num único bloco, com a instrução: "copie tudo, cole num arquivo de texto e salve com o nome `ferramenta.html`".
 2. Mostre a ferramenta funcionando na conversa (como artefato/visualização, se o ambiente permitir).
 3. Se o ambiente oferecer publicação de página com link, ofereça publicar. **Atenção:** a captura padrão é sempre o botão de WhatsApp, porque funciona em qualquer lugar. Páginas publicadas por plataformas de terceiros (inclusive pelo próprio Claude) podem restringir o envio de dados para outros sites; não conte com isso. Envio para planilha ou CRM: faça só com o arquivo hospedado no site do próprio negócio e teste antes de divulgar (ver padrão técnico).
 4. Escreva uma entrega curta:

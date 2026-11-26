@@ -6,12 +6,12 @@ O artefato é uma página publicada com a ferramenta `Artifact`, com banco de da
 
 - `Artifact` — publicar a página, subir imagens como asset, ler a página, listar artefatos.
 - `ArtifactData` — ler e escrever documentos do banco (ações `get`, `list`, `query`, `set`, `update`, `delete`, `batch`). Se aparecer só como ferramenta diferida, carregue com `ToolSearch` (`select:ArtifactData`) antes de usar.
-- Se a ferramenta `Artifact` NÃO existir nesta conversa (por exemplo, no app de celular ou numa conta sem artefatos publicáveis): não publique. Entregue o carrossel como texto no chat (um bloco por slide, numerado) e diga ao usuário, em uma frase, que para ter a página com prévia e download ele abre o Claude no computador (Cowork) e repete o pedido.
+- Quando faltar uma dessas ferramentas, use o fluxo de arquivo ou conversa descrito em `../SKILL.md`.
 
 ## Publicar a máquina pela primeira vez (só na skill configurar-maquina)
 
 0. Carregue a skill `artifact-capabilities` (ferramenta `Skill`) antes de publicar: a ferramenta `Artifact` exige isso para aceitar o campo `capabilities`.
-1. Copie o template `${CLAUDE_PLUGIN_ROOT}/skills/configurar-maquina/assets/maquina-de-carrosseis.html` para o diretório de trabalho (por exemplo `maquina-de-carrosseis.html`), sem alterar o conteúdo.
+1. Copie o template `../../configurar-maquina/assets/maquina-de-carrosseis.html` para o diretório de trabalho (por exemplo `maquina-de-carrosseis.html`), sem alterar o conteúdo.
 2. Publique com `Artifact`:
    - `file_path`: o arquivo copiado
    - `icon`: `"image"`

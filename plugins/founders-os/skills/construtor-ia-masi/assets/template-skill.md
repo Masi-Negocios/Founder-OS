@@ -1,11 +1,13 @@
 # Template de SKILL.md para a skill do founder
 
-Quando a rotina estabilizar e virar skill, gere a pasta `nome-da-skill/` com este `SKILL.md`. Nome em minúsculas, com hífens, sem acento. A `description` é o que faz o Claude acionar a skill sozinho: diga o que ela faz e as frases que o founder usa para pedir.
+Quando a rotina estabilizar e virar skill, gere a pasta `nome-da-skill/` com este `SKILL.md`. Nome em minúsculas, com hífens, sem acento. A `description` é o que ajuda o assistente a escolher a skill: diga o que ela faz e as frases que o founder usa para pedir.
 
 ```markdown
 ---
-name: [nome-da-skill]
-description: [O que a skill faz, em 1-2 frases, no jeito do founder.] Use quando o usuário disser "[frase 1]", "[frase 2]", "[frase 3]" ou anexar [tipo de arquivo] pedindo [resultado].
+name: nome-da-skill
+description: >-
+  [O que a skill faz, em 1-2 frases, no jeito do founder.] Use quando o usuário
+  disser "[frase 1]", "[frase 2]", "[frase 3]" ou anexar [tipo de arquivo] pedindo [resultado].
 ---
 
 # [Nome legível da skill] — [Empresa]
@@ -37,5 +39,5 @@ description: [O que a skill faz, em 1-2 frases, no jeito do founder.] Use quando
 
 Depois de gerar:
 1. Coloque na pasta `references/` os dados longos (categorias, tabela de preços, exemplos aprovados) como arquivos `.md` ou `.csv`.
-2. Compacte a pasta em `.zip` (quando o ambiente permitir) e entregue para download.
-3. Instrua a instalação: **Personalizar → Habilidades (Skills) → Adicionar → Fazer upload**; teste digitando `/nome-da-skill` numa conversa nova.
+2. No Codex ou OpenCode, salve a pasta completa em `.agents/skills/` no projeto. Para o Claude com upload de skills, compacte a pasta em ZIP e use **Personalizar → Habilidades → Adicionar → Fazer upload**.
+3. Abra uma conversa no projeto e peça para usar a skill pelo nome em um exemplo real.

@@ -99,7 +99,7 @@ Pare aí e pergunte se o founder quer o documento, a não ser que ele já tenha 
 
 Documento "Raio-X do Site — [empresa] — [mês/ano]" com tudo, citações e URLs incluídas. Se houver uma skill de Word disponível, use-a. Se não, gere o .docx com Python (python-docx) se houver execução de código. Se não houver, entregue no chat em Markdown.
 
-Gere o arquivo e entregue para o usuário baixar. No chat do Claude, salve na pasta de saída da sessão; no Claude Code, salve na pasta atual do projeto. Se não for possível gerar arquivo, entregue o conteúdo completo no chat, em Markdown.
+Gere o arquivo e entregue para o usuário baixar. Em um projeto com acesso a arquivos, salve na pasta de trabalho. Em um chat com downloads, entregue como anexo. Se não for possível gerar arquivo, entregue o conteúdo completo no chat, em Markdown.
 
 ## Princípios inegociáveis
 

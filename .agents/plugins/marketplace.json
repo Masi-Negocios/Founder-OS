@@ -1,0 +1,11 @@
+{
+  "name": "founders-os",
+  "plugins": [
+    {
+      "name": "founders-os",
+      "source": { "source": "local", "path": "./plugins/founders-os" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}

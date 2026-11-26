@@ -1,13 +1,14 @@
 ---
 name: motion-video
-description: "Só funciona no Claude Code no computador (não roda no chat do app). Cria vídeos animados de motion design feitos em código para o seu negócio: anúncio animado, vinheta, abertura, vídeo do produto ou do app, com textos, efeitos sonoros e música. Também cria um estilo novo a partir de um vídeo de referência e entrega o projeto em camadas para você editar no CapCut, Premiere ou DaVinci. Use só quando o founder pedir animação ou motion design de forma explícita: \"vídeo em motion\", \"anúncio animado\", \"vinheta animada com o meu logo\", \"vídeo animado do meu produto\", \"motion graphics\", \"quero um vídeo como esse\", \"cria um estilo a partir dessa referência\", \"manda em camadas pro CapCut\" ou pedir para ajustar um vídeo em motion já feito. Não use para vídeo curto de rede social que não peça animação (use Vídeos Virais) nem para copy de venda (use Diretor Comercial)."
-compatibility: "Só Claude Code no computador (macOS, Linux ou Windows com Git Bash), com terminal e acesso a arquivos. Precisa de Node.js, FFmpeg e Python 3; o setup instala numpy/scipy numa .venv e o Puppeteer com Chromium. Partes só para Mac: recorte de fundo e rotoscopia (cutout.swift, roto.swift), disco .dmg com hdiutil, vigia de RAM, projetos do CapCut para Mac e transcrição com mlx_whisper (Mac com Apple Silicon). Não roda no chat do app."
+description: "Cria vídeos animados de motion design feitos em código para o seu negócio: anúncio animado, vinheta, abertura, vídeo do produto ou do app, com textos, efeitos sonoros e música. Também cria um estilo novo a partir de um vídeo de referência e entrega o projeto em camadas para você editar no CapCut, Premiere ou DaVinci. Use só quando o founder pedir animação ou motion design de forma explícita: \"vídeo em motion\", \"anúncio animado\", \"vinheta animada com o meu logo\", \"vídeo animado do meu produto\", \"motion graphics\", \"quero um vídeo como esse\", \"cria um estilo a partir dessa referência\", \"manda em camadas pro CapCut\" ou pedir para ajustar um vídeo em motion já feito. Não use para vídeo curto de rede social que não peça animação (use Vídeos Virais) nem para copy de venda (use Diretor Comercial)."
+metadata:
+  requisitos: "Ambiente com terminal e acesso a arquivos, como Codex, OpenCode ou Claude Code (macOS, Linux ou Windows com Git Bash). Precisa de Node.js, FFmpeg e Python 3; o setup instala numpy/scipy numa .venv e o Puppeteer com Chromium. Partes só para Mac: recorte de fundo e rotoscopia (cutout.swift, roto.swift), disco .dmg com hdiutil, vigia de RAM, projetos do CapCut para Mac e transcrição com mlx_whisper (Mac com Apple Silicon). Não roda no chat do app."
 ---
 
 # motion-video
 
 ## Antes de tudo: confira onde você está
-Esta skill precisa de terminal, de acesso a arquivos e de instalar programas no computador (Node.js, FFmpeg, Python). Se você estiver no chat do app do Claude (web, desktop ou celular), sem terminal e sem a pasta do projeto aberta, **não comece**: diga ao usuário, em uma ou duas frases, que vídeo em motion só funciona no Claude Code no computador, que ele pode instalar o Claude Code no computador e fazer o mesmo pedido por lá, e pare. Não tente simular o vídeo, gerar código para ele rodar sozinho nem prometer um arquivo de vídeo.
+Para renderizar, confirme que a sessão tem terminal, uma pasta de projeto gravável, Node.js, FFmpeg e Python. Se faltar acesso ao terminal ou aos arquivos, explique que o pedido pode ser retomado em um projeto local com esses recursos.
 
 **Se o pedido for um vídeo curto para rede social e o founder não pediu animação ou motion design, não use esta skill: sugira Vídeos Virais.**
 
@@ -19,9 +20,9 @@ Esta skill precisa de terminal, de acesso a arquivos e de instalar programas no 
 - Render em lotes (`tools/render_chunks.sh`): o próprio `setup.sh` avisa que, fora do Mac, ele pode ficar indisponível. Se falhar no Linux ou no Windows, use `DIRECT=1` só para vídeo curto e avise o usuário.
 - Transcrição com `mlx_whisper`: só em Mac com Apple Silicon e não é instalada pelo `setup.sh`. Em outra máquina, peça a permissão do usuário para usar outro transcritor com marcação de tempo por palavra, ou peça a transcrição com tempos.
 
-Estúdio na pasta `motion-studio/`, dentro da pasta aberta no Claude Code (onde fica `.claude/`). Todos os comandos rodam de dentro de `motion-studio/`.
+Execute os comandos na cópia de trabalho de `motion-studio/` dentro do projeto.
 
-**Instalado pelo Founders OS:** o estúdio vem junto desta skill, na pasta `motion-studio/` ao lado deste SKILL.md. Se ainda não existir `motion-studio/` na pasta aberta no Claude Code, copie essa pasta para lá antes de qualquer outro passo (a pasta de plugins é só de leitura; os projetos são gravados na cópia).
+**Instalado pelo Founders OS:** o estúdio vem junto desta skill, na pasta `motion-studio/` ao lado deste SKILL.md. Se ainda não existir `motion-studio/` no projeto do usuário, copie essa pasta para lá antes de qualquer outro passo (a pasta de plugins é só de leitura; os projetos são gravados na cópia).
 
 ```
 config.json        preferências da pessoa (editor de vídeo, fonte dos sons) — ler SEMPRE no início
@@ -89,7 +90,7 @@ Zooms são ondas/curvas em S: cada aproximação ~0,5–1s para ir e outro tanto
 - Recorte de fundo (PNG sem fundo): `swift tools/cutout.swift <entrada> <saida.png>` (só macOS; em outros sistemas peça o PNG já recortado).
 - Print real de site para insert (celular, sem banner de cookie): `node tools/print_pagina.mjs <url> projects/<p>/assets/web/<nome>.png [--full]`.
 
-**Economia:** edite com `Edit` (nunca reescreva o scenes.js inteiro) · agrupe os ajustes numa rodada · peça e use números de frame · nada de screenshots do player (use board/preview/sheet e o texto do check) · Python sempre pelo `$PY` (`source tools/env.sh`).
+**Economia:** aplique edições pontuais ao scenes.js · agrupe os ajustes numa rodada · peça e use números de frame · nada de screenshots do player (use board/preview/sheet e o texto do check) · Python sempre pelo `$PY` (`source tools/env.sh`).
 
 ## 4. Entrega no editor da pessoa (camadas separadas)
 Só quando a pessoa pedir para editar no programa dela (ajustar volume, mexer em textos…), usando o que foi estudado na seção 0.

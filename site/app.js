@@ -2,7 +2,7 @@
 // Nenhuma regra mora aqui; se for preciso perguntar "isso pode?", a resposta está em jornada.js.
 
 import { ICONES } from "./icones.js";
-import { PASSOS, SKILLS, AREAS, PROBLEMAS, MENUS, URL_CLAUDE, MARKETPLACE } from "./conteudo.js";
+import { TRILHAS, SKILLS, AREAS, MENUS, URL_CLAUDE, MARKETPLACE } from "./conteudo.js";
 import {
   estadoInicial,
   concluirPasso,
@@ -11,10 +11,26 @@ import {
   progresso,
   estadoValido,
 } from "./jornada.js";
-import { carregarProgresso, salvarProgresso, apagarProgresso } from "./armazenamento.js";
+import { carregarProgresso, salvarProgresso, ambienteSalvo, guardarAmbiente } from "./armazenamento.js";
 
-const salvo = carregarProgresso();
-let estado = estadoValido(salvo) ? salvo : estadoInicial();
+const seletor = document.getElementById("ambiente");
+for (const [id, item] of Object.entries(TRILHAS)) seletor.add(new Option(item.nome, id));
+const anterior = ambienteSalvo();
+let ambiente = Object.hasOwn(TRILHAS, anterior) ? anterior : "codex";
+let guia = TRILHAS[ambiente];
+function restaurar() {
+  const salvo = carregarProgresso(ambiente);
+  return estadoValido(salvo, guia.passos) ? salvo : estadoInicial();
+}
+let estado = restaurar();
+seletor.value = ambiente;
+seletor.addEventListener("change", () => {
+  ambiente = seletor.value;
+  guia = TRILHAS[ambiente];
+  guardarAmbiente(ambiente);
+  estado = restaurar();
+  desenhar();
+});
 
 const raiz = document.getElementById("passos-area");
 const trilha = document.getElementById("indice-passos");
@@ -32,7 +48,7 @@ function texto(valor, menus) {
 
 function situacaoDoPasso(passoId) {
   if (estado.concluidos.includes(passoId)) return "feito";
-  return passoLiberado(estado, passoId) ? "atual" : "bloqueado";
+  return passoLiberado(estado, passoId, guia.passos) ? "atual" : "bloqueado";
 }
 
 const visto = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg>';
@@ -111,15 +127,16 @@ function telaConcluida() {
   return `
     <section class="pronto" id="pronto">
       <p class="sobretitulo">Instalação concluída</p>
-      <h2>Pronto. O Founders OS está no seu Claude.</h2>
+      <h2>O Founders OS está pronto para usar em ${escapar(guia.nome)}.</h2>
       <p>Agora é só conversar normalmente. Escolha uma skill abaixo, copie o exemplo e cole num chat novo.</p>
       <a class="botao botao-lima" href="#skills">Ver as skills</a>
     </section>`;
 }
 
 function desenharAjuda(menus) {
-  const itens = PROBLEMAS.map(
-    (p) => `<details><summary>${escapar(texto(p.sintoma, menus))}</summary><p>${escapar(texto(p.solucao, menus))}</p></details>`
+  const itens = guia.problemas.map(
+    (p) => `<details><summary>${escapar(texto(p.sintoma, menus))}</summary><p>${escapar(texto(p.solucao, menus))}
+      ${p.link ? `<a href="${escapar(p.link)}">${escapar(p.rotulo)}</a>` : ""}</p></details>`
   ).join("");
   ajuda.innerHTML = `<h2>Travou em algum passo?</h2><div class="ajuda-lista">${itens}</div>
     <p class="recomecar"><button type="button" class="link" data-recomecar>Recomeçar o guia</button></p>`;
@@ -128,9 +145,9 @@ function desenharAjuda(menus) {
 // --- progresso ---------------------------------------------------------------
 // Uma linha com um ponto por passo: feito (visto), da vez (aceso) ou ainda fechado.
 function desenharProgresso() {
-  const { feitos, total, completo } = progresso(estado);
+  const { feitos, total, completo } = progresso(estado, guia.passos);
   contador.textContent = completo ? "Instalação concluída" : `Passo ${feitos + 1} de ${total}`;
-  trilha.innerHTML = PASSOS.map((p, i) => {
+  trilha.innerHTML = guia.passos.map((p, i) => {
     const situacao = situacaoDoPasso(p.id);
     return `
       <li class="marco marco-${situacao}"${situacao === "atual" ? ' aria-current="step"' : ""}>
@@ -188,13 +205,13 @@ function abrirFicha(s) {
         <span class="app-icone">${icone(s.icone)}</span>
         <div>
           <h3 id="ficha-nome">${escapar(s.nome)}</h3>
-          <p>${escapar(s.area)}${s.onde ? ` · só no ${escapar(s.onde)}` : ""}</p>
+          <p>${escapar(s.area)}${s.onde ? ` · ${escapar(s.onde)}` : ""}</p>
         </div>
       </header>
       <p class="ficha-para">${escapar(s.paraQue)}</p>
       <small>Depois de instalado, mande isto no chat:</small>
-      ${blocoCopiar(s.exemplo)}
-      <a class="botao botao-lima" href="#jornada" data-fechar>Instalar no meu Claude</a>
+      ${blocoCopiar(ambiente === "codex" ? `Use a skill ${s.id} do Founders OS. ${s.exemplo}` : s.exemplo)}
+      <a class="botao botao-lima" href="#jornada" data-fechar>Ver instalação</a>
     </div>`;
   ficha.classList.remove("saindo");
   ficha.showModal();
@@ -210,17 +227,18 @@ ficha.addEventListener("cancel", (e) => { e.preventDefault(); fecharFicha(); });
 
 function desenhar() {
   const menus = MENUS.pt;
-  const { completo } = progresso(estado);
+  const { completo } = progresso(estado, guia.passos);
+  document.getElementById("requisito").textContent = guia.requisito;
   desenharProgresso();
   raiz.innerHTML = `
-    <ol class="passos">${PASSOS.map((p, i) => cartaoDoPasso(p, i + 1, menus)).join("")}</ol>
+    <ol class="passos">${guia.passos.map((p, i) => cartaoDoPasso(p, i + 1, menus)).join("")}</ol>
     ${completo ? telaConcluida() : ""}`;
   desenharAjuda(menus);
 }
 
 function atualizar(novoEstado, { rolar = true } = {}) {
   estado = novoEstado;
-  salvarProgresso(estado);
+  salvarProgresso(estado, ambiente);
   desenhar();
   if (rolar) document.querySelector(".pronto, .passo-atual")?.scrollIntoView({ behavior: "smooth", block: "center" });
 }
@@ -251,10 +269,9 @@ document.addEventListener("click", (evento) => {
     areaAberta = d.area;
     return desenharVitrine();
   }
-  if (d.concluir) return atualizar(concluirPasso(estado, d.concluir));
-  if (d.desfazer) return atualizar(desfazerPasso(estado, d.desfazer));
+  if (d.concluir) return atualizar(concluirPasso(estado, d.concluir, guia.passos));
+  if (d.desfazer) return atualizar(desfazerPasso(estado, d.desfazer, guia.passos));
   if (d.recomecar !== undefined) {
-    apagarProgresso();
     return atualizar(estadoInicial());
   }
 });

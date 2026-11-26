@@ -3,9 +3,27 @@
 
 const CHAVE = "founders-os:jornada:v2";
 
-export function carregarProgresso() {
+function chave(ambiente) {
+  return ambiente === "claude" ? CHAVE : CHAVE + ":" + ambiente;
+}
+
+export function ambienteSalvo() {
   try {
-    const bruto = localStorage.getItem(CHAVE);
+    return localStorage.getItem("founders-os:ambiente") || (localStorage.getItem(CHAVE) ? "claude" : "codex");
+  } catch {
+    return "codex";
+  }
+}
+
+export function guardarAmbiente(ambiente) {
+  try {
+    localStorage.setItem("founders-os:ambiente", ambiente);
+  } catch { /* A seleção continua válida nesta aba. */ }
+}
+
+export function carregarProgresso(ambiente = "claude") {
+  try {
+    const bruto = localStorage.getItem(chave(ambiente));
     return bruto ? JSON.parse(bruto) : null;
   } catch (erro) {
     // Navegação privada ou armazenamento bloqueado: o guia funciona, só não lembra.
@@ -14,17 +32,18 @@ export function carregarProgresso() {
   }
 }
 
-export function salvarProgresso(estado) {
+export function salvarProgresso(estado, ambiente = "claude") {
+  if (!estado.concluidos.length) return apagarProgresso(ambiente);
   try {
-    localStorage.setItem(CHAVE, JSON.stringify(estado));
+    localStorage.setItem(chave(ambiente), JSON.stringify(estado));
   } catch (erro) {
     console.warn("Founders OS: não foi possível salvar o progresso.", erro);
   }
 }
 
-export function apagarProgresso() {
+export function apagarProgresso(ambiente = "claude") {
   try {
-    localStorage.removeItem(CHAVE);
+    localStorage.removeItem(chave(ambiente));
   } catch (erro) {
     console.warn("Founders OS: não foi possível apagar o progresso.", erro);
   }

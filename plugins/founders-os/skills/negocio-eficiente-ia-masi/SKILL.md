@@ -20,7 +20,7 @@ Leia `references/casos-de-uso.md` **inteiro** antes do diagnóstico. É o repert
 1. **Uma rodada de perguntas, as certas.** Abertura e as 4 perguntas vão na mesma mensagem. No máximo 2 perguntas de aprofundamento depois. Se o founder já contou o negócio no primeiro pedido, pule o que já sabe.
 2. **A conta aberta, com premissa escrita.** Todo ganho vem com a fórmula visível e os números do founder dentro. Percentual de melhora é sempre premissa (a palavra "premissa:" aparece antes do número), vem da faixa de referência do caso, no piso, e termina com "a medir em 30 dias". Se falta um número, peça ou escreva "a confirmar". Número inventado destrói a confiança do diagnóstico inteiro.
 3. **Prioridade é escolha, não lista.** Quinze casos avaliados, três priorizados, um para começar hoje, um ou dois para depois. Se tudo é prioridade, nada é.
-4. **Mais barato primeiro, e diga o próximo degrau.** Chat com um prompt bom → Project → Skill → Conector → Cowork → Automação. Recomende a camada mais barata que resolve e diga qual é a camada seguinte e o gatilho de volume para subir.
+4. **Mais barato primeiro, e diga o próximo degrau.** Chat com um prompt bom → projeto com contexto → skill → conector → agente com arquivos → automação. Recomende a camada mais barata que resolve e diga qual é a camada seguinte e o gatilho de volume para subir.
 5. **O que o sistema já faz, a IA não refaz.** Antes de recomendar, pergunte o que o ERP, o CRM, o banco e a agenda já fazem sozinhos (mesmo desligado). A IA entra onde a ferramenta não chega.
 6. **Limite dito na hora.** Onde a IA não substitui o contador, o advogado, o vendedor ou a decisão do founder, diga. Onde depende de volume para compensar, diga o volume. Onde há dado sensível (saúde, menor de idade, financeiro de cliente), diga o cuidado.
 7. **Termina em obra, não em relatório.** O fechamento é o Briefing de Construção e a chamada para a skill construtor-ia-masi.
@@ -36,7 +36,7 @@ Abra em 3 frases, sem preâmbulo e sem elogiar a pergunta, e emende as perguntas
 > 1. **O negócio.** O que vende, para quem, faturamento aproximado por ano, quantas pessoas no time, o salário bruto médio de quem faz as tarefas da pergunta 2 (eu coloco os encargos) e quanto você considera que vale a sua hora (ou a sua retirada mensal). Regime: Simples, Presumido ou Real?
 > 2. **Onde o tempo vai.** As 3 tarefas que mais consomem horas do time e as 2 que mais consomem o seu tempo, com horas por semana (chute vale).
 > 3. **Onde dói no caixa.** Quanto está em atraso (e quanto disso tem menos de 30 dias e quanto tem mais de 90), venda que você perde por demora ou falta de atendimento, multa ou juros já pagos por atraso neste ano, custo que mais subiu em 12 meses, contratação que está adiando.
-> 4. **Ferramentas e fluência.** Onde a empresa já mora (WhatsApp Business, planilha, ERP, CRM, agenda, contabilidade), o que esses sistemas já fazem sozinhos (lembrete, conciliação, orçamento, relatório, mesmo que desligado) e até onde você já foi com o Claude (só chat, Project, skill, conector, Cowork).
+> 4. **Ferramentas e fluência.** Onde a empresa já mora (WhatsApp Business, planilha, ERP, CRM, agenda, contabilidade), o que esses sistemas já fazem sozinhos (lembrete, conciliação, orçamento, relatório, mesmo que desligado) e quais recursos de IA você já usa (chat, projeto, skill, conector ou trabalho com arquivos).
 
 Se o setor pedir um dado a mais (taxa de falta em agendamentos, conversas por dia no WhatsApp, meios de recebimento, documentos por mês), inclua como item 5 da mesma lista, não como pergunta à parte.
 
@@ -58,7 +58,7 @@ Entregue nesta ordem, com o guia de voz aplicado:
 
 **2. A tabela dos 15 casos avaliados para este negócio.** Colunas: caso · o que seria aqui (até 12 palavras, com o detalhe do negócio dele) · esforço · impacto · quadrante · por que saiu da nota-base (só nas linhas em que saiu; em branco nas outras). Inclua as variantes que o setor pedir. Pontue pelo método de `references/casos-de-uso.md`, inclusive a regra do que o sistema já faz.
 
-**3. O Top 3, em ordem** (até 600 palavras no total). Para cada um: o que vai existir no fim (entregável concreto); a conta do ganho com fórmula, números dele e premissa escrita; esforço (tempo de setup, camada do Claude, próximo degrau e gatilho, o que precisa ter na mão); métrica ("deu certo se X virar Y em 30 dias"); primeiro passo de 15 minutos para hoje. A ordem segue a regra 6 do método (#1 do "Faça agora", #2 e #3 pelo valor da conta) e é justificada com os dados dele.
+**3. O Top 3, em ordem** (até 600 palavras no total). Para cada um: o que vai existir no fim (entregável concreto); a conta do ganho com fórmula, números dele e premissa escrita; esforço (tempo de setup, recurso de IA usado, próximo degrau e gatilho, o que precisa ter na mão); métrica ("deu certo se X virar Y em 30 dias"); primeiro passo de 15 minutos para hoje. A ordem segue a regra 6 do método (#1 do "Faça agora", #2 e #3 pelo valor da conta) e é justificada com os dados dele.
 
 **4. Fila seguinte** (se houver): todo caso de "Faça agora", "Vale o projeto" ou "Ganho rápido" com conta em reais que não entrou no Top 3, uma linha cada com o valor. Se não houver, omita a seção.
 

@@ -9,16 +9,16 @@ metadata:
 
 A Máquina é plug and play: o usuário responde poucas perguntas UMA vez, a página dele é publicada com foto, nome e @, e a partir daí todo post sai pronto nela. Fale como alguém montando a mesa de trabalho do usuário: curto, claro, sem jargão técnico (nunca diga "capability", "db", "asset", "JSON"; diga "sua página", "sua máquina", "sua foto").
 
-Leia antes: `${CLAUDE_PLUGIN_ROOT}/skills/maquina-de-carrosseis/references/artefato.md` (como publicar, gravar o perfil e subir a foto).
+Com `Artifact` e `ArtifactData` disponíveis, leia `../maquina-de-carrosseis/references/artefato.md` para publicar a página e gravar o perfil. Nos demais ambientes, use o perfil já salvo ou pergunte por negócio, público, tom e nome. Entregue o bloco de perfil da etapa 5 com os dados informados, omitindo o campo Página. Se puder gravar arquivos, salve-o em `carrosseis/perfil.md` no projeto e atualize esse arquivo nas próximas revisões. Retome o pedido original com esse perfil.
 
 ## 1. Antes de perguntar, cheque o que já existe
 
 - Se já houver uma máquina deste usuário (ver "Achar a máquina" na referência) e ele veio só trocar foto, @ ou nome: pule para o passo 4 e altere só o que foi pedido.
 - Extraia da conversa e do Projeto o que já estiver dito (nome, @, negócio). Só pergunte o que falta.
 
-## 2. Entrevista: uma rodada de AskUserQuestion, no máximo duas
+## 2. Entrevista em uma rodada, no máximo duas
 
-Pergunte numa mensagem só, com AskUserQuestion, o que faltar de:
+Reúna em uma mensagem as perguntas sobre os campos que faltarem:
 
 1. **Nome nos slides** — como aparece no cabeçalho do slide (ex.: "Breno Masi"). Nome de pessoa ou da marca.
 2. **@ do Instagram** — a conta onde os posts saem.
@@ -33,9 +33,9 @@ Regras: nunca invente resposta pelo usuário; se ele disser "tanto faz" no tom, 
 
 ## 3. Publique a máquina
 
-Siga "Publicar a máquina pela primeira vez" na referência: copie o template `${CLAUDE_PLUGIN_ROOT}/skills/configurar-maquina/assets/maquina-de-carrosseis.html`, publique com `Artifact` e as capabilities indicadas, e guarde a URL.
+Siga "Publicar a máquina pela primeira vez" na referência: copie o template `assets/maquina-de-carrosseis.html`, publique com `Artifact` e as capabilities indicadas, e guarde a URL.
 
-Se a ferramenta `Artifact` não existir nesta conversa, não publique: grave o perfil na memória ou no Projeto, se houver, e diga só: "Sua página eu monto quando você falar 'configurar a máquina' no Claude do computador; o perfil já está guardado."
+Se a publicação falhar, entregue o perfil no projeto ou na conversa e informe onde ele pode ser reutilizado.
 
 ## 4. Grave o perfil na página
 

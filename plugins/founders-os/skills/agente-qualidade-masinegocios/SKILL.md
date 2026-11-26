@@ -5,7 +5,7 @@ description: "Cria o Agente de Qualidade (QA) do negócio de um membro, para qua
 
 # Agente de Qualidade da Masi Negócios
 
-Você ajuda um founder de PME a criar o **Agente de Qualidade** do negócio dele: uma skill do Claude que confere uma entrega antes de ela chegar ao cliente, dá nota de 0 a 10 em cada critério do padrão que o próprio founder definiu, aponta o que falta e escreve a correção pronta.
+Você ajuda um founder de PME a criar o **Agente de Qualidade** do negócio dele: uma skill que confere uma entrega antes de ela chegar ao cliente, dá nota de 0 a 10 em cada critério do padrão que o próprio founder definiu, aponta o que falta e escreve a correção pronta.
 
 A ideia em uma frase: **qualidade não depende de quem fez a entrega, depende de existir um padrão escrito e alguém que confere toda vez.** O agente é esse alguém, e ele não cansa, não esquece e não tem dia ruim.
 
@@ -56,23 +56,23 @@ Objetivo: transformar "o processo" em **uma entrega concreta**, que o agente con
 Defina com o founder, propondo em vez de perguntar no vazio:
 
 - **A entrega:** a peça que sai do processo (o e-mail, a proposta, o laudo, o relatório, a conversa de atendimento, a foto do prato, o post, a planilha de orçamento).
-- **O formato e como o Claude vai ler:**
+- **O formato e como o assistente vai ler:**
 
 | Formato | Como entra no agente |
 |---|---|
 | Texto ou e-mail | Colado no chat ou via conector (Gmail, Beehiiv…) |
 | PDF ou Word | Anexo |
 | Planilha | Anexo .xlsx ou .csv |
-| Site ou página | Link, lido pelo navegador do Claude |
+| Site ou página | Link, com navegação disponível, ou conteúdo da página |
 | Ligação ou reunião | Transcrição (Zoom, Meet, gravador do celular) |
 | WhatsApp | Exportar conversa ou print |
 | Foto ou vídeo | Imagem anexada, ou o print de um quadro do vídeo |
 
 - **O momento:** quando o agente roda. O ideal é **antes de chegar ao cliente** (rascunho), quando ainda dá para corrigir. Depois da entrega, ele serve para aprender e treinar o time.
-- **Quem produz e quem roda o agente:** o próprio autor (autocorreção) ou um revisor. Se quem roda não é o founder, combine como a pessoa acessa: a skill fica na conta onde foi instalada, então cada pessoa precisa do próprio acesso ao Claude com a skill instalada (por exemplo, num plano de equipe). Não proponha dividir a conta do founder.
+- **Quem produz e quem roda o agente:** o próprio autor (autocorreção) ou um revisor. Se quem roda não é o founder, combine como a pessoa acessa: cada revisor precisa de acesso ao projeto ou ao ambiente onde a skill foi instalada. Não proponha dividir a conta do founder.
 - **A fonte da verdade:** o documento contra o qual o agente confere se números, nomes, datas, prazos, doses e preços estão certos. Pode ser a receita, o pedido, o contrato, o escopo, a tabela de preço ou o cadastro. Se ela muda a cada entrega, entra junto com a entrega toda vez. Sem ela, "precisão" vira chute.
 - **Tipos de entrega:** a entrega muda conforme o procedimento, o serviço, o produto ou o cliente? Se mudar, a régua continua uma só, com um "o que é obrigatório" por tipo.
-- No WhatsApp ou em qualquer canal sem rascunho, o agente roda **antes de enviar**: a pessoa cola o texto no Claude, corrige e só depois manda.
+- No WhatsApp ou em qualquer canal sem rascunho, o agente roda **antes de enviar**: a pessoa cola o texto na conversa, corrige e só depois manda.
 
 Feche a etapa em 3 linhas: *"Vamos avaliar [entrega] em [formato], [momento], rodado por [pessoa]."*
 
@@ -141,8 +141,9 @@ Gere a skill com o **Modelo** abaixo, preenchido com tudo o que foi decidido. Re
 
 Entregue a skill do jeito que o ambiente permitir:
 
-- se houver uma ferramenta para propor ou salvar skills, use-a;
-- senão, crie a pasta `qualidade-<entrega>/SKILL.md`, compacte em .zip e entregue o arquivo com o caminho de instalação: **Personalizar → Habilidades (Skills) → Adicionar → Fazer upload**. Para testar, basta abrir um chat novo e pedir "QA de [entrega]".
+- No Codex ou OpenCode, salve `.agents/skills/qualidade-<entrega>/SKILL.md` no projeto escolhido.
+- No Claude, use a ferramenta de salvar skills ou compacte a pasta da skill e use **Personalizar → Habilidades (Skills) → Adicionar → Fazer upload**.
+- Em um chat que só recebe texto, entregue as instruções e a régua em um bloco copiável. Teste com o pedido "QA de [entrega]" e uma amostra real.
 
 ## Etapa 5 · Testar com uma entrega real (e calibrar)
 
@@ -226,7 +227,7 @@ Quer que eu aplique as correções? Responda "todas" ou os números.
 
 - Nunca invente o padrão do founder: proponha, mostre e valide. A régua final tem que ser dele.
 - Use os exemplos reais que ele mandar como âncora do "o que é 10". Régua sem exemplo vira opinião.
-- Se o founder quiser avaliar algo que o Claude não consegue ler (um sabor, um cheiro, uma conversa sem gravação), diga com honestidade e proponha a evidência possível: foto padronizada, checklist preenchido pelo time, transcrição.
+- Se o founder quiser avaliar algo que o assistente não consegue ler (um sabor, um cheiro, uma conversa sem gravação), diga com honestidade e proponha a evidência possível: foto padronizada, checklist preenchido pelo time, transcrição.
 - Qualidade não é só o que o cliente vê. Se aparecer um processo interno com custo alto de erro (fechamento financeiro, folha de pagamento), ele também vale um agente.
 - Não prometa resultado. O agente reduz erro e mantém o padrão, e quem garante a entrega continua sendo o time.
 - Em saúde, jurídico e finanças, o agente confere a entrega contra o padrão e a fonte da verdade do founder. Ele não substitui o profissional responsável.

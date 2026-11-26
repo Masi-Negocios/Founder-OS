@@ -10,20 +10,20 @@ metadata:
 Você escreve como o founder do perfil falando com o público dele: frases curtas, uma ideia por slide, cada slide terminando com um motivo para passar o dedo. Formato: carrossel no estilo tweet (cabeçalho com foto, nome e @; texto; imagem só onde faz sentido), 10 a 14 slides, 1080×1350.
 
 Leia antes, nesta ordem:
-1. `${CLAUDE_PLUGIN_ROOT}/skills/storyteller-carrossel/references/storytelling-carrossel.md` — o esqueleto, as regras por slide, as pontes, os limites de texto.
-2. `${CLAUDE_PLUGIN_ROOT}/skills/storyteller-carrossel/references/exemplo-completo.md` — um post real, do insumo ao JSON gravado. É o formato-alvo.
-3. `${CLAUDE_PLUGIN_ROOT}/skills/maquina-de-carrosseis/references/artefato.md` — como achar a máquina do usuário e gravar o post.
+1. `references/storytelling-carrossel.md` — o esqueleto, as regras por slide, as pontes, os limites de texto.
+2. `references/exemplo-completo.md` — um post real, do insumo ao JSON gravado. É o formato-alvo.
+3. Com `Artifact` e `ArtifactData` disponíveis, consulte `../maquina-de-carrosseis/references/artefato.md` para achar a máquina do usuário e gravar o post.
 
 ## 1. Insumos
 
-- **Perfil**: leia `settings/profile` da máquina (nome, público, dores, tom). Sem máquina, rode `configurar-maquina` antes (sem ela o post não tem onde aparecer).
+- **Perfil**: leia `settings/profile` na Máquina publicada ou use `carrosseis/perfil.md` do projeto ou os dados da conversa. Peça apenas o que faltar sobre nome, público, dores e tom.
 - **Tema e ângulo**: do usuário, de `buscar-temas` ou de um briefing (`briefings` com `status: "novo"`; leia anexos PDF conforme a referência do artefato).
 - **Hook**: se veio de `criar-hooks`, use como slide 1. Se não veio, crie 2 opções rápidas no padrão daquela skill e escolha a mais tensa (registre a escolha em uma linha ao entregar).
 - **Referência e observações**: artigo, link, texto, pontos a destacar, pontos de atenção. Leia tudo antes de escrever. Fatos, números e nomes vêm da referência ou de conhecimento público verificável; em dúvida, "[confirmar]".
 
 ## 2. Uma pergunta antes de escrever: como o post termina (uma vez por post)
 
-Se o fechamento ainda não foi definido nesta conversa, pergunte com AskUserQuestion, numa mensagem só, em linguagem simples:
+Se o fechamento ainda não foi definido nesta conversa, pergunte numa mensagem só, em linguagem simples:
 - **Como o post termina?** Opções: (a) só com a lição, sem pedir nada / (b) pedindo comentário, salvar ou compartilhar / (c) com uma oferta: a pessoa comenta uma palavra e recebe algo (ou link na bio, ou chama no direct).
 - Se for (c): **qual palavra ou ação** e **o que a pessoa recebe** (concreto).
 Se o usuário já disse ("sem CTA", "igual ao último", "comenta GUIA"), não pergunte: use. "Igual ao último": leia o último post gravado e repita o padrão. Num lote de vários posts, pergunte uma vez para o lote.
@@ -57,9 +57,11 @@ Texto puro: a legenda vai para o Instagram, que não entende asteriscos; nada de
 
 ## 6. Grave na máquina
 
+Sem as duas ferramentas de artefatos, entregue os slides numerados, sugestões de imagem e legenda no chat ou em um arquivo Markdown novo dentro de `carrosseis/` no projeto. Para revisar, use a versão mais recente enviada pelo usuário. Esse fluxo termina com o texto disponível para revisão.
+
 Monte o JSON do post no esquema da referência do artefato (`title`, `status: "texto"`, `createdAt`, `updatedAt`, `caption`, `notes: ""`, `slides`), salve num arquivo local e grave com `ArtifactData` `set` em `posts/<kebab-do-titulo>-<AAAAMMDD-HHMM>` (use `file_path`). Nunca reutilize o id de um post existente. Se veio de um briefing, atualize o briefing para `status: "usado"` com `postId`.
 
-Se a máquina não puder ser gravada (sem `Artifact`/`ArtifactData` nesta conversa), entregue o carrossel no chat, um bloco por slide numerado, e a legenda, e diga em uma frase como ter a página (Claude no computador).
+Se a gravação falhar, preserve o texto em arquivo ou no chat e informe que a página precisa ser atualizada.
 
 ## 7. Entrega no chat (curta)
 
