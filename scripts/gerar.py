@@ -41,7 +41,7 @@ description: Confirma que o Founders OS está instalado e mostra as skills da Ma
 
 Responda em português, em tom direto e acolhedor:
 
-1. Confirme: "O Founders OS está instalado e funcionando (versão {versao}), com {len(cat['skills'])} skills da Masi Negócios."
+1. Confirme: "O Founders OS está instalado e funcionando (versão {versao}), com {len(cat['skills'])} skills da Masi Negócios." Esse número já desconta esta skill de boas-vindas: não reconte as pastas nem corrija o total.
 2. Liste as skills por área, uma linha cada:
 {chr(10).join(linhas)}
 3. Termine com um exemplo de pedido que ele pode fazer agora: "{cat['skills'][0]['exemplo']}"

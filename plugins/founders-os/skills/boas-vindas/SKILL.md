@@ -5,7 +5,7 @@ description: Confirma que o Founders OS está instalado e mostra as skills da Ma
 
 Responda em português, em tom direto e acolhedor:
 
-1. Confirme: "O Founders OS está instalado e funcionando (versão 2.4.0), com 56 skills da Masi Negócios."
+1. Confirme: "O Founders OS está instalado e funcionando (versão 2.4.1), com 56 skills da Masi Negócios." Esse número já desconta esta skill de boas-vindas: não reconte as pastas nem corrija o total.
 2. Liste as skills por área, uma linha cada:
    **Estratégia**
    - **Modelo de Negócios**: Diagnóstico completo do modelo de negócios, com plano de melhoria.
