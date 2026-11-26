@@ -150,7 +150,8 @@ function markdown(texto) {
         while (i < linhas.length && /^\s{2,}\S/.test(linhas[i]) && !/^\s*([-*+]|\d+[.)])\s+/.test(linhas[i])) item += " " + linhas[i++].trim();
         itens.push(`<li>${inline(item)}</li>`);
       }
-      saida.push(ordenada ? `<ol>${itens.join("")}</ol>` : `<ul>${itens.join("")}</ul>`);
+      const inicio = ordenada ? parseInt(lista[1], 10) : 1;
+      saida.push(ordenada ? `<ol${inicio > 1 ? ` start="${inicio}"` : ""}>${itens.join("")}</ol>` : `<ul>${itens.join("")}</ul>`);
       continue;
     }
     const paragrafo = [];
@@ -239,6 +240,7 @@ function mudarModo(modo) {
 
 // --- mensagens ---------------------------------------------------------------
 function rolar() {
+  if (estado.rolagemFixa) return;  // um link pediu outra posição; volta ao normal na próxima mensagem
   const caixa = $("mensagens");
   caixa.scrollTop = caixa.scrollHeight;
 }
@@ -263,8 +265,31 @@ function telaVazia() {
 
 function novaConversa() {
   estado.sessao = null;
+  atualizarEndereco(null);
   telaVazia();
   desenharCabecalho();
+}
+
+// O endereço guarda a conversa aberta: recarregar a página ou mandar o link reabre a mesma conversa.
+function atualizarEndereco(sessao) {
+  const endereco = sessao ? `?sessao=${encodeURIComponent(sessao)}` : location.pathname;
+  if (location.search !== (sessao ? endereco : "")) history.replaceState(null, "", endereco);
+}
+
+function desenharConselho(membros) {
+  const grade = document.createElement("div");
+  grade.className = "conselho-grade";
+  const cartoes = new Map();
+  for (const m of membros) {
+    const cartao = document.createElement("article");
+    cartao.className = "membro md";
+    cartao.innerHTML = `<h4>${escapar(m.nome)}</h4><div class="corpo digitando"></div>`;
+    grade.append(cartao);
+    cartoes.set(m.agente, { cartao, texto: "" });
+  }
+  $("mensagens").append(grade);
+  rolar();
+  return cartoes;
 }
 
 function adicionarUsuario(texto) {
@@ -346,6 +371,7 @@ async function enviar(texto) {
     return;
   }
   estado.ocupado = true;
+  estado.rolagemFixa = false;
   $("enviar").disabled = true;
   $("entrada").value = "";
   ajustarAltura();
@@ -355,7 +381,7 @@ async function enviar(texto) {
   const conselho = estado.modo === "conselho";
   const caminho = conselho ? "/v1/conselho" : "/v1/conversa";
   const corpo = conselho
-    ? { pergunta: texto, agentes: [...estado.selecionados], modelo: estado.modelo || undefined, stream: true }
+    ? { pergunta: texto, agentes: [...estado.selecionados], sessaoId: estado.sessao || undefined, modelo: estado.modelo || undefined, stream: true }
     : { mensagem: texto, sessaoId: estado.sessao || undefined, agente: estado.sessao ? undefined : estado.agente, modelo: estado.modelo || undefined, stream: true };
 
   let bolha = null;
@@ -365,7 +391,8 @@ async function enviar(texto) {
     for await (const { tipo, dados } of eventosSSE(resposta)) {
       switch (tipo) {
         case "sessao":
-          if (!conselho) estado.sessao = dados.sessaoId;
+          estado.sessao = dados.sessaoId;
+          atualizarEndereco(dados.sessaoId);
           break;
         case "agente":
           bolha?.el.querySelector(".bolha").classList.remove("digitando");
@@ -414,20 +441,9 @@ async function enviar(texto) {
         case "recusa":
           adicionarEvento(bolha, "O modelo recusou este pedido.", "alerta");
           break;
-        case "conselho": {
-          const grade = document.createElement("div");
-          grade.className = "conselho-grade";
-          for (const m of dados.membros) {
-            const cartao = document.createElement("article");
-            cartao.className = "membro md";
-            cartao.innerHTML = `<h4>${escapar(m.nome)}</h4><div class="corpo digitando"></div>`;
-            grade.append(cartao);
-            membros.set(m.agente, { cartao, texto: "" });
-          }
-          $("mensagens").append(grade);
-          rolar();
+        case "conselho":
+          for (const [id, cartao] of desenharConselho(dados.membros)) membros.set(id, cartao);
           break;
-        }
         case "membro_texto": {
           const m = membros.get(dados.agente);
           if (m) { m.texto += dados.delta; m.cartao.querySelector(".corpo").innerHTML = markdown(m.texto); }
@@ -443,7 +459,7 @@ async function enviar(texto) {
           break;
         }
         case "fim":
-          if (!conselho && dados.sessaoId) estado.sessao = dados.sessaoId;
+          if (dados.sessaoId) estado.sessao = dados.sessaoId;
           break;
         default:
           break;
@@ -527,27 +543,102 @@ async function abrirSessao(id) {
   estado.sessao = dados.id;
   estado.agente = dados.agenteAtual || RECEPCAO;
   $("mensagens").innerHTML = "";
+  // Rodadas seguidas do mesmo agente viram um balão só, como na conversa ao vivo.
+  const bolhas = [];
+  let anterior = null;
+  let membros = null;
   for (const m of dados.mensagens) {
-    if (m.papel === "usuario") { adicionarUsuario(m.texto); continue; }
-    const bolha = criarBolhaAgente({ nome: m.agente === "conselho" ? "Conselho" : nomeDe(m.agente) });
-    for (const f of m.ferramentas || []) adicionarEvento(bolha, (ROTULOS[f] || (() => f))({}));
-    bolha.texto = m.texto || "";
-    bolha.el.querySelector(".bolha").classList.remove("digitando");
-    if (!bolha.texto) bolha.el.querySelector(".bolha").remove(); else bolha.render();
+    if (m.papel === "usuario") { adicionarUsuario(m.texto); anterior = null; continue; }
+    if (m.conselho) {
+      const cartoes = desenharConselho(Object.keys(m.conselho).map((id) => ({ agente: id, nome: nomeDe(id) })));
+      for (const [id, { cartao }] of cartoes) {
+        cartao.classList.add("pronto");
+        const corpo = cartao.querySelector(".corpo");
+        corpo.classList.remove("digitando");
+        corpo.innerHTML = markdown(m.conselho[id]);
+      }
+      membros = Object.keys(m.conselho);
+      anterior = null;
+    }
+    if (anterior && anterior.agente !== m.agente) {
+      const aviso = document.createElement("div");
+      aviso.className = "passagem";
+      aviso.textContent = `${nomeDe(anterior.agente)} passou a conversa para ${nomeDe(m.agente)}`;
+      $("mensagens").append(aviso);
+    }
+    let bolha = anterior?.agente === m.agente ? anterior.bolha : null;
+    if (!bolha) {
+      bolha = criarBolhaAgente({ nome: m.agente === "conselho" ? "Conselho" : nomeDe(m.agente), modelo: m.modelo });
+      bolha.el.querySelector(".bolha").classList.remove("digitando");
+      bolhas.push(bolha);
+    }
+    for (const f of m.ferramentas || []) {
+      const nome = typeof f === "string" ? f : f.nome;
+      adicionarEvento(bolha, (ROTULOS[nome] || (() => nome))(f.argumentos || {}));
+    }
+    if ((m.texto || "").trim()) {
+      bolha.texto += (bolha.texto ? "\n\n" : "") + m.texto;
+      bolha.render();
+    }
+    anterior = { agente: m.agente, bolha };
+  }
+  for (const bolha of bolhas) if (!bolha.texto) bolha.el.querySelector(".bolha").remove();
+  if (membros) {
+    // Conversa de Conselho: reabre no modo Conselho, com os mesmos membros, para seguir perguntando ao grupo.
+    estado.modo = "conselho";
+    estado.selecionados = new Set(membros);
+    $("modo-conversa").setAttribute("aria-selected", "false");
+    $("modo-conselho").setAttribute("aria-selected", "true");
+    $("entrada").placeholder = "Qual decisão você quer levar ao conselho?";
+    desenharTimes();
   }
   if (dados.arquivos?.length) {
     const bolha = criarBolhaAgente({ nome: "Arquivos desta conversa" });
     bolha.el.querySelector(".bolha").remove();
     for (const arquivo of dados.arquivos) adicionarArquivo(bolha, arquivo);
   }
+  atualizarEndereco(dados.id);
   desenharCabecalho();
   desenharLista();
+}
+
+// Links diretos: ?agente=<id>, ?modo=conselho&time=<id>, ?sessao=<id>, ?abrir=perfil|historico, ?tema=claro|escuro
+async function abrirPeloEndereco() {
+  const params = new URLSearchParams(location.search);
+  const tema = { claro: "light", escuro: "dark" }[params.get("tema")];
+  if (tema) document.documentElement.dataset.theme = tema;
+  if (params.get("modo") === "conselho") {
+    mudarModo("conselho");
+    const time = estado.times.find((t) => t.id === params.get("time"));
+    if (time) {
+      estado.selecionados = new Set(time.agentes.slice(0, 6));
+      desenharLista();
+      desenharCabecalho();
+    }
+  } else if (agentePorId(params.get("agente"))?.disponivel) {
+    escolherAgente(params.get("agente"));
+  }
+  if (params.get("sessao")) {
+    const posicao = params.get("rolar");
+    estado.rolagemFixa = posicao === "topo" || posicao === "tabela";
+    await abrirSessao(params.get("sessao"));
+    if (estado.rolagemFixa) {
+      // depois dos renders agendados pelos balões
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        const caixa = $("mensagens");
+        const tabela = posicao === "tabela" && caixa.querySelector(".md table");
+        caixa.scrollTop = tabela ? tabela.getBoundingClientRect().top - caixa.getBoundingClientRect().top + caixa.scrollTop - 120 : 0;
+      }));
+    }
+  }
+  if (params.get("abrir") === "perfil") await abrirPerfil();
+  if (params.get("abrir") === "historico") await abrirHistorico();
 }
 
 // --- modelos ----------------------------------------------------------------------
 async function carregarModelos() {
   const dados = await (await api("/v1/provedores")).json();
-  const opcoes = [["", `Padrão do agente (${dados.modeloPadrao})`]];
+  const opcoes = [["", `Padrão · ${dados.modeloPadrao}`]];
   for (const [apelido, ref] of Object.entries(dados.apelidos || {})) opcoes.push([apelido, `${apelido} · ${ref}`]);
   const select = $("modelo");
   select.innerHTML = opcoes.map(([v, t]) => `<option value="${escapar(v)}">${escapar(t)}</option>`).join("");
@@ -613,6 +704,7 @@ async function iniciar() {
   $("abrir-lateral").addEventListener("click", () => $("app").classList.add("lateral-aberta"));
   $("fechar-lateral").addEventListener("click", () => $("app").classList.remove("lateral-aberta"));
   $("entrada").focus();
+  abrirPeloEndereco().catch(() => atualizarEndereco(null));
 }
 
 iniciar();

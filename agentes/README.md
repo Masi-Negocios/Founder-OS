@@ -17,6 +17,23 @@ As Skills continuam sendo a fonte única das instruções: esta pasta só lê `p
 | Entregas | Arquivos na sessão do Claude | `salvar_arquivo` e, se ligado, os **scripts das skills** (ex.: planilha do Plano de Receita) com download pela API |
 | Integração | Só pelo Claude | API com eventos ao vivo, endpoint compatível com a OpenAI, terminal |
 
+## Telas
+
+As telas abaixo usam respostas reais de um modelo rodando na própria máquina (`ollama:qwen3.8`), sem chave de API.
+
+| | |
+|---|---|
+| ![Recepção e catálogo de agentes por área](docs/telas/01-recepcao.jpg) | ![A Recepção guarda o perfil e passa a conversa para o especialista](docs/telas/02-passagem.jpg) |
+| **Recepção**: o catálogo inteiro por área e exemplos de pedido. | **Passagem**: a Recepção guarda o perfil e chama o especialista, que lê as referências da skill antes de responder. |
+| ![Resposta com DRE em tabela](docs/telas/03-dre.jpg) | ![Conselho do Founder](docs/telas/04-conselho.jpg) |
+| **Resposta do especialista** com os números do usuário. | **Conselho**: quatro diretores respondem em paralelo e o moderador junta tudo. |
+| ![Montagem do conselho](docs/telas/05-modo-conselho.jpg) | ![Perfil do negócio](docs/telas/06-perfil.jpg) |
+| **Modo Conselho**: times prontos ou de 2 a 6 agentes à escolha. | **Perfil do negócio** preenchido pelos próprios agentes. |
+| ![Conversas salvas](docs/telas/07-conversas.jpg) | ![Tema claro](docs/telas/08-tema-claro.jpg) |
+| **Conversas** salvas por dono, reabertas pelo link. | **Tema claro**, que segue o sistema. |
+
+<p align="center"><img src="docs/telas/09-celular.jpg" alt="Conversa no celular" width="320"></p>
+
 ## Arquitetura
 
 ```mermaid
@@ -147,6 +164,8 @@ Autenticação: `Authorization: Bearer <chave>` (ou `X-API-Key`). As chaves vêm
 | GET/POST | `/v1/sessoes`, GET `/v1/sessoes/{id}` | Conversas do dono, histórico, consumo e arquivos |
 | GET | `/v1/sessoes/{id}/arquivos/{nome}` | Download de um arquivo entregue pelo agente |
 | GET/PUT | `/v1/perfil` | Perfil do negócio |
+
+A interface web aceita links diretos, por exemplo para o site do catálogo abrir um agente: `/?agente=<id>`, `/?sessao=<id>` (a conversa fica no endereço, então recarregar não a perde), `/?modo=conselho&time=<id>` e `/?tema=claro` ou `/?tema=escuro`.
 
 Com `stream` (padrão), a resposta chega em eventos SSE: `sessao`, `agente`, `texto`, `ferramenta`, `ferramenta_fim`, `passagem`, `consulta`, `arquivo`, `perfil`, `reinicio`, `aviso`, `recusa`, `erro`, `fim`; no Conselho também `conselho`, `membro_texto` e `membro_fim`. Com `"stream": false`, volta um JSON com o texto e a lista de eventos.
 

@@ -26,7 +26,7 @@ from .agentes import RECEPCAO, ErroAgente
 from .armazenamento import Sessao
 from .conselho import realizar_conselho
 from .conselho import MAX_MEMBROS, MIN_MEMBROS
-from .orquestrador import Orquestrador
+from .orquestrador import Orquestrador, resumir_argumentos
 from .provedores import ErroProvedor
 from .roteador import RoteadorLexico
 from .skills import ErroSkill
@@ -493,11 +493,11 @@ def _mensagens_para_tela(mensagens: list[dict]) -> list[dict]:
         if m.get("role") == "user":
             tela.append({"papel": "usuario", "texto": m.get("content", ""), "conselho": m.get("conselho")})
         elif m.get("role") == "assistant":
-            ferramentas = [c["name"] for c in m.get("tool_calls") or []]
+            ferramentas = [{"nome": c["name"], "argumentos": resumir_argumentos(c.get("arguments"))} for c in m.get("tool_calls") or []]
             if not (m.get("content") or "").strip() and not ferramentas:
                 continue
-            tela.append({"papel": "agente", "agente": m.get("agente"), "texto": m.get("content", ""), "ferramentas": ferramentas,
-                         "conselho": m.get("conselho") if isinstance(m.get("conselho"), dict) else None})
+            tela.append({"papel": "agente", "agente": m.get("agente"), "modelo": m.get("modelo"), "texto": m.get("content", ""),
+                         "ferramentas": ferramentas, "conselho": m.get("conselho") if isinstance(m.get("conselho"), dict) else None})
     return tela
 
 

@@ -89,6 +89,10 @@ class TestServidor(CasoComConfig):
         self.assertEqual(status, 200)
         self.assertEqual(sessao["agenteAtual"], "vendas-teste")
         self.assertEqual([m["papel"] for m in sessao["mensagens"]], ["usuario", "agente", "agente"])
+        passagem = sessao["mensagens"][1]
+        self.assertEqual(passagem["ferramentas"][0]["nome"], "passar_para_agente")
+        self.assertEqual(passagem["ferramentas"][0]["argumentos"]["agente"], "vendas-teste")
+        self.assertEqual(sessao["mensagens"][2]["modelo"], "roteiro:principal")
         self.assertEqual(self.json(f"/v1/sessoes/{sessao_id}", chave="segredo-b")[0], 404)
         self.assertEqual(len(self.json("/v1/sessoes")[1]["sessoes"]), 1)
         self.assertEqual(len(self.json("/v1/sessoes", chave="segredo-b")[1]["sessoes"]), 0)

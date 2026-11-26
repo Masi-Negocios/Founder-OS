@@ -246,7 +246,7 @@ class Orquestrador:
                 conteudo, erro = "A chamada veio cortada pelo limite de tokens: refaça com um conteúdo menor.", True
                 emitir("ferramenta", {"agente": agente.id, "nome": chamada.nome, "argumentos": {}, "ok": False})
             else:
-                emitir("ferramenta", {"agente": agente.id, "nome": chamada.nome, "argumentos": _resumir(chamada.argumentos)})
+                emitir("ferramenta", {"agente": agente.id, "nome": chamada.nome, "argumentos": resumir_argumentos(chamada.argumentos)})
                 resultado = self.ferramentas.executar(ferramentas, ctx, chamada.nome, chamada.argumentos, chamada.erro)
                 conteudo, erro = resultado.conteudo, resultado.erro
                 emitir("ferramenta_fim", {"agente": agente.id, "nome": chamada.nome, "ok": not erro, "resumo": conteudo[:200]})
@@ -283,7 +283,7 @@ def _sem_texto(emitir: Emissor) -> Emissor:
     return filtrado
 
 
-def _resumir(argumentos: dict | None) -> dict:
+def resumir_argumentos(argumentos: dict | None) -> dict:
     if not argumentos:
         return {}
     resumo = {}

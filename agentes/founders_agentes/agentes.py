@@ -126,7 +126,7 @@ class RegistroAgentes:
                 exige = skill.onde or ("Claude Code" if skill.compatibilidade and "claude code" in skill.compatibilidade.lower() else None)
                 if exige and not self.config.permitir_so_claude_code:
                     agente.disponivel = False
-                    agente.motivo_indisponivel = f"Esta skill só roda no {exige}."
+                    agente.motivo_indisponivel = f"Precisa de um ambiente que a camada de agentes não oferece ({exige.rstrip('.')})."
                 self._agentes[skill.id] = agente
         for bruto in self.config.agentes:
             self._aplicar_agente_config(bruto)
