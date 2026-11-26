@@ -1,7 +1,7 @@
 // Tudo o que o empresário lê no guia mora aqui. A tela (app.js) só desenha;
 // mudar um texto, um passo ou uma skill é mexer só neste arquivo.
 
-export const MARKETPLACE = "masinegocios/founders-os";
+export const MARKETPLACE = "Masi-Negocios/Founder-OS";
 export const URL_CLAUDE = "https://claude.ai";
 export const FRASE_TESTE = "testar o Founders OS";
 
@@ -20,38 +20,13 @@ export const MENUS = {
     configuracoes: "Configurações",
     capacidades: "Capacidades",
   },
-  en: {
-    rotulo: "English",
-    personalizacao: "Customize",
-    plugins: "Plugins",
-    adicionar: "Add",
-    adicionarMarketplace: "Add marketplace",
-    sincronizarAuto: "Sync automatically",
-    sincronizar: "Sync",
-    configuracoes: "Settings",
-    capacidades: "Capabilities",
-  },
 };
 
-// Plugins só existem nos planos pagos; no Free a jornada para no primeiro passo.
-export const PLANOS = [
-  { id: "free", nome: "Free", aceitaPlugins: false },
-  { id: "pro", nome: "Pro", aceitaPlugins: true },
-  { id: "max", nome: "Max", aceitaPlugins: true },
-  { id: "team", nome: "Team", aceitaPlugins: true },
-  { id: "enterprise", nome: "Enterprise", aceitaPlugins: true },
-];
 
 // Cada passo é uma lista de ações, uma por linha, na ordem em que o empresário clica.
 // `texto` recebe os nomes dos menus no idioma do Claude dele; `imagem` é um print real
 // do Claude marcado em laranja (os números da imagem batem com a ordem das ações).
 export const PASSOS = [
-  {
-    id: "plano",
-    titulo: "Qual é o seu plano?",
-    tempo: "10 s",
-    intro: "O Founders OS roda nos planos pagos do Claude. Marque o seu para seguir.",
-  },
   {
     id: "execucao",
     titulo: "Ligue a execução de código",
@@ -62,10 +37,7 @@ export const PASSOS = [
       { texto: (m) => `Entre em **${m.capacidades}**.` },
       { texto: () => "Ligue a opção de **execução de código e criação de arquivos**." },
     ],
-    dicaPorPlano: {
-      team: "No plano Team ela já vem ligada. Se estiver desligada, fale com quem administra a conta da empresa.",
-      enterprise: "No Enterprise, quem liga é o administrador da conta. Se não estiver ligada, peça para ele.",
-    },
+    nota: "Em conta de empresa (Team ou Enterprise), se a opção estiver desligada, peça para quem administra a conta ligar.",
   },
   {
     id: "catalogo",
@@ -115,7 +87,7 @@ export const PROBLEMAS = [
   {
     sintoma: "Apareceu “Repositório inacessível”",
     solucao: () =>
-      "Confira se colou exatamente masinegocios/founders-os, sem espaço no começo ou no fim. Use o botão Copiar deste guia. Não é preciso instalar o Claude GitHub App.",
+      "Confira se colou exatamente Masi-Negocios/Founder-OS, sem espaço no começo ou no fim. Use o botão Copiar deste guia. Não é preciso instalar o Claude GitHub App.",
   },
   {
     sintoma: (m) => `Não aparece a opção ${m.plugins}`,

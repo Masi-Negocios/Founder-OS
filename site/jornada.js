@@ -1,24 +1,10 @@
 // Regra da jornada: o que está liberado, o que está feito, quanto falta.
 // Não toca em DOM nem em armazenamento; recebe e devolve estado puro.
 
-import { PASSOS, PLANOS, MENUS } from "./conteudo.js";
+import { PASSOS } from "./conteudo.js";
 
 export function estadoInicial() {
-  return { plano: null, concluidos: [], idioma: "pt" };
-}
-
-export function planoAceitaPlugins(planoId) {
-  return PLANOS.some((p) => p.id === planoId && p.aceitaPlugins);
-}
-
-export function escolherPlano(estado, planoId) {
-  // Trocar de plano refaz a jornada: uma conta Free não pode herdar passos de outra.
-  const concluidos = planoAceitaPlugins(planoId) ? ["plano"] : [];
-  return { ...estado, plano: planoId, concluidos };
-}
-
-export function escolherIdioma(estado, idioma) {
-  return idioma in MENUS ? { ...estado, idioma } : estado;
+  return { concluidos: [] };
 }
 
 export function concluirPasso(estado, passoId) {
@@ -50,8 +36,6 @@ export function estadoValido(estado) {
   return (
     estado !== null &&
     typeof estado === "object" &&
-    (estado.plano === null || PLANOS.some((p) => p.id === estado.plano)) &&
-    estado.idioma in MENUS &&
     Array.isArray(estado.concluidos) &&
     estado.concluidos.every((id) => PASSOS.some((p) => p.id === id))
   );

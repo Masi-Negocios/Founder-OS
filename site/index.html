@@ -5,102 +5,199 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Founders OS: instale no seu Claude</title>
   <meta name="description" content="Guia passo a passo para instalar o Founders OS, as skills da Masi Negócios, no seu Claude.">
+  <meta name="theme-color" content="#222222">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230C1C16'/%3E%3Ccircle cx='50' cy='50' r='22' fill='%23AFF000'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="/founders-os/img/chip-masi.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="/founders-os/img/chip-3d.webp" fetchpriority="high">
   <link rel="stylesheet" href="/founders-os/estilo.css">
+  <script>if (!matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("movimento");</script>
 </head>
 <body>
   <a class="pular" href="#jornada">Pular para os passos</a>
 
-  <!-- Símbolo de destaque (ponto), desenhado uma vez e reaproveitado. -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="asterisco" viewBox="-50 -50 100 100">
-      <circle r="42"/>
-    </symbol>
-  </svg>
-
-  <header class="cabecalho">
-    <span class="assinatura">Masi Negócios<svg class="ast-inline" aria-hidden="true"><use href="#asterisco"/></svg></span>
-    <span id="contador" class="contador" aria-live="polite"></span>
+  <header class="nav">
+    <div class="nav-dentro">
+      <a class="nav-marca" href="#topo" aria-label="Masi Negócios, voltar ao topo"><img src="/founders-os/img/masi-light.svg" alt="Masi Negócios" width="1831" height="164"></a>
+      <nav class="nav-elos" aria-label="Seções">
+        <a href="#skills">Skills</a>
+        <a href="#jornada">Instalação</a>
+        <a href="#ajuda-area">Dúvidas</a>
+      </nav>
+      <div class="nav-fim">
+        <span id="contador" class="contador" aria-live="polite"></span>
+        <a class="botao botao-lima botao-p" href="#jornada">Instalar</a>
+      </div>
+    </div>
   </header>
 
-  <section class="hero">
-    <p class="marca-dagua" aria-hidden="true">Founders OS</p>
+  <main>
+  <!-- Abertura: o texto ocupa o que sobra da primeira tela e o chip fica com o meio exatamente na dobra. -->
+  <section class="hero" id="topo">
     <div class="hero-texto">
-      <p class="selo"><svg aria-hidden="true"><use href="#asterisco"/></svg>Skills da Masi Negócios para o Claude</p>
-      <h1 aria-label="O método Masi no seu Claude."><span class="linha" aria-hidden="true"><span data-texto="O método Masi">O método Masi</span></span><span class="linha" aria-hidden="true"><span data-texto="no seu Claude.">no seu Claude.</span></span></h1>
-      <p class="hero-apoio">Cinco passos, uns três minutos e nada para instalar no computador.</p>
+      <p class="hero-produto">Founders OS</p>
+      <h1>O método <em>Masi</em><br>no seu Claude.</h1>
+      <p class="hero-apoio">As skills da Masi Negócios dentro do Claude. Quatro passos, uns três minutos e nada para instalar no computador.</p>
       <div class="hero-acoes">
-        <a class="botao botao-principal botao-grande" href="#jornada">Começar a instalação <span class="seta" aria-hidden="true">↓</span></a>
-        <a class="botao botao-vidro botao-grande" href="#skills">Ver as skills</a>
+        <a class="botao botao-lima" href="#jornada">Começar a instalação</a>
+        <a class="elo" href="#skills">Ver as <span data-total-skills></span> skills<span class="elo-seta" aria-hidden="true">›</span></a>
       </div>
     </div>
-
-    <!-- O chip ponto da Masi Negócios (ilustração no MN Design System) com as camadas de efeito por
-         cima e os cartões de vidro flutuando em volta, só com fatos do Sistema. -->
-    <div class="chip" aria-hidden="true">
+    <ul class="logos" aria-label="Empresas da trajetória por trás do método">
+        <li><img src="/founders-os/img/logos/movile.webp" alt="Movile" loading="lazy"></li>
+        <li><img src="/founders-os/img/logos/ifood.webp" alt="iFood" loading="lazy"></li>
+        <li><img src="/founders-os/img/logos/playkids.webp" alt="PlayKids" loading="lazy"></li>
+        <li><img src="/founders-os/img/logos/pkxd.webp" alt="PK XD" loading="lazy"></li>
+        <li><img src="/founders-os/img/logos/sympla.webp" alt="Sympla" loading="lazy"></li>
+        <li><img src="/founders-os/img/logos/olx.webp" alt="OLX" loading="lazy"></li>
+        <li><img src="/founders-os/img/logos/leiturinha.webp" alt="Leiturinha" loading="lazy"></li>
+        <li><img src="/founders-os/img/logos/fingertips.webp" alt="Fingertips" loading="lazy"></li>
+    </ul>
+    <div class="chip">
       <div class="chip-palco">
-        <!-- Visto de cima, o chip gira inteiro; os pulsos de dados giram junto, nos braços. -->
-        <div class="chip-giro">
-          <img src="/founders-os/img/chip-masi.webp" alt="" width="1254" height="1254" fetchpriority="high">
-          <span class="pulso" style="--a: 90deg; --d: 0s"></span>
-          <span class="pulso" style="--a: 270deg; --d: 0.4s"></span>
-          <span class="pulso" style="--a: 30deg; --d: 0.8s"></span>
-          <span class="pulso" style="--a: 150deg; --d: 1.2s"></span>
-          <span class="pulso" style="--a: 210deg; --d: 1.6s"></span>
-          <span class="pulso" style="--a: 330deg; --d: 2s"></span>
-          <span class="varredura"></span>
-        </div>
-        <span class="orbita orbita-1"></span><span class="orbita orbita-2"></span><span class="orbita orbita-3"></span>
-        <span class="nucleo"></span>
-        <!-- O logo é texto de verdade, não pixel: fica sempre nítido e parado enquanto o chip gira. -->
-        <p class="chip-logo"><svg><use href="#asterisco"/></svg><span>Founders<br>OS</span></p>
+      <svg class="chip-svg" viewBox="0 0 1000 1000" aria-hidden="true">
+        <defs>
+          <radialGradient id="some" cx="50%" cy="50%" r="50%"><stop offset="0.62" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+          <mask id="mascara-trilhas"><rect width="1000" height="1000" fill="url(#some)"/></mask>
+          <linearGradient id="corpo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b221e"/><stop offset="1" stop-color="#060907"/></linearGradient>
+          <linearGradient id="pastilha" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#151b17"/><stop offset="1" stop-color="#040605"/></linearGradient>
+          <linearGradient id="reflexo" x1="0" y1="0" x2="1" y2="1"><stop offset="0.2" stop-color="#fff" stop-opacity="0"/><stop offset="0.45" stop-color="#fff" stop-opacity="0.07"/><stop offset="0.55" stop-color="#fff" stop-opacity="0"/></linearGradient>
+          <linearGradient id="prata" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#b4bdb7"/></linearGradient>
+          <filter id="brilho" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="46"/></filter>
+        </defs>
+        <g class="trilhas" mask="url(#mascara-trilhas)">
+          <path class="trilha" style="--i:0" pathLength="1" d="M292 160 V112 L220 40 V0" transform="rotate(0 500 500)"/>
+          <rect class="contato" x="281" y="151" width="22" height="16" rx="4" transform="rotate(0 500 500)"/>
+          <path class="trilha" style="--i:1" pathLength="1" d="M344 160 V112 L290 58 V0" transform="rotate(0 500 500)"/>
+          <rect class="contato" x="333" y="151" width="22" height="16" rx="4" transform="rotate(0 500 500)"/>
+          <path class="trilha" style="--i:2" pathLength="1" d="M396 160 V112 L360 76 V0" transform="rotate(0 500 500)"/>
+          <rect class="contato" x="385" y="151" width="22" height="16" rx="4" transform="rotate(0 500 500)"/>
+          <path class="trilha" style="--i:3" pathLength="1" d="M448 160 V112 L430 94 V0" transform="rotate(0 500 500)"/>
+          <rect class="contato" x="437" y="151" width="22" height="16" rx="4" transform="rotate(0 500 500)"/>
+          <path class="trilha" style="--i:4" pathLength="1" d="M500 160 V0" transform="rotate(0 500 500)"/>
+          <rect class="contato" x="489" y="151" width="22" height="16" rx="4" transform="rotate(0 500 500)"/>
+          <path class="trilha" style="--i:5" pathLength="1" d="M552 160 V112 L570 94 V0" transform="rotate(0 500 500)"/>
+          <rect class="contato" x="541" y="151" width="22" height="16" rx="4" transform="rotate(0 500 500)"/>
+          <path class="trilha" style="--i:6" pathLength="1" d="M604 160 V112 L640 76 V0" transform="rotate(0 500 500)"/>
+          <rect class="contato" x="593" y="151" width="22" height="16" rx="4" transform="rotate(0 500 500)"/>
+          <path class="trilha" style="--i:7" pathLength="1" d="M656 160 V112 L710 58 V0" transform="rotate(0 500 500)"/>
+          <rect class="contato" x="645" y="151" width="22" height="16" rx="4" transform="rotate(0 500 500)"/>
+          <path class="trilha" style="--i:8" pathLength="1" d="M708 160 V112 L780 40 V0" transform="rotate(0 500 500)"/>
+          <rect class="contato" x="697" y="151" width="22" height="16" rx="4" transform="rotate(0 500 500)"/>
+          <path class="trilha" style="--i:0" pathLength="1" d="M292 160 V112 L220 40 V0" transform="rotate(90 500 500)"/>
+          <rect class="contato" x="281" y="151" width="22" height="16" rx="4" transform="rotate(90 500 500)"/>
+          <path class="trilha" style="--i:1" pathLength="1" d="M344 160 V112 L290 58 V0" transform="rotate(90 500 500)"/>
+          <rect class="contato" x="333" y="151" width="22" height="16" rx="4" transform="rotate(90 500 500)"/>
+          <path class="trilha" style="--i:2" pathLength="1" d="M396 160 V112 L360 76 V0" transform="rotate(90 500 500)"/>
+          <rect class="contato" x="385" y="151" width="22" height="16" rx="4" transform="rotate(90 500 500)"/>
+          <path class="trilha" style="--i:3" pathLength="1" d="M448 160 V112 L430 94 V0" transform="rotate(90 500 500)"/>
+          <rect class="contato" x="437" y="151" width="22" height="16" rx="4" transform="rotate(90 500 500)"/>
+          <path class="trilha" style="--i:4" pathLength="1" d="M500 160 V0" transform="rotate(90 500 500)"/>
+          <rect class="contato" x="489" y="151" width="22" height="16" rx="4" transform="rotate(90 500 500)"/>
+          <path class="trilha" style="--i:5" pathLength="1" d="M552 160 V112 L570 94 V0" transform="rotate(90 500 500)"/>
+          <rect class="contato" x="541" y="151" width="22" height="16" rx="4" transform="rotate(90 500 500)"/>
+          <path class="trilha" style="--i:6" pathLength="1" d="M604 160 V112 L640 76 V0" transform="rotate(90 500 500)"/>
+          <rect class="contato" x="593" y="151" width="22" height="16" rx="4" transform="rotate(90 500 500)"/>
+          <path class="trilha" style="--i:7" pathLength="1" d="M656 160 V112 L710 58 V0" transform="rotate(90 500 500)"/>
+          <rect class="contato" x="645" y="151" width="22" height="16" rx="4" transform="rotate(90 500 500)"/>
+          <path class="trilha" style="--i:8" pathLength="1" d="M708 160 V112 L780 40 V0" transform="rotate(90 500 500)"/>
+          <rect class="contato" x="697" y="151" width="22" height="16" rx="4" transform="rotate(90 500 500)"/>
+          <path class="trilha" style="--i:0" pathLength="1" d="M292 160 V112 L220 40 V0" transform="rotate(180 500 500)"/>
+          <rect class="contato" x="281" y="151" width="22" height="16" rx="4" transform="rotate(180 500 500)"/>
+          <path class="trilha" style="--i:1" pathLength="1" d="M344 160 V112 L290 58 V0" transform="rotate(180 500 500)"/>
+          <rect class="contato" x="333" y="151" width="22" height="16" rx="4" transform="rotate(180 500 500)"/>
+          <path class="trilha" style="--i:2" pathLength="1" d="M396 160 V112 L360 76 V0" transform="rotate(180 500 500)"/>
+          <rect class="contato" x="385" y="151" width="22" height="16" rx="4" transform="rotate(180 500 500)"/>
+          <path class="trilha" style="--i:3" pathLength="1" d="M448 160 V112 L430 94 V0" transform="rotate(180 500 500)"/>
+          <rect class="contato" x="437" y="151" width="22" height="16" rx="4" transform="rotate(180 500 500)"/>
+          <path class="trilha" style="--i:4" pathLength="1" d="M500 160 V0" transform="rotate(180 500 500)"/>
+          <rect class="contato" x="489" y="151" width="22" height="16" rx="4" transform="rotate(180 500 500)"/>
+          <path class="trilha" style="--i:5" pathLength="1" d="M552 160 V112 L570 94 V0" transform="rotate(180 500 500)"/>
+          <rect class="contato" x="541" y="151" width="22" height="16" rx="4" transform="rotate(180 500 500)"/>
+          <path class="trilha" style="--i:6" pathLength="1" d="M604 160 V112 L640 76 V0" transform="rotate(180 500 500)"/>
+          <rect class="contato" x="593" y="151" width="22" height="16" rx="4" transform="rotate(180 500 500)"/>
+          <path class="trilha" style="--i:7" pathLength="1" d="M656 160 V112 L710 58 V0" transform="rotate(180 500 500)"/>
+          <rect class="contato" x="645" y="151" width="22" height="16" rx="4" transform="rotate(180 500 500)"/>
+          <path class="trilha" style="--i:8" pathLength="1" d="M708 160 V112 L780 40 V0" transform="rotate(180 500 500)"/>
+          <rect class="contato" x="697" y="151" width="22" height="16" rx="4" transform="rotate(180 500 500)"/>
+          <path class="trilha" style="--i:0" pathLength="1" d="M292 160 V112 L220 40 V0" transform="rotate(270 500 500)"/>
+          <rect class="contato" x="281" y="151" width="22" height="16" rx="4" transform="rotate(270 500 500)"/>
+          <path class="trilha" style="--i:1" pathLength="1" d="M344 160 V112 L290 58 V0" transform="rotate(270 500 500)"/>
+          <rect class="contato" x="333" y="151" width="22" height="16" rx="4" transform="rotate(270 500 500)"/>
+          <path class="trilha" style="--i:2" pathLength="1" d="M396 160 V112 L360 76 V0" transform="rotate(270 500 500)"/>
+          <rect class="contato" x="385" y="151" width="22" height="16" rx="4" transform="rotate(270 500 500)"/>
+          <path class="trilha" style="--i:3" pathLength="1" d="M448 160 V112 L430 94 V0" transform="rotate(270 500 500)"/>
+          <rect class="contato" x="437" y="151" width="22" height="16" rx="4" transform="rotate(270 500 500)"/>
+          <path class="trilha" style="--i:4" pathLength="1" d="M500 160 V0" transform="rotate(270 500 500)"/>
+          <rect class="contato" x="489" y="151" width="22" height="16" rx="4" transform="rotate(270 500 500)"/>
+          <path class="trilha" style="--i:5" pathLength="1" d="M552 160 V112 L570 94 V0" transform="rotate(270 500 500)"/>
+          <rect class="contato" x="541" y="151" width="22" height="16" rx="4" transform="rotate(270 500 500)"/>
+          <path class="trilha" style="--i:6" pathLength="1" d="M604 160 V112 L640 76 V0" transform="rotate(270 500 500)"/>
+          <rect class="contato" x="593" y="151" width="22" height="16" rx="4" transform="rotate(270 500 500)"/>
+          <path class="trilha" style="--i:7" pathLength="1" d="M656 160 V112 L710 58 V0" transform="rotate(270 500 500)"/>
+          <rect class="contato" x="645" y="151" width="22" height="16" rx="4" transform="rotate(270 500 500)"/>
+          <path class="trilha" style="--i:8" pathLength="1" d="M708 160 V112 L780 40 V0" transform="rotate(270 500 500)"/>
+          <rect class="contato" x="697" y="151" width="22" height="16" rx="4" transform="rotate(270 500 500)"/>
+        </g>
+        <rect class="chip-luz" x="170" y="170" width="660" height="660" rx="100" filter="url(#brilho)"/>
+      </svg>
+      <!-- Corpo do chip: render 3D recortado. Fica fora do SVG, como imagem comum, para o navegador
+           desenhar na resolução da tela (dentro do SVG, com filtro, ele saía borrado em tela retina). -->
+      <span class="chip-sombra"></span>
+      <img class="chip-corpo" src="/founders-os/img/chip-3d.webp" alt="Chip Founders OS" width="1382" height="1382" decoding="async">
+      <svg class="chip-aro" viewBox="0 0 1000 1000" aria-hidden="true">
+        <defs>
+          <linearGradient id="aro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d9ff7a"/><stop offset="0.35" stop-color="#aff000"/><stop offset="0.7" stop-color="#2c3d08"/><stop offset="1" stop-color="#aff000"/></linearGradient>
+        </defs>
+        <rect x="160" y="160" width="680" height="680" rx="100" fill="none" stroke="url(#aro)" stroke-width="2.5"/>
+      </svg>
       </div>
-      <div class="flutua flutua-1"><strong id="total-skills"></strong><span>skills de founder</span></div>
-      <div class="flutua flutua-2"><strong>3 min</strong><span>para instalar</span></div>
-      <div class="flutua flutua-3"><strong>0</strong><span>linhas de código</span></div>
-      <div class="flutua flutua-4"><svg><use href="#asterisco"/></svg><span>No app e no navegador</span></div>
-    </div>
-  </section>
-
-  <div class="fita" aria-hidden="true">
-    <div id="fita-trilho" class="fita-trilho"></div>
-  </div>
-
-  <div class="area-guia">
-  <section class="instalacao" id="jornada">
-    <header class="secao-topo">
-      <p class="sobretitulo">Instalação guiada</p>
-      <h2>Um passo de cada vez.</h2>
-      <div class="idioma" role="group" aria-label="Idioma do seu Claude">
-        <span>Meu Claude está em</span>
-        <div id="idioma-opcoes" class="idioma-opcoes"></div>
-      </div>
-    </header>
-    <div class="instalacao-corpo">
-      <aside class="painel" aria-label="Seu progresso">
-        <div id="indice-passos" class="trilha-progresso"></div>
-      </aside>
-      <main id="passos-area" class="jornada"></main>
     </div>
   </section>
 
   <section class="vitrine" id="skills" aria-labelledby="skills-titulo">
-    <h2 id="skills-titulo">As skills que entram no seu Claude.</h2>
-    <p class="vitrine-apoio">Depois de instalar, é só conversar. O Claude reconhece o assunto e usa a skill certa sozinho.</p>
-    <ul id="vitrine-skills" class="vitrine-grade"></ul>
+    <header class="secao-topo" data-revela>
+      <h2 id="skills-titulo">As skills que entram<br>no seu Claude.</h2>
+      <p class="secao-apoio">Depois de instalar, é só conversar. Toque numa skill para ver o que mandar no chat.</p>
+    </header>
+    <div class="areas" role="tablist" aria-label="Áreas do negócio" id="areas"></div>
+    <div class="loja">
+      <div class="skills-painel" id="skills-painel" role="tabpanel"></div>
+      <aside class="chamada" id="chamada" data-revela>
+        <div>
+          <h3>Uns três minutos e está no seu Claude.</h3>
+          <p>O guia abaixo leva você pela mão, um passo de cada vez.</p>
+        </div>
+        <a class="botao botao-lima" href="#jornada">Começar a instalação</a>
+      </aside>
+    </div>
+    <dialog class="ficha" id="ficha" aria-labelledby="ficha-nome"></dialog>
+  </section>
+
+  <section class="instalacao" id="jornada" aria-labelledby="jornada-titulo">
+    <header class="secao-topo" data-revela>
+      <p class="sobretitulo">Instalação guiada</p>
+      <h2 id="jornada-titulo">Um passo de cada vez.</h2>
+      <p class="secao-apoio">Não funciona no plano Free do Claude. Precisa de Pro, Max, Team ou Enterprise.</p>
+    </header>
+    <div class="instalacao-corpo">
+      <aside class="painel" aria-label="Seu progresso">
+        <ol id="indice-passos" class="trilha-passos"></ol>
+      </aside>
+      <div id="passos-area" class="jornada"></div>
+    </div>
   </section>
 
   <section class="ajuda" id="ajuda-area"></section>
-  </div>
+  </main>
 
   <footer class="rodape">
-    <p class="assinatura">Masi Negócios<svg class="ast-inline" aria-hidden="true"><use href="#asterisco"/></svg></p>
-    <p>Tudo o que o Sistema faz está em texto aberto no <a href="https://github.com/masinegocios/founders-os" target="_blank" rel="noopener">repositório público</a>. Para remover, basta desativar o Founders OS nos plugins do seu Claude.</p>
-    <p>Este guia não coleta dados: o seu progresso fica salvo apenas no seu navegador.</p>
+    <div class="rodape-dentro">
+      <img src="/founders-os/img/masi-dark.svg" alt="Masi Negócios" width="1831" height="164" loading="lazy">
+      <p>Tudo o que o Sistema faz está em texto aberto no <a href="https://github.com/Masi-Negocios/Founder-OS" target="_blank" rel="noopener">repositório público</a>. Para remover, basta desativar o Founders OS nos plugins do seu Claude.</p>
+      <p>Este guia não coleta dados: o seu progresso fica salvo apenas no seu navegador.</p>
+    </div>
   </footer>
 
   <script type="module" src="/founders-os/app.js"></script>

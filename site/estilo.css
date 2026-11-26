@@ -1,464 +1,361 @@
-/* Founders OS: MN Design System da Masi Negócios (design.masinegocios.com.br/styleguide).
-   Paleta: Brand Green #AFF000, Brand Dark Green #0C1C16, neutros e Primary #5FC318.
-   Tipografia: Inter. Raios: cartões 16px (LG), botões e pílulas arredondados por inteiro. */
+/* Founders OS. Marca: Masi Negócios (Brand Green #AFF000, Brand Dark Green #0C1C16, Inter).
+   Composição: abertura preta com o produto no centro, depois seções claras e calmas.
+   Uma família só (Inter), títulos em 600 com entrelinha e espaçamento apertados, sem caixa alta. */
 :root {
-  --verde: #aff000;
-  --verde-claro: #c8ff52;
-  --escuro: #0c1c16;
-  --escuro-fundo: #08140f;
-  --escuro-fundo-2: #040a07;
-  --claro: #f8f8f8;
-  --claro-claro: #ffffff;
-  --print: #474747;
-  --claro-suave: rgba(248, 248, 248, 0.72);
-  --claro-apagado: rgba(248, 248, 248, 0.45);
-  --vidro: rgba(248, 248, 248, 0.045);
-  --vidro-forte: rgba(248, 248, 248, 0.08);
-  --vidro-borda: rgba(248, 248, 248, 0.12);
-  --brilho: 0 0 0 1px rgba(175, 240, 0, 0.5), 0 24px 70px -18px rgba(175, 240, 0, 0.55);
-  --manchete: "Inter", system-ui, sans-serif;
-  --serifa: "Inter", system-ui, sans-serif;
-  --texto: "Inter", system-ui, sans-serif;
-  --largura: 1200px;
-  --margem: clamp(1.25rem, 4vw, 4rem);
-  --curva: cubic-bezier(0.16, 1, 0.3, 1);
-  --chip: min(62vw, 640px);
-  --raio: 16px;
-  /* Retícula: ponto pequeno e bem discreto, como o fundo dos slides. */
-  --reticula: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46' viewBox='0 0 46 46'%3E%3Ccircle cx='23' cy='23' r='2' fill='%23AFF000' fill-opacity='0.12'/%3E%3C/svg%3E");
-  --mascara-ast: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-50 -50 100 100'%3E%3Ccircle r='42'/%3E%3C/svg%3E");
+  --lima: #aff000;
+  --lima-forte: #c4ff3d;
+  --verde-escuro: #0c1c16;
+  --preto: #000;
+  --grafite: #222;
+  --tinta: #1d1d1f;
+  --cinza: #6e6e73;
+  --cinza-claro: #86868b;
+  --linha: #d2d2d7;
+  --fundo: #f5f5f7;
+  --branco: #fff;
+  --sobre-preto: #f5f5f7;
+  --sobre-preto-2: rgba(245, 245, 247, 0.62);
+  --familia: "Inter", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  --largura: 1080px;
+  --margem: clamp(1.25rem, 4vw, 3rem);
+  --nav: 52px;
+  --raio: 20px;
+  --raio-p: 12px;
+  --curva: cubic-bezier(0.22, 1, 0.36, 1);
+  /* O chip nunca passa da altura da tela: metade dele precisa caber junto com o texto. */
+  --chip: min(594px, 92vw, 66svh);
 }
 
 * { box-sizing: border-box; }
-html { background: var(--escuro-fundo-2); scroll-behavior: smooth; }
+html { background: var(--grafite); scroll-behavior: smooth; scroll-padding-top: calc(var(--nav) + 1rem); -webkit-text-size-adjust: 100%; }
 body {
   margin: 0; min-width: 320px; overflow-x: hidden;
-  background: linear-gradient(180deg, var(--escuro) 0, var(--escuro-fundo) 900px, var(--escuro-fundo-2) 100%);
-  color: var(--claro);
-  font: 17px/1.55 var(--texto);
+  background: var(--branco); color: var(--tinta);
+  font: 400 17px/1.47 var(--familia); letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
-img { display: block; }
+img, svg { display: block; }
 a { color: inherit; }
-svg { fill: currentColor; }
-::selection { background: var(--verde); color: var(--escuro); }
-:focus-visible { outline: 3px solid var(--verde); outline-offset: 3px; }
+p { margin: 0; }
+::selection { background: var(--lima); color: var(--verde-escuro); }
+:focus-visible { outline: 2px solid #0071e3; outline-offset: 3px; border-radius: 6px; }
 
-/* Grão leve pedido pela V2: camada fixa, sem clique, por cima de tudo. */
-body::after {
-  content: ""; position: fixed; inset: 0; z-index: 50; pointer-events: none;
-  opacity: 0.06; mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
-}
-
-.pular { position: absolute; z-index: 60; top: 0.75rem; left: -9999px; padding: 0.75rem 1rem; background: var(--claro); color: var(--escuro); font-weight: 700; text-decoration: none; border-radius: 999px; }
+.pular { position: absolute; z-index: 60; top: 0.75rem; left: -9999px; padding: 0.7rem 1rem; background: var(--branco); color: var(--tinta); font-weight: 600; text-decoration: none; border-radius: 980px; }
 .pular:focus { left: 0.75rem; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-h1, h2, h3 { margin: 0; font-family: var(--manchete); font-weight: 700; text-transform: uppercase; }
-.ast-inline { width: 0.62em; height: 0.62em; margin-left: 0.12em; color: var(--verde); vertical-align: 0.32em; }
-.sobretitulo { margin: 0 0 0.4rem; padding-bottom: 0.1em; font-family: var(--serifa); font-style: italic; font-size: clamp(1.4rem, 2.2vw, 1.9rem); line-height: 1.1; color: var(--verde-claro); }
+h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.028em; text-wrap: balance; }
+h2 { font-size: clamp(2.1rem, 4.6vw, 3.5rem); line-height: 1.07; }
 
-/* --- cabeçalho de vidro ---------------------------------------------------- */
-.cabecalho {
-  position: sticky; top: 0; z-index: 40;
-  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  min-height: 64px;
-  padding: 0 max(var(--margem), calc((100vw - var(--largura)) / 2));
-  background: rgba(8, 20, 15, 0.55);
-  -webkit-backdrop-filter: blur(16px) saturate(140%); backdrop-filter: blur(16px) saturate(140%);
-  border-bottom: 1px solid var(--vidro-borda);
+/* --- navegação ------------------------------------------------------------ */
+.nav {
+  position: sticky; top: 0; z-index: 40; height: var(--nav); margin-bottom: calc(var(--nav) * -1);
+  background: rgba(34, 34, 34, 0.8);
+  -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--sobre-preto);
 }
-.assinatura { margin: 0; font-family: var(--serifa); font-size: 1.5rem; line-height: 1; color: var(--claro); white-space: nowrap; }
-.contador { padding: 0.35rem 0.9rem; border: 1px solid rgba(175, 240, 0, 0.45); border-radius: 999px; font-family: var(--manchete); font-weight: 500; font-size: 0.95rem; letter-spacing: 0.02em; color: var(--verde-claro); text-transform: uppercase; }
+.nav-dentro { height: 100%; max-width: calc(var(--largura) + 2 * var(--margem)); margin: 0 auto; padding: 0 var(--margem); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1.5rem; }
+.nav-marca { justify-self: start; display: flex; align-items: center; height: 44px; }
+.nav-marca img { height: 15px; width: auto; }
+.nav-elos { display: flex; gap: clamp(1.2rem, 3vw, 2.4rem); font-size: 0.8rem; }
+.nav-elos a { text-decoration: none; color: rgba(245, 245, 247, 0.8); padding: 0.9rem 0; transition: color 200ms ease; }
+.nav-elos a:hover { color: #fff; }
+.nav-fim { justify-self: end; display: flex; align-items: center; gap: 1rem; }
+.contador { font-size: 0.8rem; color: var(--sobre-preto-2); white-space: nowrap; font-variant-numeric: tabular-nums; }
 
-/* --- abertura --------------------------------------------------------------
-   Luz verde vinda do topo, nome gigante só no contorno, texto centralizado e o chip
-   logo abaixo, como o produto exposto. */
+/* --- botões ------------------------------------------------------------- */
+.botao {
+  min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+  padding: 0.7rem 1.5rem; border: 0; border-radius: 980px; cursor: pointer;
+  font: 500 1.0625rem/1.2 var(--familia); letter-spacing: -0.015em; text-decoration: none; white-space: nowrap;
+  transition: background-color 200ms ease, color 200ms ease, transform 200ms var(--curva);
+}
+.botao:active { transform: scale(0.97); }
+.botao-lima { background: var(--lima); color: var(--verde-escuro); }
+.botao-lima:hover { background: var(--lima-forte); }
+.botao-p { min-height: 30px; padding: 0.3rem 0.9rem; font-size: 0.8rem; }
+.botao-escuro { background: var(--tinta); color: #fff; }
+.botao-escuro:hover { background: #000; }
+.botao-claro { background: rgba(0, 0, 0, 0.06); color: var(--tinta); }
+.botao-claro:hover { background: rgba(0, 0, 0, 0.1); }
+.botao-copiar { min-height: 34px; padding: 0.35rem 0.95rem; font-size: 0.875rem; background: var(--tinta); color: #fff; }
+.botao-copiar:hover { background: #000; }
+.botao-copiar[data-copiado] { background: var(--lima); color: var(--verde-escuro); }
+.elo { display: inline-flex; align-items: center; gap: 0.3rem; min-height: 48px; font-size: 1.0625rem; color: var(--lima); text-decoration: none; }
+.elo:hover { text-decoration: underline; text-underline-offset: 4px; }
+.elo-seta { font-size: 1.3em; line-height: 1; transition: transform 250ms var(--curva); }
+.elo:hover .elo-seta { transform: translateX(3px); }
+.link { min-height: 44px; font: inherit; font-size: 0.875rem; background: none; border: 0; padding: 0; color: #0066cc; cursor: pointer; }
+.link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* --- abertura -------------------------------------------------------------
+   Grafite. Texto, botão, logos e, por último, o chip, que fica a cavalo entre esta faixa e a
+   seção branca: metade em cada uma, para as duas partes lerem como uma página só. */
 .hero {
-  position: relative; isolation: isolate; overflow-x: clip;
+  position: relative; z-index: 2;
   display: flex; flex-direction: column; align-items: center;
-  padding: clamp(3rem, 7vw, 5.5rem) var(--margem) 0;
-  text-align: center;
-  background: var(--reticula);
+  padding: var(--nav) var(--margem) 0;
+  background: var(--grafite); color: var(--sobre-preto); text-align: center;
+  /* A dobra não é reta: uma barriga leve para baixo, mais funda no meio, onde o chip atravessa. */
+  --barriga: clamp(10px, 1.7vw, 26px);
+  border-radius: 0 0 50% 50% / 0 0 var(--barriga) var(--barriga);
 }
-.hero::before {
-  content: ""; position: absolute; z-index: -1; left: 50%; top: -10%;
-  width: min(1400px, 140vw); height: 900px; transform: translateX(-50%);
-  background: radial-gradient(ellipse 50% 45% at 50% 0%, rgba(175, 240, 0, 0.42), rgba(175, 240, 0, 0.08) 55%, transparent 75%);
-  pointer-events: none;
-}
-.marca-dagua {
-  position: absolute; z-index: -1; top: clamp(0.5rem, 2vw, 2rem); left: 50%; transform: translateX(-50%);
-  margin: 0; white-space: nowrap;
-  font-family: var(--manchete); font-weight: 700; text-transform: uppercase; line-height: 0.85;
-  font-size: clamp(6rem, 21vw, 22rem); letter-spacing: -0.01em;
-  color: transparent; -webkit-text-stroke: 1px rgba(248, 248, 248, 0.09);
-  -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent 85%);
-          mask-image: linear-gradient(to bottom, #000 30%, transparent 85%);
-  pointer-events: none;
-}
-.hero-texto { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; max-width: 1100px; }
-.selo {
-  display: inline-flex; align-items: center; gap: 0.55rem; margin: 0 0 1.6rem; padding: 0.45rem 1rem 0.45rem 0.8rem;
-  background: var(--vidro-forte); border: 1px solid var(--vidro-borda); border-radius: 999px;
-  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-  font-size: 0.92rem; font-weight: 500; color: var(--claro);
-}
-.selo svg { width: 1rem; height: 1rem; color: var(--verde); }
-.hero h1 { font-size: clamp(3rem, 7.4vw, 7.2rem); line-height: 0.92; letter-spacing: -0.01em; color: var(--claro); }
-.hero h1 .linha:nth-child(2) { color: var(--verde); }
-/* Corta só na vertical, para a linha subir de dentro dela; na horizontal nunca corta.
-   A folga em cima guarda o acento do "É" durante a subida. */
-.hero h1 .linha { display: block; overflow-x: visible; overflow-y: clip; padding: 0.14em 0 0.04em; margin-top: -0.14em; }
-.hero h1 .linha > span { display: block; }
-.hero-apoio { max-width: 36ch; margin: 1.4rem 0 2rem; font-size: clamp(1.1rem, 1.6vw, 1.3rem); line-height: 1.45; color: var(--claro-suave); }
-.hero-acoes { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
+.hero-texto { display: flex; flex-direction: column; align-items: center; padding-top: clamp(2.5rem, 8svh, 4.5rem); }
+.hero-produto { font-size: clamp(1.05rem, 1.6vw, 1.3rem); font-weight: 600; letter-spacing: -0.01em; color: var(--lima); }
+.hero h1 { margin-top: 0.35rem; font-size: clamp(2.6rem, min(6.4vw, 10.5svh), 5.6rem); line-height: 1.04; letter-spacing: -0.035em; }
+.hero h1 em { font-style: normal; color: var(--lima); }
+.hero-apoio { max-width: 34em; margin-top: clamp(0.9rem, 2svh, 1.4rem); font-size: clamp(1.0625rem, 1.55vw, 1.35rem); line-height: 1.38; color: var(--sobre-preto-2); text-wrap: balance; }
+.hero-acoes { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.4rem 1.6rem; margin-top: clamp(1.1rem, 2.6svh, 1.8rem); }
 
-/* --- o chip ponto -------------------------------------------------------------
-   Visto de cima e sem fundo (PNG com transparência): gira inteiro, bem devagar. Por cima,
-   parados: as órbitas, o núcleo pulsando, a varredura e o logo em texto real. */
-.chip { position: relative; z-index: 1; width: var(--chip); margin-top: clamp(1rem, 3vw, 2.5rem); }
-.chip-palco {
-  position: relative; aspect-ratio: 1;
-  transform: perspective(1400px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-  transition: transform 600ms var(--curva);
-}
-.chip-giro { position: absolute; inset: 6%; filter: drop-shadow(0 0 calc(var(--chip) * 0.035) rgba(175, 240, 0, 0.75)) drop-shadow(0 0 calc(var(--chip) * 0.1) rgba(175, 240, 0, 0.35)); }
-.chip-giro img { width: 100%; height: 100%; }
-.orbita { position: absolute; left: 50%; top: 50%; border-radius: 50%; border: 1.5px dashed rgba(175, 240, 0, 0.45); pointer-events: none; }
-.orbita::after { content: ""; position: absolute; top: -5px; left: 50%; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: var(--claro); box-shadow: 0 0 12px 3px rgba(175, 240, 0, 0.9); }
-.orbita-1 { width: 40%; height: 40%; margin: -20% 0 0 -20%; border-color: rgba(248, 248, 248, 0.18); }
-.orbita-2 { width: 100%; height: 100%; margin: -50% 0 0 -50%; border-style: solid; border-color: rgba(175, 240, 0, 0.18); }
-.orbita-3 { width: 112%; height: 112%; margin: -56% 0 0 -56%; border-color: rgba(248, 248, 248, 0.12); }
-.pulso { position: absolute; left: 50%; top: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; background: var(--claro); box-shadow: 0 0 10px 3px rgba(175, 240, 0, 0.95); opacity: 0; transform: rotate(var(--a)) translateX(0); }
-.nucleo { position: absolute; left: 50%; top: 50%; width: 34%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, rgba(255, 140, 110, 0.4), rgba(175, 240, 0, 0.14) 45%, transparent 70%); mix-blend-mode: screen; pointer-events: none; }
-/* A luz da varredura só aparece sobre o desenho do chip: a própria imagem é a máscara. */
-.varredura {
-  position: absolute; inset: 0; pointer-events: none; opacity: 0;
-  -webkit-mask: url("/founders-os/img/chip-masi.webp") center / contain no-repeat; mask: url("/founders-os/img/chip-masi.webp") center / contain no-repeat;
-  background: linear-gradient(to bottom, transparent 0 46%, rgba(248, 248, 248, 0.12) 49%, rgba(175, 240, 0, 0.4) 50%, transparent 51% 100%); background-size: 100% 260%;
-  mix-blend-mode: screen;
-}
-/* Logo no núcleo: ponto e "Masi Negócios" em serifa, nítidos em qualquer tela. */
-.chip-logo {
-  position: absolute; left: 50%; top: 50%; z-index: 2; transform: translate(-50%, -50%);
-  display: grid; justify-items: center; gap: calc(var(--chip) * 0.012); margin: 0;
-  font-family: var(--serifa); font-size: calc(var(--chip) * 0.04); line-height: 1; text-align: center; color: var(--claro);
-  text-shadow: 0 0 calc(var(--chip) * 0.02) rgba(175, 240, 0, 0.6);
-  pointer-events: none;
-}
-.chip-logo svg { width: calc(var(--chip) * 0.07); height: calc(var(--chip) * 0.07); color: var(--claro); filter: drop-shadow(0 0 calc(var(--chip) * 0.015) rgba(175, 240, 0, 0.9)); }
+.logos { list-style: none; width: 100%; max-width: var(--largura); margin: clamp(2.2rem, 6svh, 4rem) auto 0; padding: 0; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); align-items: center; gap: 1.2rem clamp(1rem, 2.5vw, 2.5rem); }
+.logos li { display: grid; place-items: center; height: 44px; }
+.logos img { max-width: 100%; max-height: 30px; width: auto; height: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.62; transition: opacity 250ms ease; }
+.logos:hover img { opacity: 0.32; }
+.logos li:hover img { opacity: 1; }
 
-/* Cartões de vidro flutuando em volta do chip: só fatos do Sistema. */
-.flutua {
-  position: absolute; z-index: 2; display: grid; gap: 0.1rem; padding: 0.8rem 1.1rem; text-align: left;
-  background: rgba(8, 20, 15, 0.5); border: 1px solid var(--vidro-borda); border-radius: var(--raio);
-  -webkit-backdrop-filter: blur(14px) saturate(140%); backdrop-filter: blur(14px) saturate(140%);
-  box-shadow: inset 0 1px 0 rgba(248, 248, 248, 0.08), 0 18px 40px -20px rgba(0, 0, 0, 0.7);
+.chip { position: relative; z-index: 1; flex: none; width: var(--chip); height: var(--chip); margin-top: calc(var(--chip) * -0.06); margin-bottom: calc(var(--chip) * -0.5); }
+/* Só existe transform enquanto o ponteiro está na abertura; parado, o chip não tem camada própria. */
+.chip-palco { position: absolute; inset: 0; }
+.chip-palco.inclina { transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform 420ms var(--curva); }
+.chip-svg, .chip-aro { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.chip-aro { pointer-events: none; }
+.chip-corpo, .chip-sombra { position: absolute; left: 16%; top: 16%; width: 68%; height: 68%; }
+.chip-corpo { display: block; max-width: none; }
+/* Sombra de contato do chip sobre a página (o render vem recortado, sem sombra). Sem filtro. */
+.chip-sombra { border-radius: 14.7%; box-shadow: 0 18px 34px rgba(0, 0, 0, 0.38); }
+.trilha { fill: none; stroke: var(--lima); stroke-width: 2; stroke-linecap: round; stroke-opacity: calc(0.28 + 0.5 * var(--aceso, 0)); stroke-dasharray: 1; stroke-dashoffset: 0; }
+.contato { fill: var(--lima); fill-opacity: calc(0.55 + 0.45 * var(--aceso, 0)); }
+.chip-luz { fill: var(--lima); opacity: calc(0.16 + 0.3 * var(--aceso, 0)); }
+
+/* --- cabeçalho de seção ----------------------------------------------------- */
+.secao-topo { max-width: 46rem; margin: 0 auto clamp(2.2rem, 5vw, 3.5rem); text-align: center; }
+.sobretitulo { margin-bottom: 0.5rem; font-size: clamp(1.05rem, 1.6vw, 1.3rem); font-weight: 600; color: var(--cinza); }
+.secao-apoio { max-width: 32em; margin: 1rem auto 0; font-size: clamp(1.0625rem, 1.5vw, 1.3rem); line-height: 1.4; color: var(--cinza); text-wrap: balance; }
+
+/* --- skills: uma área por vez, uma linha por skill --------------------------- */
+/* O corpo do chip desce 34% do desenho para dentro desta seção: o respiro começa depois dele. */
+.vitrine { padding: calc(var(--chip) * 0.34 + clamp(4rem, 8vw, 6rem)) var(--margem) clamp(4rem, 9vw, 7rem); background: var(--branco); }
+.segmentado, .areas { display: flex; gap: 2px; padding: 3px; background: rgba(118, 118, 128, 0.12); border-radius: 980px; }
+.areas { width: max-content; max-width: 100%; margin: 0 auto; overflow-x: auto; scrollbar-width: none; }
+.areas::-webkit-scrollbar { display: none; }
+.aba {
+  flex: none; min-height: 40px; padding: 0.4rem 1.05rem; border: 0; border-radius: 980px; background: transparent; cursor: pointer;
+  font: 500 0.9375rem/1.2 var(--familia); letter-spacing: -0.01em; color: var(--tinta); white-space: nowrap;
+  transition: background-color 250ms ease, color 250ms ease, box-shadow 250ms ease;
 }
-.flutua strong { font-family: var(--manchete); font-weight: 700; font-size: 1.9rem; line-height: 1; color: var(--verde); }
-.flutua span { font-size: 0.85rem; font-weight: 500; color: var(--claro-suave); }
-.flutua svg { width: 1.4rem; height: 1.4rem; color: var(--verde); }
-.flutua-1 { left: -16%; top: 20%; }
-.flutua-2 { right: -14%; top: 14%; }
-.flutua-3 { left: -12%; top: 66%; }
-.flutua-4 { right: -18%; top: 70%; display: flex; align-items: center; gap: 0.6rem; }
-.flutua-4 span { font-size: 0.92rem; color: var(--claro); }
+.aba small { margin-left: 0.4rem; font-size: 0.8125rem; font-weight: 400; color: var(--cinza-claro); font-variant-numeric: tabular-nums; }
+.aba:hover { background: rgba(255, 255, 255, 0.55); }
+.aba[aria-selected="true"], .aba[aria-pressed="true"] { background: var(--branco); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 0 0.5px rgba(0, 0, 0, 0.04); }
 
-/* --- fita das skills ------------------------------------------------------ */
-.fita {
-  position: relative; z-index: 2; overflow: hidden; margin-top: clamp(-6rem, -8vw, -2rem); padding: 1.2rem 0;
-  border-block: 1px solid var(--vidro-borda); background: rgba(4, 10, 7, 0.6);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-}
-.fita-trilho { display: flex; gap: 0.8rem; width: max-content; }
-.pilula { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.55rem 1.1rem; border: 1px solid var(--vidro-borda); border-radius: 999px; background: var(--vidro); font-family: var(--manchete); font-weight: 500; font-size: 1.05rem; text-transform: uppercase; white-space: nowrap; color: var(--claro); }
-.pilula svg { width: 0.9rem; height: 0.9rem; color: var(--verde); }
+/* Loja: a área aberta vira uma lista em três colunas; a chamada fecha embaixo. */
+.loja { max-width: var(--largura); margin: clamp(1.8rem, 3.5vw, 2.6rem) auto 0; display: grid; gap: clamp(2rem, 4vw, 3rem); }
+.trilho { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(1.5rem, 3vw, 2.25rem); }
+.trilho li { min-width: 0; }
+.trilho-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; max-width: 46rem; margin-inline: auto; }
+.movimento .trilho { animation: trocar 450ms var(--curva) backwards; }
+/* A linha inteira é o botão: ícone, nome, para que serve e "Ver". A frase de exemplo fica na ficha. */
+.app { width: 100%; display: grid; grid-template-columns: 60px minmax(0, 1fr) auto; align-items: center; gap: 0.9rem; padding: 0; border: 0; background: none; cursor: pointer; text-align: left; font: inherit; letter-spacing: inherit; color: inherit; }
+.app-icone { width: 60px; aspect-ratio: 1; display: grid; place-items: center; border-radius: 22.5%; background: var(--verde-escuro); color: var(--lima); box-shadow: inset 0 0 0 1px rgba(175, 240, 0, 0.14); }
+.app-icone svg { width: 46%; height: 46%; }
+.app-texto { grid-column: 2; min-width: 0; display: grid; gap: 0.15rem; padding: 0.85rem 0; }
+.app-texto strong { font-size: 1rem; font-weight: 600; line-height: 1.25; letter-spacing: -0.015em; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.app-texto > span { font-size: 0.8125rem; line-height: 1.35; color: var(--cinza); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.app-ver { min-width: 62px; padding: 0.32rem 0.9rem; border-radius: 980px; background: var(--fundo); font-size: 0.8125rem; font-weight: 700; text-align: center; color: var(--verde-escuro); transition: background-color 200ms ease; }
+.app:hover .app-ver, .app:focus-visible .app-ver { background: var(--lima); }
+/* O fio entre as linhas começa depois do ícone, como na loja. */
+.trilho li:not(.app-fim) .app { background: linear-gradient(var(--linha), var(--linha)) no-repeat calc(60px + 0.9rem) 100% / 100% 1px; }
 
-/* --- depois da faixa: outro ambiente ---------------------------------------
-   A abertura tem a textura de ponto; daqui para baixo o fundo vira placa de circuito: mais
-   escuro, grade fina de trilhas com nós nos cruzamentos e luz verde difusa atrás de cada
-   seção. A faixa das skills é a passagem de um ambiente para o outro. */
-.area-guia {
-  position: relative; isolation: isolate;
-  background:
-    radial-gradient(circle at 0 0, rgba(175, 240, 0, 0.16) 1.5px, transparent 2.5px) 0 0 / 72px 72px,
-    linear-gradient(rgba(248, 248, 248, 0.035) 1px, transparent 1px) 0 0 / 72px 72px,
-    linear-gradient(90deg, rgba(248, 248, 248, 0.035) 1px, transparent 1px) 0 0 / 72px 72px,
-    var(--escuro-fundo-2);
-}
-.area-guia::before {
-  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background:
-    radial-gradient(ellipse 55% 30% at 50% 0%, rgba(175, 240, 0, 0.18), transparent 70%),
-    radial-gradient(ellipse 45% 22% at 85% 48%, rgba(175, 240, 0, 0.1), transparent 70%),
-    radial-gradient(ellipse 45% 22% at 10% 78%, rgba(175, 240, 0, 0.1), transparent 70%);
-}
+/* Ficha: folha sobre a página. No celular sobe de baixo. */
+.ficha { width: min(30rem, calc(100vw - 2rem)); max-height: calc(100svh - 2rem); margin: auto; padding: 0; border: 0; border-radius: 24px; background: var(--branco); color: var(--tinta); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35); overflow: auto; }
+.ficha::backdrop { background: rgba(12, 28, 22, 0.55); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.ficha-dentro { position: relative; display: grid; gap: 0.9rem; padding: clamp(1.4rem, 4vw, 2rem); }
+.ficha-fechar { position: absolute; top: 1rem; right: 1rem; width: 32px; height: 32px; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--fundo); color: var(--cinza); cursor: pointer; }
+.ficha-fechar:hover { background: #e8e8ed; color: var(--tinta); }
+.ficha-fechar svg { width: 16px; height: 16px; }
+.ficha-topo { display: grid; grid-template-columns: 84px minmax(0, 1fr); align-items: center; gap: 1.1rem; padding-right: 2.2rem; }
+.ficha-topo .app-icone { width: 84px; }
+.ficha-topo h3 { font-size: clamp(1.35rem, 3vw, 1.6rem); line-height: 1.15; letter-spacing: -0.022em; }
+.ficha-topo p { margin-top: 0.25rem; font-size: 0.875rem; color: var(--cinza); }
+.ficha-para { font-size: 1.0625rem; line-height: 1.45; }
+.ficha small { margin-top: 0.4rem; font-size: 0.8125rem; color: var(--cinza); }
+.ficha .copiar { margin-top: -0.4rem; background: var(--fundo); border-color: transparent; }
+.ficha .botao-lima { margin-top: 0.5rem; width: 100%; }
+.movimento .ficha[open] { animation: ficha-entra 380ms var(--curva) both; }
+.movimento .ficha[open]::backdrop { animation: fundo-entra 300ms ease both; }
+.movimento .ficha.saindo { animation: ficha-sai 240ms ease both; }
+.movimento .ficha.saindo::backdrop { animation: fundo-sai 240ms ease both; }
+@keyframes ficha-entra { from { opacity: 0; transform: translateY(24px) scale(0.97); } }
+@keyframes ficha-sai { to { opacity: 0; transform: translateY(16px) scale(0.98); } }
+@keyframes fundo-entra { from { opacity: 0; } }
+@keyframes fundo-sai { to { opacity: 0; } }
+/* O exemplo é a frase que a pessoa vai colar no chat: campo branco com o botão dentro. */
+.copiar { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0.5rem 0.5rem 1.1rem; background: var(--branco); border: 1px solid var(--linha); border-radius: var(--raio-p); }
+.copiar code { flex: 1; min-width: 0; font: 400 1rem/1.35 var(--familia); letter-spacing: -0.011em; color: var(--tinta); overflow-wrap: anywhere; user-select: all; }
+.copiar-endereco code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.95rem; font-weight: 600; letter-spacing: 0; white-space: nowrap; overflow-wrap: normal; overflow-x: auto; }
 
-/* --- instalação ----------------------------------------------------------- */
-.instalacao { max-width: var(--largura); margin: 0 auto; padding: clamp(4.5rem, 9vw, 7rem) var(--margem) 2rem; scroll-margin-top: 4rem; }
-.secao-topo { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
-.secao-topo h2 { font-size: clamp(2.4rem, 5.5vw, 4.4rem); line-height: 0.95; color: var(--claro); }
-.idioma { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.6rem 0.9rem; margin-top: 1.4rem; font-size: 0.92rem; color: var(--claro-suave); }
-.idioma-opcoes { display: flex; gap: 0.4rem; padding: 0.25rem; border: 1px solid var(--vidro-borda); border-radius: 999px; background: var(--vidro); }
-.instalacao-corpo { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
-.painel { position: sticky; top: 5.5rem; }
+.chamada { padding: clamp(1.6rem, 3.5vw, 2.6rem) clamp(1.4rem, 3.5vw, 3rem); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.2rem 2rem; background: var(--grafite); color: var(--sobre-preto); border-radius: var(--raio); }
+.chamada h3 { font-size: clamp(1.3rem, 2.2vw, 1.6rem); line-height: 1.15; }
+.chamada p { margin-top: 0.4rem; color: var(--sobre-preto-2); }
 
-/* A curva da jornada: base apagada, linha verde que se desenha até o passo da vez. */
-.curva { display: block; width: 100%; height: auto; overflow: visible; }
-.curva-base { fill: none; stroke: rgba(248, 248, 248, 0.12); stroke-width: 2; stroke-dasharray: 3 7; }
-.curva-luz { fill: none; stroke: var(--verde); stroke-width: 3; stroke-linecap: round; filter: drop-shadow(0 0 6px rgba(175, 240, 0, 0.9)); transition: stroke-dashoffset 1100ms var(--curva); }
-.ponto-halo { fill: var(--verde); opacity: 0; transform-box: fill-box; transform-origin: center; }
-.ponto-miolo { fill: var(--escuro-fundo-2); stroke: rgba(248, 248, 248, 0.3); stroke-width: 2; transition: fill 400ms ease, stroke 400ms ease; }
-.ponto-num { font-family: var(--manchete); font-weight: 700; font-size: 26px; fill: rgba(248, 248, 248, 0.3); }
-.ponto-nome { font-family: var(--texto); font-weight: 500; font-size: 15px; fill: rgba(248, 248, 248, 0.4); }
-.ponto-feito .ponto-miolo { fill: var(--verde); stroke: var(--verde); }
-.ponto-feito .ponto-num { fill: var(--verde); }
-.ponto-feito .ponto-nome { fill: var(--claro-suave); }
-.ponto-atual .ponto-miolo { fill: var(--claro); stroke: var(--verde); stroke-width: 4; }
-.ponto-atual .ponto-num { fill: var(--verde); }
-.ponto-atual .ponto-nome { fill: var(--claro); font-weight: 700; }
-.ponto-atual .ponto-halo { opacity: 0.35; }
+/* --- instalação ------------------------------------------------------------ */
+.instalacao { padding: clamp(5rem, 11vw, 9rem) var(--margem) clamp(4rem, 8vw, 6rem); background: var(--fundo); }
+.segmentado .aba { min-height: 34px; padding: 0.3rem 0.95rem; font-size: 0.875rem; }
+.instalacao-corpo { max-width: var(--largura); margin: 0 auto; display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.painel { position: sticky; top: calc(var(--nav) + 2rem); }
 
-/* Versão compacta, para telas menores. */
-.trilha-compacta { display: none; padding: 1.2rem 1.4rem; border: 1px solid var(--vidro-borda); border-radius: var(--raio); background: var(--vidro); }
-.indice-numero { display: flex; align-items: baseline; gap: 0.2rem; margin: 0; font-family: var(--manchete); font-weight: 700; line-height: 0.85; }
-.indice-numero strong { font-size: 4.2rem; color: var(--verde); }
-.indice-numero span { font-size: 1.6rem; color: var(--claro-apagado); }
-.indice-nome { margin: 0.5rem 0 1rem; font-family: var(--serifa); font-style: italic; font-size: 1.3rem; line-height: 1.15; }
-.indice-marcas { list-style: none; display: flex; gap: 0.55rem; margin: 0; padding: 0; }
-.indice-marca svg { display: block; width: 1.9rem; height: 1.9rem; }
-.indice-feito svg, .indice-atual svg { color: var(--verde); }
-.indice-bloqueado svg { color: rgba(248, 248, 248, 0.14); }
+/* Progresso: uma linha vertical com um ponto por passo. */
+.trilha-passos { list-style: none; margin: 0; padding: 0; display: grid; }
+.marco { position: relative; display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 0.9rem; padding-bottom: 1.7rem; }
+.marco:last-child { padding-bottom: 0; }
+.marco::before { content: ""; position: absolute; left: 13.5px; top: 30px; bottom: 2px; width: 1px; background: var(--linha); transition: background-color 400ms ease; }
+.marco:last-child::before { display: none; }
+.marco-ponto { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--linha); background: var(--fundo); font-size: 0.8125rem; font-weight: 600; color: var(--cinza-claro); font-variant-numeric: tabular-nums; transition: background-color 400ms ease, color 400ms ease, border-color 400ms ease; }
+.marco-ponto svg { width: 14px; height: 14px; }
+.marco-nome { padding-top: 0.2rem; font-size: 0.9375rem; line-height: 1.3; color: var(--cinza-claro); }
+.marco-nome small { display: block; font-size: 0.8125rem; color: var(--cinza-claro); }
+.marco-feito .marco-ponto { background: var(--verde-escuro); border-color: var(--verde-escuro); color: var(--lima); }
+.marco-feito::before { background: var(--verde-escuro); }
+.marco-feito .marco-nome { color: var(--cinza); }
+.marco-atual .marco-ponto { background: var(--lima); border-color: var(--lima); color: var(--verde-escuro); }
+.marco-atual .marco-nome { color: var(--tinta); font-weight: 600; }
+.marco-atual .marco-nome small { font-weight: 400; }
 
-/* --- passos ------------------------------------------------------------- */
 .jornada { min-width: 0; }
-.passos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.8rem; }
-.passo { padding: 1rem 1.3rem; border: 1px solid var(--vidro-borda); border-radius: var(--raio); background: var(--vidro); }
+.passos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+.passo { padding: 1.1rem 1.4rem; border-radius: var(--raio); background: var(--branco); }
 .passo-cabecalho { display: flex; align-items: center; gap: 1rem; }
-.passo-cabecalho h3 { flex: 1; font-size: clamp(1.2rem, 2.2vw, 1.5rem); line-height: 1.05; }
-.passo-numero { flex: none; min-width: 2.6rem; font-family: var(--manchete); font-weight: 700; font-size: 1.8rem; line-height: 1; color: var(--verde); }
-.passo-tempo { padding: 0.2rem 0.65rem; border: 1px solid var(--vidro-borda); border-radius: 999px; font-family: var(--manchete); font-weight: 500; font-size: 0.8rem; text-transform: uppercase; color: var(--claro-suave); white-space: nowrap; }
-
-/* O passo da vez é a janela clara: legível para quem não é técnico, com o brilho verde. */
-.passo-atual { padding: clamp(1.4rem, 3vw, 2.2rem); background: var(--claro); color: var(--escuro); border-color: transparent; box-shadow: var(--brilho); }
-.passo-atual .passo-cabecalho h3 { font-size: clamp(1.8rem, 3.2vw, 2.5rem); line-height: 0.95; }
-.passo-atual .passo-numero { font-size: clamp(2.6rem, 4.5vw, 3.6rem); }
-.passo-atual .passo-tempo { border-color: rgba(12, 28, 22, 0.2); color: var(--print); }
-.passo-feito { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.2rem 1rem; padding-block: 0.65rem; }
+.passo-cabecalho h3 { flex: 1; font-size: 1.0625rem; line-height: 1.2; letter-spacing: -0.015em; }
+.passo-numero { flex: none; width: 1.9rem; font-size: 0.9375rem; font-weight: 600; color: var(--cinza-claro); font-variant-numeric: tabular-nums; }
+.passo-numero svg { width: 18px; height: 18px; color: var(--verde-escuro); }
+.passo-tempo { font-size: 0.875rem; color: var(--cinza-claro); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.passo-atual { padding: clamp(1.5rem, 3.4vw, 2.6rem); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03), 0 18px 48px -18px rgba(0, 0, 0, 0.16); }
+.passo-atual .passo-cabecalho { align-items: baseline; }
+.passo-atual .passo-cabecalho h3 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.08; letter-spacing: -0.03em; }
+.passo-atual .passo-numero { width: auto; font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.08; letter-spacing: -0.03em; color: var(--cinza-claro); }
+.passo-feito { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.2rem 1rem; padding-block: 0.6rem; background: transparent; }
 .passo-feito .passo-cabecalho { flex: 1; }
-.passo-feito h3 { font-size: 1.05rem; color: var(--claro-suave); }
-.passo-feito .passo-numero { font-size: 1.3rem; }
+.passo-feito h3 { font-weight: 500; color: var(--cinza); }
 .passo-feito .passo-tempo { display: none; }
-.passo-bloqueado { background: transparent; border-style: dashed; }
-.passo-bloqueado h3, .passo-bloqueado .passo-numero { color: rgba(248, 248, 248, 0.32); }
-.passo-corpo { margin: 1.2rem 0 0 3.6rem; }
-.passo-corpo > p { margin: 0 0 1rem; }
-.intro { font-size: 1.08rem; color: var(--print); }
+.passo-bloqueado { background: transparent; box-shadow: inset 0 0 0 1px var(--linha); }
+.passo-bloqueado h3 { font-weight: 500; color: var(--cinza-claro); }
+.passo-corpo { margin-top: 1.1rem; }
+.passo-corpo > p { margin-bottom: 1rem; }
+.intro { font-size: clamp(1.0625rem, 1.5vw, 1.2rem); line-height: 1.4; color: var(--cinza); }
 
-.acoes-lista { list-style: none; counter-reset: acao; margin: 1.4rem 0 1.2rem; padding: 0; display: grid; gap: 1.2rem; }
-.acao { counter-increment: acao; position: relative; padding-left: 3.1rem; }
-.acao::before {
-  content: counter(acao);
-  position: absolute; left: 0; top: -0.2rem;
-  width: 2.2rem; height: 2.2rem; display: grid; place-items: center;
-  background: var(--verde); color: var(--escuro); border-radius: 50%;
-  font-family: var(--manchete); font-weight: 700; font-size: 1.1rem;
-  box-shadow: 0 0 0 4px rgba(175, 240, 0, 0.18);
-}
-.acao > p { margin: 0 0 0.6rem; font-size: 1.08rem; }
-.acao strong { background: rgba(175, 240, 0, 0.15); padding: 0.05rem 0.4rem; border-radius: 6px; font-weight: 700; white-space: nowrap; }
-.acao .copiar { margin: 0.4rem 0; }
+.acoes-lista { list-style: none; counter-reset: acao; margin: 1.6rem 0 1.4rem; padding: 0; display: grid; gap: 1.3rem; }
+.acao { counter-increment: acao; position: relative; padding-left: 2.6rem; }
+.acao::before { content: counter(acao); position: absolute; left: 0; top: -0.05rem; width: 1.75rem; height: 1.75rem; display: grid; place-items: center; background: var(--fundo); color: var(--tinta); border-radius: 50%; font-size: 0.875rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.acao > p { margin-bottom: 0.6rem; }
+.acao strong { font-weight: 600; }
+.acao .copiar { margin: 0.5rem 0; background: var(--fundo); border-color: transparent; }
 
-.print { margin: 0.7rem 0 0; overflow: hidden; border-radius: 12px; background: var(--claro-claro); border: 1px solid rgba(12, 28, 22, 0.15); box-shadow: 0 20px 40px -24px rgba(12, 28, 22, 0.6); }
+.print { margin: 0.8rem 0 0; overflow: hidden; border-radius: var(--raio-p); background: var(--branco); border: 1px solid var(--linha); }
 .print a { display: block; }
 .print img { width: 100%; height: auto; }
-.print figcaption { padding: 0.4rem 0.9rem; background: var(--escuro); color: var(--claro); font-family: var(--serifa); font-style: italic; font-size: 1rem; }
+.print figcaption { padding: 0.5rem 0.9rem; border-top: 1px solid var(--linha); font-size: 0.8125rem; color: var(--cinza); }
 
 .opcoes { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-.opcao {
-  min-height: 46px; padding: 0.5rem 1.25rem;
-  font-family: var(--manchete); font-weight: 500; font-size: 1.05rem; text-transform: uppercase;
-  background: transparent; color: var(--escuro); border: 1.5px solid rgba(12, 28, 22, 0.45); border-radius: 999px; cursor: pointer;
-  transition: transform 200ms var(--curva), background-color 200ms ease, color 200ms ease;
-}
-.opcao:hover { border-color: var(--escuro); transform: translateY(-2px); }
-.opcao:active { transform: none; }
-.opcao-escolhida { background: var(--escuro); color: var(--claro); border-color: var(--escuro); }
-.opcao-clara { min-height: 40px; padding: 0.4rem 1rem; border: 0; color: var(--claro-suave); }
-.opcao-clara:hover { color: var(--claro); }
-.opcao-clara.opcao-escolhida { background: var(--verde); color: var(--escuro); }
-
-.copiar { display: flex; align-items: center; gap: 0.75rem; padding: 0.45rem 0.45rem 0.45rem 1rem; background: var(--claro-claro); border: 1.5px dashed rgba(12, 28, 22, 0.5); border-radius: 12px; }
-.copiar code { flex: 1; min-width: 0; font-size: 1.02rem; font-weight: 700; color: var(--escuro); overflow-wrap: anywhere; user-select: all; }
-/* O endereço do catálogo não pode quebrar no hífen: quem copiar à mão leria "sistema-de" e "-founders" como duas partes. */
-.copiar-endereco code { white-space: nowrap; overflow-wrap: normal; overflow-x: auto; }
+.opcao { min-height: 48px; padding: 0.55rem 1.4rem; border: 1px solid var(--linha); border-radius: var(--raio-p); background: var(--branco); cursor: pointer; font: 500 1.0625rem/1.2 var(--familia); letter-spacing: -0.015em; color: var(--tinta); transition: border-color 200ms ease, background-color 200ms ease, color 200ms ease, box-shadow 200ms ease; }
+.opcao:hover { border-color: var(--cinza-claro); }
+.opcao-escolhida { border-color: var(--tinta); box-shadow: inset 0 0 0 1px var(--tinta); }
 
 .acoes { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-.botao {
-  min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-  padding: 0.7rem 1.4rem; border-radius: 999px;
-  font-family: var(--manchete); font-weight: 700; font-size: 1.05rem; line-height: 1; text-transform: uppercase; text-decoration: none; white-space: nowrap;
-  border: 1.5px solid transparent; cursor: pointer;
-  transition: transform 220ms var(--curva), box-shadow 220ms var(--curva), background-color 200ms ease, color 200ms ease;
-}
-.botao:active { transform: scale(0.98); }
-.botao-principal { background: var(--verde); color: var(--escuro); box-shadow: 0 0 0 1px rgba(175, 240, 0, 0.4), 0 10px 34px -8px rgba(175, 240, 0, 0.75); }
-.botao-principal:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(175, 240, 0, 0.6), 0 16px 44px -8px rgba(175, 240, 0, 0.9); }
-.botao-vidro { background: var(--vidro-forte); border-color: var(--vidro-borda); color: var(--claro); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
-.botao-vidro:hover { background: rgba(248, 248, 248, 0.14); transform: translateY(-2px); }
-.botao-grande { min-height: 58px; padding: 0.95rem 1.9rem; font-size: 1.25rem; gap: 0.7rem; }
-.botao-grande .seta { display: inline-block; transition: transform 300ms var(--curva); }
-.botao-grande:hover .seta { transform: translateY(4px); }
-.botao-secundario { background: transparent; border-color: rgba(12, 28, 22, 0.5); color: var(--escuro); }
-.botao-secundario:hover { background: var(--escuro); color: var(--claro); }
-.botao-escuro { margin-top: 1.4rem; background: var(--escuro); color: var(--claro); }
-.botao-escuro:hover { transform: translateY(-2px); }
-.botao-copiar { min-height: 42px; padding: 0.55rem 1.05rem; background: var(--escuro); color: var(--claro); font-size: 0.95rem; }
-.botao-copiar:hover { background: var(--verde); color: var(--escuro); }
+.nota { margin-bottom: 1rem; padding: 0.9rem 1.1rem; background: var(--fundo); border-radius: var(--raio-p); font-size: 0.9375rem; color: var(--cinza); }
+.alerta { margin-top: 1.1rem; padding: 1rem 1.2rem; background: var(--tinta); color: var(--sobre-preto); border-radius: var(--raio-p); }
+.alerta strong { font-weight: 600; color: var(--lima); }
 
-.nota { margin: 0 0 1rem; padding-left: 0.8rem; border-left: 3px solid var(--verde); font-size: 0.95rem; color: var(--print); }
-.alerta { margin: 1rem 0 0; padding: 0.9rem 1rem; background: var(--escuro); color: var(--claro); border-radius: 12px; border-left: 6px solid var(--verde); }
-.link { min-height: 44px; font: inherit; font-size: 0.9rem; background: none; border: 0; padding: 0; color: var(--claro-suave); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.pronto { margin-top: 0.75rem; padding: clamp(2rem, 5vw, 3.5rem); border-radius: var(--raio); background: var(--preto); color: var(--sobre-preto); }
+.pronto .sobretitulo { color: var(--lima); }
+.pronto h2 { font-size: clamp(2rem, 4.2vw, 3.1rem); }
+.pronto p:not(.sobretitulo) { max-width: 32em; margin: 1rem 0 1.6rem; font-size: clamp(1.0625rem, 1.5vw, 1.2rem); color: var(--sobre-preto-2); }
 
-.pronto { position: relative; overflow: hidden; isolation: isolate; margin-top: 1.4rem; padding: clamp(1.6rem, 4vw, 2.6rem); border-radius: var(--raio); background: var(--verde); color: var(--escuro); box-shadow: 0 30px 80px -24px rgba(175, 240, 0, 0.8); }
-.pronto::after { content: ""; position: absolute; z-index: -1; right: -5rem; top: -5rem; width: 18rem; height: 18rem; background: var(--escuro); opacity: 0.12; -webkit-mask: var(--mascara-ast) center / contain no-repeat; mask: var(--mascara-ast) center / contain no-repeat; }
-.pronto .sobretitulo { color: var(--escuro); }
-.pronto h2 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 0.92; }
-.pronto p:not(.sobretitulo) { max-width: 560px; margin: 0.9rem 0 0; font-size: 1.08rem; }
-
-/* --- vitrine das skills: grade com ritmo (2 em cima, 3 embaixo) ------------- */
-.vitrine { max-width: var(--largura); margin: 0 auto; padding: clamp(4.5rem, 9vw, 7rem) var(--margem) 0; scroll-margin-top: 4rem; }
-.vitrine h2 { max-width: 22ch; font-size: clamp(2.4rem, 5.5vw, 4.4rem); line-height: 0.95; }
-.vitrine-apoio { max-width: 48ch; margin: 1rem 0 2.4rem; font-size: 1.12rem; color: var(--claro-suave); }
-.vitrine-grade { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(2.2rem, 4vw, 3.2rem); }
-.vitrine-area h3 { display: flex; align-items: baseline; gap: 0.8rem; margin: 0 0 1rem; padding-bottom: 0.7rem; border-bottom: 1px solid var(--vidro-borda); font-family: var(--serifa); font-style: italic; font-weight: 400; text-transform: none; font-size: clamp(1.6rem, 2.6vw, 2.1rem); color: var(--claro); }
-.vitrine-area h3 small { font-family: var(--manchete); font-style: normal; font-weight: 500; font-size: 0.85rem; text-transform: uppercase; color: var(--verde-claro); }
-.vitrine-cartoes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 1rem; }
-.skill {
-  position: relative; overflow: hidden; display: flex; flex-direction: column; padding: 1.4rem;
-  border: 1px solid var(--vidro-borda); border-radius: var(--raio); background: var(--vidro);
-  box-shadow: inset 0 1px 0 rgba(248, 248, 248, 0.06);
-  transition: transform 300ms var(--curva), border-color 300ms ease, background-color 300ms ease;
-}
-.skill:hover { transform: translateY(-4px); border-color: rgba(175, 240, 0, 0.45); background: linear-gradient(180deg, var(--vidro) 40%, rgba(175, 240, 0, 0.14)); }
-.skill-icone { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 12px; background: rgba(175, 240, 0, 0.14); border: 1px solid rgba(175, 240, 0, 0.35); }
-.skill-icone svg { width: 1.1rem; height: 1.1rem; color: var(--verde); }
-.skill h4 { margin: 1.1rem 0 0; font-family: var(--manchete); font-weight: 700; text-transform: uppercase; font-size: 1.45rem; line-height: 1; }
-.skill-onde { align-self: flex-start; margin-top: 0.55rem; padding: 0.2rem 0.65rem; border: 1px solid rgba(175, 240, 0, 0.5); border-radius: 999px; font-family: var(--manchete); font-weight: 500; font-size: 0.78rem; text-transform: uppercase; color: var(--verde-claro); }
-.skill p { margin: 0.45rem 0 1.1rem; font-size: 0.96rem; color: var(--claro-suave); }
-.skill .copiar { margin-top: auto; }
-.skill .copiar code { font-family: var(--serifa); font-style: italic; font-size: 1.08rem; font-weight: 400; line-height: 1.25; }
-
-/* --- ajuda ------------------------------------------------------------ */
-.ajuda { max-width: 840px; margin: 0 auto; padding: clamp(4.5rem, 9vw, 7rem) var(--margem) 0; }
-.ajuda h2 { font-size: clamp(2rem, 4.5vw, 3.2rem); line-height: 0.95; margin-bottom: 1.4rem; text-align: center; }
-.ajuda-lista { display: grid; gap: 0.6rem; }
-details { border: 1px solid var(--vidro-borda); border-radius: var(--raio); background: var(--vidro); transition: border-color 200ms ease, background-color 200ms ease; }
-details[open] { border-color: rgba(175, 240, 0, 0.45); background: var(--vidro-forte); }
-summary { display: flex; align-items: center; gap: 0.9rem; min-height: 58px; padding: 0.7rem 1.2rem; font-weight: 700; cursor: pointer; list-style: none; }
+/* --- ajuda -------------------------------------------------------------- */
+.ajuda { padding: 0 var(--margem) clamp(5rem, 10vw, 8rem); background: var(--fundo); }
+.ajuda h2 { max-width: 46rem; margin: 0 auto 1.6rem; padding-top: clamp(3rem, 7vw, 5rem); border-top: 1px solid var(--linha); font-size: clamp(1.7rem, 3.4vw, 2.5rem); text-align: center; }
+.ajuda-lista { max-width: 46rem; margin: 0 auto; border-top: 1px solid var(--linha); }
+details { border-bottom: 1px solid var(--linha); }
+summary { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 64px; padding: 1rem 0; font-size: clamp(1.0625rem, 1.5vw, 1.2rem); font-weight: 600; letter-spacing: -0.018em; cursor: pointer; list-style: none; }
 summary::-webkit-details-marker { display: none; }
-summary::before { content: ""; flex: none; width: 1.05rem; height: 1.05rem; background: var(--verde); -webkit-mask: var(--mascara-ast) center / contain no-repeat; mask: var(--mascara-ast) center / contain no-repeat; transition: transform 300ms var(--curva); }
-details[open] summary::before { transform: rotate(90deg); }
-details p { margin: 0; padding: 0 1.2rem 1.2rem 3.15rem; color: var(--claro-suave); }
-.recomecar { text-align: center; margin: 2rem 0 0; }
+/* Sinal de mais feito de dois traços; aberto, vira xis. */
+summary::after { content: ""; flex: none; width: 18px; height: 18px; background: linear-gradient(var(--tinta), var(--tinta)) center / 100% 1.5px no-repeat, linear-gradient(var(--tinta), var(--tinta)) center / 1.5px 100% no-repeat; transition: transform 350ms var(--curva); }
+details[open] summary::after { transform: rotate(45deg); }
+details p { max-width: 40em; padding: 0 0 1.4rem; color: var(--cinza); }
+.recomecar { max-width: 46rem; margin: 1.6rem auto 0; text-align: center; }
 
-.rodape { margin-top: 5rem; padding: 3rem var(--margem); border-top: 1px solid var(--vidro-borda); text-align: center; font-size: 0.9rem; color: var(--claro-suave); }
-.rodape .assinatura { margin-bottom: 1.2rem; font-size: 2.2rem; }
-.rodape p { max-width: 640px; margin: 0.4rem auto; }
-.rodape a { color: var(--claro); }
+/* --- rodapé ------------------------------------------------------------- */
+.rodape { padding: 2rem var(--margem) 3rem; background: var(--fundo); font-size: 0.75rem; line-height: 1.5; color: var(--cinza); }
+.rodape-dentro { max-width: var(--largura); margin: 0 auto; padding-top: 1.6rem; border-top: 1px solid var(--linha); }
+.rodape img { height: 14px; width: auto; margin-bottom: 1.1rem; opacity: 0.85; }
+.rodape p + p { margin-top: 0.4rem; }
+.rodape a { color: var(--tinta); text-underline-offset: 2px; }
 
-/* --- movimento: só onde comunica algo ----------------------------------
-   Abertura (manchete decodificando e subindo, chip ligando), o chip "pensando", a fita
-   correndo, a curva desenhando até o passo da vez e o passo novo chegando. */
-@media (prefers-reduced-motion: no-preference) {
-  .hero h1 .linha > span { animation: subir 900ms var(--curva) both; }
-  .hero h1 .linha:nth-child(2) > span { animation-delay: 120ms; }
-  .hero h1 { animation: aberracao 1100ms var(--curva) 120ms both; }
-  .selo, .hero-apoio, .hero-acoes { animation: aparecer 700ms var(--curva) both; }
-  .hero-apoio { animation-delay: 300ms; }
-  .hero-acoes { animation-delay: 420ms; }
-  .chip { animation: liga 1600ms steps(1) 300ms both, aparecer-chip 1200ms var(--curva) 300ms both; }
-  .chip-giro { animation: girar 90s linear infinite; }
-  .chip-logo svg { animation: girar 90s linear infinite reverse; }
-  .orbita-1 { animation: girar 16s linear infinite; }
-  .orbita-2 { animation: girar 34s linear infinite reverse; }
-  .orbita-3 { animation: girar 52s linear infinite; }
-  .pulso { animation: disparar 2.4s cubic-bezier(0.4, 0, 0.6, 1) var(--d) infinite; }
-  .nucleo { animation: pulsar 2.4s ease-in-out infinite; }
-  .varredura { animation: varrer 5.5s linear 1.8s infinite; }
-  .flutua { animation: aparecer 800ms var(--curva) both, boiar 6s ease-in-out infinite; }
-  .flutua-1 { animation-delay: 900ms, 900ms; }
-  .flutua-2 { animation-delay: 1050ms, 1.6s; animation-duration: 800ms, 7s; }
-  .flutua-3 { animation-delay: 1200ms, 2.2s; animation-duration: 800ms, 6.5s; }
-  .flutua-4 { animation-delay: 1350ms, 1.2s; animation-duration: 800ms, 7.5s; }
-  .fita-trilho { animation: correr 42s linear infinite; }
-  .ponto-atual .ponto-halo { animation: halo 1.8s ease-out infinite; }
-  .passo-atual { animation: chegar 520ms var(--curva) both; }
-  .pronto { animation: chegar 620ms var(--curva) both; }
-  .indice-atual svg { animation: girar 8s linear infinite; }
-  .indice-recem svg { animation: carimbo 520ms var(--curva) both; }
-}
-@keyframes subir { from { transform: translateY(105%); } to { transform: none; } }
-@keyframes aparecer { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-@keyframes boiar { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
-@keyframes girar { to { transform: rotate(360deg); } }
-@keyframes halo { 0% { opacity: 0.5; transform: scale(0.6); } 100% { opacity: 0; transform: scale(1.6); } }
-@keyframes carimbo { from { transform: scale(0.4) rotate(-60deg); } to { transform: none; } }
-@keyframes disparar {
-  0% { opacity: 0; transform: rotate(var(--a)) translateX(calc(var(--chip) * 0.13)); }
-  15% { opacity: 1; }
-  100% { opacity: 0; transform: rotate(var(--a)) translateX(calc(var(--chip) * 0.42)); }
-}
-@keyframes pulsar { 0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(0.86); } 50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); } }
-@keyframes varrer { 0% { opacity: 1; background-position: 0 100%; } 70% { opacity: 1; background-position: 0 0; } 71%, 100% { opacity: 0; background-position: 0 0; } }
-/* O chip liga: escuro, uma piscada, acende. */
-@keyframes liga { 0% { filter: brightness(0.15); } 40% { filter: brightness(0.15); } 48% { filter: brightness(1.25); } 54% { filter: brightness(0.4); } 62% { filter: brightness(1); } }
-@keyframes aparecer-chip { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: none; } }
-/* Aberração de cor na entrada da manchete: canais verde e claro se separam e voltam. */
-@keyframes aberracao { from { text-shadow: -7px 0 rgba(175, 240, 0, 0.8), 7px 0 rgba(248, 248, 248, 0.35); } to { text-shadow: 0 0 transparent, 0 0 transparent; } }
-@keyframes correr { to { transform: translateX(-50%); } }
-@keyframes chegar { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+/* --- movimento ----------------------------------------------------------
+   Só entrada e resposta a rolagem ou clique. Nenhuma animação em laço.
+   O estado inicial só vale com a classe .movimento no <html> (posta pelo efeitos.js),
+   então sem JavaScript ou com movimento reduzido nada fica escondido. */
+.movimento [data-revela] { opacity: 0; transform: translateY(28px); transition: opacity 900ms var(--curva), transform 900ms var(--curva); }
+.movimento [data-revela].visto { opacity: 1; transform: none; }
+.movimento .hero-texto > * { opacity: 0; transform: translateY(22px); animation: subir 1000ms var(--curva) forwards; }
+.movimento .hero-texto > :nth-child(2) { animation-delay: 90ms; }
+.movimento .hero-texto > :nth-child(3) { animation-delay: 200ms; }
+.movimento .hero-texto > :nth-child(4) { animation-delay: 300ms; }
+.movimento .hero-texto > :nth-child(5) { animation-delay: 380ms; }
+.movimento .chip { animation: chip-entra 1400ms var(--curva) 250ms backwards; }
+.movimento .trilha { stroke-dashoffset: 1; animation: tracar 1300ms var(--curva) calc(900ms + var(--i) * 45ms) forwards; }
+.movimento .logos li { opacity: 0; transform: translateY(14px); transition: opacity 700ms var(--curva) calc(var(--n, 0) * 60ms), transform 700ms var(--curva) calc(var(--n, 0) * 60ms); }
+.movimento .logos.visto li { opacity: 1; transform: none; }
+.movimento .passo-atual, .movimento .pronto { animation: trocar 550ms var(--curva) both; }
+@keyframes chip-entra { from { opacity: 0; transform: translateY(40px); } }
+@keyframes subir { to { opacity: 1; transform: none; } }
+@keyframes tracar { to { stroke-dashoffset: 0; } }
+@keyframes trocar { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 
 /* --- responsivo ------------------------------------------------------- */
-@media (max-width: 960px) {
+@media (max-width: 900px) {
   .instalacao-corpo { grid-template-columns: minmax(0, 1fr); }
   .painel { position: static; }
-  .curva { display: none; }
-  .trilha-compacta { display: block; }
+  /* No celular o progresso deita: cinco pontos numa linha, com o nome só do passo da vez. */
+  .trilha-passos { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .marco { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; padding-bottom: 0; }
+  .marco::before { left: 34px; right: -6px; top: 13.5px; bottom: auto; width: auto; height: 1px; }
+  .marco-nome { font-size: 0.75rem; }
+  .marco-nome small { display: none; }
+  .marco:not(.marco-atual) .marco-nome { display: none; }
+  .marco-atual .marco-nome { width: max-content; max-width: 60vw; }
+  .marco:nth-child(n + 4).marco-atual .marco-nome { justify-self: end; text-align: right; }
+  .logos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  /* No celular a lista corre para o lado, três por coluna, com a próxima coluna à mostra. */
+  .trilho { grid-template-columns: none; grid-auto-flow: column; grid-template-rows: repeat(3, auto); grid-auto-columns: min(86%, 24rem); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; margin-inline: calc(var(--margem) * -1); padding-inline: var(--margem); scroll-padding-inline: var(--margem); }
+  .trilho::-webkit-scrollbar { display: none; }
+  .trilho li { scroll-snap-align: start; }
+  .trilho-2 { max-width: none; }
+  .trilho-curto { grid-auto-columns: 100%; }
+  .trilho li.app-fim .app { background: linear-gradient(var(--linha), var(--linha)) no-repeat calc(60px + 0.9rem) 100% / 100% 1px; }
+  .trilho li:nth-child(3n) .app, .trilho li:last-child .app { background: none; }
 }
 @media (max-width: 640px) {
-  .cabecalho .contador { font-size: 0.8rem; }
-  .hero h1 { font-size: clamp(2.6rem, 12vw, 3.6rem); }
-  .chip { --chip: 94vw; margin-top: 4rem; }
-  .flutua { padding: 0.55rem 0.8rem; }
-  .flutua strong { font-size: 1.35rem; }
-  .flutua span { font-size: 0.72rem; }
-  .flutua-1 { left: 0; top: -4%; }
-  .flutua-2 { right: 0; top: -4%; }
-  .flutua-3 { display: none; }
-  .flutua-4 { display: none; }
-  .passo { padding: 0.9rem 1rem; }
-  .passo-atual { padding: 1.2rem; }
-  .passo-atual .passo-cabecalho h3 { font-size: 1.55rem; }
-  .passo-atual .passo-numero { font-size: 2.4rem; }
-  .passo-corpo { margin-left: 0; }
-  .acao { padding-left: 2.7rem; }
-  .acao strong { white-space: normal; }
-  details p { padding-left: 1.2rem; }
-  /* No celular o endereço ganha a linha inteira e o botão desce, para nada ficar cortado. */
-  .copiar-endereco { flex-wrap: wrap; padding: 0.75rem; }
-  .copiar-endereco code { flex-basis: 100%; font-size: 0.95rem; overflow-x: visible; }
-  .copiar-endereco .botao-copiar { flex: 1; }
+  .nav-dentro { grid-template-columns: 1fr auto; }
+  .nav-elos { display: none; }
+  .areas { width: auto; margin-inline: calc(var(--margem) * -1); padding-inline: var(--margem); border-radius: 0; background: transparent; gap: 0.4rem; }
+  .areas .aba { background: rgba(118, 118, 128, 0.12); }
+  .areas .aba[aria-selected="true"] { background: var(--verde-escuro); color: #fff; box-shadow: none; }
+  .areas .aba[aria-selected="true"] small { color: rgba(255, 255, 255, 0.6); }
+  .copiar { align-items: flex-end; flex-direction: column; padding: 0.9rem; }
+  .copiar code { align-self: stretch; }
+  .copiar-endereco code { font-size: 0.875rem; }
+  .chamada .botao, .acoes .botao { width: 100%; }
+  .ficha { width: 100vw; max-width: 100vw; margin: auto 0 0; border-radius: 24px 24px 0 0; }
+  .ficha-dentro { padding-bottom: calc(1.4rem + env(safe-area-inset-bottom)); }
   .botao { white-space: normal; text-align: center; }
+  .passo { padding-inline: 1.1rem; }
 }
-@media (max-width: 360px) {
-  .copiar-endereco code { font-size: 0.82rem; }
+@media (max-width: 420px) {
+  .nav .contador { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
 @media (prefers-reduced-transparency: reduce) {
-  .cabecalho, .flutua, .selo, .botao-vidro { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--escuro-fundo); }
+  .nav { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--grafite); }
 }

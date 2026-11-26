@@ -49,7 +49,7 @@ Responda em português, em tom direto e acolhedor:
 os.makedirs(os.path.join(pasta_skills, "boas-vindas"), exist_ok=True)
 open(os.path.join(pasta_skills, "boas-vindas", "SKILL.md"), "w", encoding="utf-8").write(boas_vindas)
 
-campos = ("nome", "area", "paraQue", "exemplo", "onde")
+campos = ("nome", "area", "icone", "paraQue", "exemplo", "onde")
 skills_js = [{k: s[k] for k in campos if k in s} for s in cat["skills"]]
 js = ("// Gerado por scripts/gerar.py a partir de catalogo.json. Não edite à mão.\n"
       f"export const AREAS = {json.dumps(cat['areas'], ensure_ascii=False)};\n"
