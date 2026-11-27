@@ -51,8 +51,33 @@ open(os.path.join(pasta_skills, "boas-vindas", "SKILL.md"), "w", encoding="utf-8
 
 campos = ("nome", "area", "icone", "paraQue", "exemplo", "onde")
 skills_js = [{k: s[k] for k in campos if k in s} for s in cat["skills"]]
+
+# Pacotes vizinhos: skills da Masi Negócios que moram em outro repositório (ex.: Design Skills). Aparecem na página
+# numa aba própria, com o caminho de instalação delas; não entram no plugin nem na boas-vindas.
+vizinhos = cat.get("vizinhos", [])
+if "--vizinhos" in sys.argv:  # traz de novo a lista publicada de cada vizinho
+    import urllib.request
+    for v in vizinhos:
+        fora = json.load(urllib.request.urlopen(v["catalogo"], timeout=20))
+        v["skills"] = [{k: s[k] for k in ("id",) + campos if k in s and k != "area"} for s in fora["skills"]]
+    open(os.path.join(RAIZ, "catalogo.json"), "w", encoding="utf-8").write(json.dumps(cat, ensure_ascii=False, indent=2) + "\n")
+areas_js = list(cat["areas"])
+for v in vizinhos:
+    if v["area"] in areas_js:
+        sys.exit(f"Área de pacote vizinho repetida: {v['area']}")
+    repetidas = no_catalogo & {s["id"] for s in v["skills"]}
+    if repetidas:
+        sys.exit(f"Skill do vizinho {v['pacote']} com o mesmo id de uma do Founders OS: {sorted(repetidas)}")
+    areas_js.append(v["area"])
+    pacote = {k: v[k] for k in ("repositorio", "url", "nota") if k in v}
+    pacote = {"nome": v["pacote"], **pacote}
+    for s in v["skills"]:
+        item = {"nome": s["nome"], "area": v["area"]}
+        item.update({k: s[k] for k in campos if k in s and k not in item})
+        skills_js.append({**item, "pacote": pacote})
+
 js = ("// Gerado por scripts/gerar.py a partir de catalogo.json. Não edite à mão.\n"
-      f"export const AREAS = {json.dumps(cat['areas'], ensure_ascii=False)};\n"
+      f"export const AREAS = {json.dumps(areas_js, ensure_ascii=False)};\n"
       f"export const SKILLS = {json.dumps(skills_js, ensure_ascii=False, indent=2)};\n")
 open(os.path.join(RAIZ, "site", "catalogo.js"), "w", encoding="utf-8").write(js)
-print(f"ok: {len(cat['skills'])} skills, versão {versao}")
+print(f"ok: {len(cat['skills'])} skills, versão {versao}" + "".join(f"; vizinho {v['pacote']}: {len(v['skills'])} skills" for v in vizinhos))

@@ -1,5 +1,5 @@
 {
-  "_leia": "Fonte única das skills do Founders OS. Depois de editar, rode: python3 scripts/gerar.py (gera a skill boas-vindas e o site/catalogo.js).",
+  "_leia": "Fonte única das skills do Founders OS. Depois de editar, rode: python3 scripts/gerar.py (gera a skill boas-vindas e o site/catalogo.js). Em 'vizinhos' ficam os pacotes da Masi Negócios que moram em outro repositório e aparecem na página numa aba própria (não entram no plugin); para trazer de novo a lista publicada deles: python3 scripts/gerar.py --vizinhos",
   "areas": [
     "Estratégia",
     "Vendas e marketing",
@@ -274,6 +274,116 @@
       "icone": "pen-line",
       "paraQue": "Escreve o carrossel completo e a legenda e grava na sua Máquina.",
       "exemplo": "Transforma esse artigo num carrossel."
+    }
+  ],
+  "vizinhos": [
+    {
+      "pacote": "Design Skills",
+      "area": "Design e vídeo",
+      "repositorio": "Masi-Negocios/design-skills",
+      "url": "https://github.com/Masi-Negocios/design-skills#instalar-no-claude-code",
+      "catalogo": "https://raw.githubusercontent.com/Masi-Negocios/design-skills/main/catalogo.json",
+      "nota": "Estas vêm no Design Skills, outro pacote da Masi Negócios, com instalação própria.",
+      "skills": [
+        {
+          "id": "configurar-estudio",
+          "nome": "Configurar o estúdio",
+          "icone": "wrench",
+          "paraQue": "Prepara as suas pastas (marcas, leis, acervo) e instala a oficina de vídeo com tudo o que ela precisa.",
+          "exemplo": "Configurar o estúdio.",
+          "onde": "Claude Code"
+        },
+        {
+          "id": "escolher-estilo",
+          "nome": "Escolher o estilo",
+          "icone": "palette",
+          "paraQue": "Na hora do pedido, mostra na conversa referências para você escolher (as do pacote e outras buscadas na internet), explica os dois jeitos de fazer vídeo, pergunta tom, cor e paleta e guarda a escolha da sua marca.",
+          "exemplo": "Me mostra umas referências de vídeo.",
+          "onde": "Claude Code"
+        },
+        {
+          "id": "gosto-design",
+          "nome": "Leis de design",
+          "icone": "ruler",
+          "paraQue": "As leis de composição, tipografia, cor e movimento que passaram ou foram reprovadas na prática, com o teste final antes de dizer pronto.",
+          "exemplo": "Revisa essa tela pelas leis de design antes de eu mostrar para o cliente."
+        },
+        {
+          "id": "landing",
+          "nome": "Landing page",
+          "icone": "layout-template",
+          "paraQue": "Arquiteta a página de conversão: a ação única, a ordem das seções, a oferta, a objeção, o formulário e a UTM.",
+          "exemplo": "Faz uma landing de captura para este e-book."
+        },
+        {
+          "id": "site",
+          "nome": "Site de várias páginas",
+          "icone": "panels-top-left",
+          "paraQue": "Rotas, navegação, conteúdo em dados, blog e SEO de um site institucional, e como portar uma landing para dentro dele.",
+          "exemplo": "Monta o site da empresa com home, sobre, serviços e blog."
+        },
+        {
+          "id": "ux-plataforma",
+          "nome": "UX de plataforma",
+          "icone": "route",
+          "paraQue": "Roda o sistema, mede, desenha a jornada, diagnostica com estudo e melhora junto: app, área logada, painel, formulário longo.",
+          "exemplo": "Deixa o fluxo de cadastro dessa plataforma fácil de usar."
+        },
+        {
+          "id": "dissecar-referencia",
+          "nome": "Dissecar referência",
+          "icone": "microscope",
+          "paraQue": "Estuda um site, print ou vídeo que você gostou e guarda o mecanismo dele no seu acervo, pronto para reusar.",
+          "exemplo": "Olha esse site, quero algo assim: o que faz ele funcionar?"
+        },
+        {
+          "id": "anotacoes",
+          "nome": "Anotações na página",
+          "icone": "pen-tool",
+          "paraQue": "Você rabisca e põe pinos por cima da página rodando, e o Claude aplica cada marcação sem adivinhar.",
+          "exemplo": "Anotei umas coisas na página, aplica.",
+          "onde": "Claude Code"
+        },
+        {
+          "id": "marca",
+          "nome": "Ficha de marca",
+          "icone": "badge-check",
+          "paraQue": "Guarda nome, paleta, tipografia, logo, tom e conversão de cada marca sua e cobra a ficha antes de qualquer peça.",
+          "exemplo": "Monta a ficha da minha marca a partir do site e do manual."
+        },
+        {
+          "id": "estudio",
+          "nome": "Estúdio de marca",
+          "icone": "milestone",
+          "paraQue": "Projeto de marca inteiro em 11 portões: pesquisa com fonte, SWOT cruzada, diferencial atacado, verbal, visual, peça e banca.",
+          "exemplo": "Qual é o nosso diferencial? Roda o estúdio para a minha marca.",
+          "onde": "Claude Code"
+        },
+        {
+          "id": "editar-video",
+          "nome": "Edição de vídeo",
+          "icone": "clapperboard",
+          "paraQue": "Reels com pessoa falando, filme de motion, After Effects por script, som e música, tudo medido antes de mostrar.",
+          "exemplo": "Edita esse vídeo: ~/Downloads/IMG_1234.MOV",
+          "onde": "Claude Code no Mac"
+        },
+        {
+          "id": "assistir-video",
+          "nome": "Assistir vídeo",
+          "icone": "scan-eye",
+          "paraQue": "Extrai quadros em folha de contato, lê o que aparece na tela, mede o ritmo do corte e transcreve a fala.",
+          "exemplo": "Vê esse vídeo de referência e me diz como ele é editado.",
+          "onde": "Claude Code"
+        },
+        {
+          "id": "carrossel",
+          "nome": "Carrossel panorâmico",
+          "icone": "gallery-horizontal",
+          "paraQue": "Carrossel de Instagram de história ou de valor numa composição larga fatiada em páginas. Pede a sua biblioteca de imagens.",
+          "exemplo": "Faz um carrossel contando a história da NVIDIA.",
+          "onde": "Claude Code"
+        }
+      ]
     }
   ]
 }

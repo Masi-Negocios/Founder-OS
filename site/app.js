@@ -152,8 +152,9 @@ function icone(nome, classe = "") {
 const COLUNAS = 3;
 let areaAberta = AREAS.find((a) => SKILLS.some((s) => s.area === a));
 function desenharVitrine() {
-  // O total sai do próprio catálogo: skill nova atualiza o número sozinha.
-  document.querySelectorAll("[data-total-skills]").forEach((el) => (el.textContent = SKILLS.length));
+  // O total sai do próprio catálogo: skill nova atualiza o número sozinha. Conta só o que o Founders OS instala;
+  // as skills de pacote vizinho (ex.: Design Skills) têm a aba delas e instalação própria.
+  document.querySelectorAll("[data-total-skills]").forEach((el) => (el.textContent = SKILLS.filter((s) => !s.pacote).length));
   const areas = AREAS.filter((a) => SKILLS.some((s) => s.area === a));
   document.getElementById("areas").innerHTML = areas.map((a) => {
     const quantas = SKILLS.filter((s) => s.area === a).length;
@@ -163,7 +164,9 @@ function desenharVitrine() {
   // Nenhuma linha órfã: com 2 ou 4 skills a lista fecha em duas colunas.
   const colunas = itens.length % COLUNAS === 1 || itens.length < COLUNAS ? 2 : COLUNAS;
   const ultimaLinha = itens.length - (itens.length % colunas || colunas);
+  const vizinho = itens[0]?.pacote;
   document.getElementById("skills-painel").innerHTML = `
+    ${vizinho?.nota ? `<p class="vitrine-nota">${escapar(vizinho.nota)}</p>` : ""}
     <ul class="trilho${itens.length <= 3 ? " trilho-curto" : ""}${colunas === 2 ? " trilho-2" : ""}" aria-label="${escapar(areaAberta)}">${itens.map((s, n) => `
       <li class="${n >= ultimaLinha ? "app-fim" : ""}">
         <button type="button" class="app" data-skill="${s.i}" aria-haspopup="dialog">
@@ -192,9 +195,12 @@ function abrirFicha(s) {
         </div>
       </header>
       <p class="ficha-para">${escapar(s.paraQue)}</p>
+      ${s.pacote ? `<p class="ficha-pacote">Vem no <strong>${escapar(s.pacote.nome)}</strong>, outro pacote da Masi Negócios, com instalação própria.</p>` : ""}
       <small>Depois de instalado, mande isto no chat:</small>
       ${blocoCopiar(s.exemplo)}
-      <a class="botao botao-lima" href="#jornada" data-fechar>Instalar no meu Claude</a>
+      ${s.pacote
+        ? `<a class="botao botao-lima" href="${escapar(s.pacote.url)}" target="_blank" rel="noopener">Como instalar o ${escapar(s.pacote.nome)}</a>`
+        : `<a class="botao botao-lima" href="#jornada" data-fechar>Instalar no meu Claude</a>`}
     </div>`;
   ficha.classList.remove("saindo");
   ficha.showModal();

@@ -1,5 +1,5 @@
 // Gerado por scripts/gerar.py a partir de catalogo.json. Não edite à mão.
-export const AREAS = ["Estratégia", "Vendas e marketing", "Operações e entrega", "Pessoas e gestão", "Finanças"];
+export const AREAS = ["Estratégia", "Vendas e marketing", "Operações e entrega", "Pessoas e gestão", "Finanças", "Design e vídeo"];
 export const SKILLS = [
   {
     "nome": "Head de IA",
@@ -218,5 +218,181 @@ export const SKILLS = [
     "icone": "pen-line",
     "paraQue": "Escreve o carrossel completo e a legenda e grava na sua Máquina.",
     "exemplo": "Transforma esse artigo num carrossel."
+  },
+  {
+    "nome": "Configurar o estúdio",
+    "area": "Design e vídeo",
+    "icone": "wrench",
+    "paraQue": "Prepara as suas pastas (marcas, leis, acervo) e instala a oficina de vídeo com tudo o que ela precisa.",
+    "exemplo": "Configurar o estúdio.",
+    "onde": "Claude Code",
+    "pacote": {
+      "nome": "Design Skills",
+      "repositorio": "Masi-Negocios/design-skills",
+      "url": "https://github.com/Masi-Negocios/design-skills#instalar-no-claude-code",
+      "nota": "Estas vêm no Design Skills, outro pacote da Masi Negócios, com instalação própria."
+    }
+  },
+  {
+    "nome": "Escolher o estilo",
+    "area": "Design e vídeo",
+    "icone": "palette",
+    "paraQue": "Na hora do pedido, mostra na conversa referências para você escolher (as do pacote e outras buscadas na internet), explica os dois jeitos de fazer vídeo, pergunta tom, cor e paleta e guarda a escolha da sua marca.",
+    "exemplo": "Me mostra umas referências de vídeo.",
+    "onde": "Claude Code",
+    "pacote": {
+      "nome": "Design Skills",
+      "repositorio": "Masi-Negocios/design-skills",
+      "url": "https://github.com/Masi-Negocios/design-skills#instalar-no-claude-code",
+      "nota": "Estas vêm no Design Skills, outro pacote da Masi Negócios, com instalação própria."
+    }
+  },
+  {
+    "nome": "Leis de design",
+    "area": "Design e vídeo",
+    "icone": "ruler",
+    "paraQue": "As leis de composição, tipografia, cor e movimento que passaram ou foram reprovadas na prática, com o teste final antes de dizer pronto.",
+    "exemplo": "Revisa essa tela pelas leis de design antes de eu mostrar para o cliente.",
+    "pacote": {
+      "nome": "Design Skills",
+      "repositorio": "Masi-Negocios/design-skills",
+      "url": "https://github.com/Masi-Negocios/design-skills#instalar-no-claude-code",
+      "nota": "Estas vêm no Design Skills, outro pacote da Masi Negócios, com instalação própria."
+    }
+  },
+  {
+    "nome": "Landing page",
+    "area": "Design e vídeo",
+    "icone": "layout-template",
+    "paraQue": "Arquiteta a página de conversão: a ação única, a ordem das seções, a oferta, a objeção, o formulário e a UTM.",
+    "exemplo": "Faz uma landing de captura para este e-book.",
+    "pacote": {
+      "nome": "Design Skills",
+      "repositorio": "Masi-Negocios/design-skills",
+      "url": "https://github.com/Masi-Negocios/design-skills#instalar-no-claude-code",
+      "nota": "Estas vêm no Design Skills, outro pacote da Masi Negócios, com instalação própria."
+    }
+  },
+  {
+    "nome": "Site de várias páginas",
+    "area": "Design e vídeo",
+    "icone": "panels-top-left",
+    "paraQue": "Rotas, navegação, conteúdo em dados, blog e SEO de um site institucional, e como portar uma landing para dentro dele.",
+    "exemplo": "Monta o site da empresa com home, sobre, serviços e blog.",
+    "pacote": {
+      "nome": "Design Skills",
+      "repositorio": "Masi-Negocios/design-skills",
+      "url": "https://github.com/Masi-Negocios/design-skills#instalar-no-claude-code",
+      "nota": "Estas vêm no Design Skills, outro pacote da Masi Negócios, com instalação própria."
+    }
+  },
+  {
+    "nome": "UX de plataforma",
+    "area": "Design e vídeo",
+    "icone": "route",
+    "paraQue": "Roda o sistema, mede, desenha a jornada, diagnostica com estudo e melhora junto: app, área logada, painel, formulário longo.",
+    "exemplo": "Deixa o fluxo de cadastro dessa plataforma fácil de usar.",
+    "pacote": {
+      "nome": "Design Skills",
+      "repositorio": "Masi-Negocios/design-skills",
+      "url": "https://github.com/Masi-Negocios/design-skills#instalar-no-claude-code",
+      "nota": "Estas vêm no Design Skills, outro pacote da Masi Negócios, com instalação própria."
+    }
+  },
+  {
+    "nome": "Dissecar referência",
+    "area": "Design e vídeo",
+    "icone": "microscope",
+    "paraQue": "Estuda um site, print ou vídeo que você gostou e guarda o mecanismo dele no seu acervo, pronto para reusar.",
+    "exemplo": "Olha esse site, quero algo assim: o que faz ele funcionar?",
+    "pacote": {
+      "nome": "Design Skills",
+      "repositorio": "Masi-Negocios/design-skills",
+      "url": "https://github.com/Masi-Negocios/design-skills#instalar-no-claude-code",
+      "nota": "Estas vêm no Design Skills, outro pacote da Masi Negócios, com instalação própria."
+    }
+  },
+  {
+    "nome": "Anotações na página",
+    "area": "Design e vídeo",
+    "icone": "pen-tool",
+    "paraQue": "Você rabisca e põe pinos por cima da página rodando, e o Claude aplica cada marcação sem adivinhar.",
+    "exemplo": "Anotei umas coisas na página, aplica.",
+    "onde": "Claude Code",
+    "pacote": {
+      "nome": "Design Skills",
+      "repositorio": "Masi-Negocios/design-skills",
+      "url": "https://github.com/Masi-Negocios/design-skills#instalar-no-claude-code",
+      "nota": "Estas vêm no Design Skills, outro pacote da Masi Negócios, com instalação própria."
+    }
+  },
+  {
+    "nome": "Ficha de marca",
+    "area": "Design e vídeo",
+    "icone": "badge-check",
+    "paraQue": "Guarda nome, paleta, tipografia, logo, tom e conversão de cada marca sua e cobra a ficha antes de qualquer peça.",
+    "exemplo": "Monta a ficha da minha marca a partir do site e do manual.",
+    "pacote": {
+      "nome": "Design Skills",
+      "repositorio": "Masi-Negocios/design-skills",
+      "url": "https://github.com/Masi-Negocios/design-skills#instalar-no-claude-code",
+      "nota": "Estas vêm no Design Skills, outro pacote da Masi Negócios, com instalação própria."
+    }
+  },
+  {
+    "nome": "Estúdio de marca",
+    "area": "Design e vídeo",
+    "icone": "milestone",
+    "paraQue": "Projeto de marca inteiro em 11 portões: pesquisa com fonte, SWOT cruzada, diferencial atacado, verbal, visual, peça e banca.",
+    "exemplo": "Qual é o nosso diferencial? Roda o estúdio para a minha marca.",
+    "onde": "Claude Code",
+    "pacote": {
+      "nome": "Design Skills",
+      "repositorio": "Masi-Negocios/design-skills",
+      "url": "https://github.com/Masi-Negocios/design-skills#instalar-no-claude-code",
+      "nota": "Estas vêm no Design Skills, outro pacote da Masi Negócios, com instalação própria."
+    }
+  },
+  {
+    "nome": "Edição de vídeo",
+    "area": "Design e vídeo",
+    "icone": "clapperboard",
+    "paraQue": "Reels com pessoa falando, filme de motion, After Effects por script, som e música, tudo medido antes de mostrar.",
+    "exemplo": "Edita esse vídeo: ~/Downloads/IMG_1234.MOV",
+    "onde": "Claude Code no Mac",
+    "pacote": {
+      "nome": "Design Skills",
+      "repositorio": "Masi-Negocios/design-skills",
+      "url": "https://github.com/Masi-Negocios/design-skills#instalar-no-claude-code",
+      "nota": "Estas vêm no Design Skills, outro pacote da Masi Negócios, com instalação própria."
+    }
+  },
+  {
+    "nome": "Assistir vídeo",
+    "area": "Design e vídeo",
+    "icone": "scan-eye",
+    "paraQue": "Extrai quadros em folha de contato, lê o que aparece na tela, mede o ritmo do corte e transcreve a fala.",
+    "exemplo": "Vê esse vídeo de referência e me diz como ele é editado.",
+    "onde": "Claude Code",
+    "pacote": {
+      "nome": "Design Skills",
+      "repositorio": "Masi-Negocios/design-skills",
+      "url": "https://github.com/Masi-Negocios/design-skills#instalar-no-claude-code",
+      "nota": "Estas vêm no Design Skills, outro pacote da Masi Negócios, com instalação própria."
+    }
+  },
+  {
+    "nome": "Carrossel panorâmico",
+    "area": "Design e vídeo",
+    "icone": "gallery-horizontal",
+    "paraQue": "Carrossel de Instagram de história ou de valor numa composição larga fatiada em páginas. Pede a sua biblioteca de imagens.",
+    "exemplo": "Faz um carrossel contando a história da NVIDIA.",
+    "onde": "Claude Code",
+    "pacote": {
+      "nome": "Design Skills",
+      "repositorio": "Masi-Negocios/design-skills",
+      "url": "https://github.com/Masi-Negocios/design-skills#instalar-no-claude-code",
+      "nota": "Estas vêm no Design Skills, outro pacote da Masi Negócios, com instalação própria."
+    }
   }
 ];
