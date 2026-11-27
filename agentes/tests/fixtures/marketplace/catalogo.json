@@ -1,0 +1,8 @@
+{
+  "areas": ["Finanças", "Vendas"],
+  "skills": [
+    {"id": "financas-teste", "nome": "Finanças Teste", "area": "Finanças", "icone": "banknote", "paraQue": "Lê margem e caixa.", "exemplo": "Qual é a minha margem?"},
+    {"id": "vendas-teste", "nome": "Vendas Teste", "area": "Vendas", "icone": "filter", "paraQue": "Monta o funil de vendas.", "exemplo": "Como vendo mais?"},
+    {"id": "so-no-code", "nome": "Só no Code", "area": "Vendas", "paraQue": "Precisa de terminal.", "onde": "Claude Code"}
+  ]
+}

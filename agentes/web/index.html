@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Founders OS Agentes</title>
+  <meta name="theme-color" content="#222222">
+  <link rel="icon" type="image/svg+xml" href="/site/img/founder-symbol-brand.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/web/estilo.css">
+  <script type="module" src="/web/app.js"></script>
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="lateral" id="lateral" aria-label="Agentes">
+      <div class="lateral-topo">
+        <a class="marca" href="/" aria-label="Founders OS Agentes">
+          <img src="/site/img/founder-symbol-brand.svg" alt="" width="28" height="28">
+          <span>Founders OS <b>Agentes</b></span>
+        </a>
+        <button class="icone-botao so-celular" id="fechar-lateral" type="button" aria-label="Fechar lista de agentes">×</button>
+      </div>
+
+      <div class="modos" role="tablist" aria-label="Modo">
+        <button role="tab" id="modo-conversa" aria-selected="true" type="button">Conversa</button>
+        <button role="tab" id="modo-conselho" aria-selected="false" type="button">Conselho</button>
+      </div>
+
+      <label class="busca">
+        <span class="sr">Buscar agente</span>
+        <input id="busca" type="search" placeholder="Buscar agente" autocomplete="off">
+      </label>
+
+      <div class="times" id="times" hidden></div>
+      <nav class="lista" id="lista" aria-label="Lista de agentes"></nav>
+
+      <div class="lateral-rodape">
+        <button class="link" id="abrir-perfil" type="button">Perfil do negócio</button>
+        <button class="link" id="abrir-historico" type="button">Conversas</button>
+      </div>
+    </aside>
+
+    <main class="principal">
+      <header class="cabecalho">
+        <button class="icone-botao so-celular" id="abrir-lateral" type="button" aria-label="Abrir lista de agentes">☰</button>
+        <div class="agente-atual" id="agente-atual"></div>
+        <div class="acoes">
+          <label class="seletor-modelo">
+            <span class="sr">Modelo</span>
+            <select id="modelo" title="Modelo usado nas próximas mensagens"></select>
+          </label>
+          <button class="botao-secundario" id="nova" type="button">Nova conversa</button>
+        </div>
+      </header>
+
+      <section class="mensagens" id="mensagens" aria-live="polite"></section>
+
+      <form class="compositor" id="compositor">
+        <div class="sugestoes" id="sugestoes" hidden></div>
+        <div class="caixa">
+          <label class="sr" for="entrada">Mensagem</label>
+          <textarea id="entrada" rows="1" placeholder="Conte o que você precisa" autocomplete="off"></textarea>
+          <button class="enviar" id="enviar" type="submit" aria-label="Enviar">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <p class="nota" id="nota">Enter envia · Shift+Enter quebra a linha</p>
+      </form>
+    </main>
+  </div>
+
+  <dialog id="dialogo-perfil" class="dialogo">
+    <form method="dialog" id="form-perfil">
+      <h2>Perfil do negócio</h2>
+      <p class="sub">Os agentes usam estes dados e não perguntam de novo. Eles também atualizam o perfil quando você conta algo novo.</p>
+      <div id="campos-perfil" class="campos"></div>
+      <button class="link" id="novo-campo" type="button">+ campo</button>
+      <div class="dialogo-acoes">
+        <button class="botao-secundario" value="cancelar" type="submit">Cancelar</button>
+        <button class="botao" id="salvar-perfil" value="salvar" type="submit">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="dialogo-historico" class="dialogo">
+    <form method="dialog">
+      <h2>Conversas</h2>
+      <ul id="lista-historico" class="historico"></ul>
+      <div class="dialogo-acoes"><button class="botao-secundario" value="fechar" type="submit">Fechar</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="dialogo-chave" class="dialogo">
+    <form method="dialog" id="form-chave">
+      <h2>Chave de acesso</h2>
+      <p class="sub">Este servidor pede uma chave. Ela fica guardada só neste navegador.</p>
+      <input id="campo-chave" type="password" autocomplete="off" placeholder="Cole a chave">
+      <div class="dialogo-acoes"><button class="botao" value="ok" type="submit">Entrar</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

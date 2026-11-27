@@ -1,0 +1,15 @@
+# Sobe a camada de agentes com: docker compose -f agentes/docker-compose.yml up --build
+services:
+  agentes:
+    build:
+      context: ..
+      dockerfile: agentes/Dockerfile
+    ports:
+      - "8787:8787"
+    env_file: .env
+    volumes:
+      - dados:/dados
+    restart: unless-stopped
+
+volumes:
+  dados:

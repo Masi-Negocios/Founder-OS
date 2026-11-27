@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "founders-agentes"
+version = "0.1.0"
+description = "Camada agêntica multi-modelo sobre as Skills do Founders OS"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+# SDK oficial para os modelos Claude. Os demais provedores usam só a biblioteca padrão.
+anthropic = ["anthropic>=1,<2"]
+# Para os scripts das skills que geram planilhas (ex.: Plano de Receita).
+scripts = ["openpyxl>=3.1"]
+
+[project.scripts]
+founders-agentes = "founders_agentes.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["founders_agentes*"]
